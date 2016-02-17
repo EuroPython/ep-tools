@@ -66,3 +66,9 @@ devdoc/
 
 #Apple stuff
 .DS_Store
+
+# eptools data
+participants*
+attendees*
+*.csv
+*.json

@@ -10,7 +10,7 @@ from   docstamp.gdrive import (get_spreadsheet,
 
 
 module_dir        = op.abspath(op.dirname(__file__))
-contract_template = op.join(module_dir, 'data', 'sponsor_agreement_1invoice.tex')
+contract_template = op.join(module_dir, 'sponsor_agreement_1invoice.tex')
 
 # spreadsheet headers
 billing_form_hdr  = ['date', 'company', 'country', 'address',

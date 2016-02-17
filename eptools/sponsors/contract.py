@@ -5,7 +5,6 @@ import tempfile
 import subprocess
 import logging as log
 
-#import pandas as pd
 from docstamp.file_utils import cleanup_docstamp_output
 
 from . import contract_template

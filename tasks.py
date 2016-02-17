@@ -10,9 +10,9 @@ from eptools.sponsors import (get_sponsor,
                               contract_template,
                               )
 
-from eptools.ep2016_config import (api_key_file,
-                                   sponsors_billing_worksheet,
-                                   )
+from eptools.config import (api_key_file,
+                            sponsors_billing_worksheet,
+                            )
 
 
 @task

@@ -1,13 +1,10 @@
 # coding: utf-8
 """
-Functions to get the data Financial Aid submissions.
+Functions to download and process the sponsors billing data
 """
-from ..server_utils import epcon_fetch_file
 
-
-
-from .fetch import billing_form_hdr
-from ..gspread import get_ws_data
+from .data import billing_form_hdr
+from ..gspread import get_ws_data, find_one_row
 
 
 def get_sponsors_ws_data(api_key_file, doc_key, file_header=billing_form_hdr):
@@ -15,10 +12,9 @@ def get_sponsors_ws_data(api_key_file, doc_key, file_header=billing_form_hdr):
     indicated by `doc_key`. `api_key_file` is the authentication
     file needed to access the document.
 
-    Get the data of the Financial Aid submissions.
-
     The header of the data will be changed by `file_header`.
     Be careful because this header must be known to other functions here.
+
     Parameters
     ----------
     api_key_file: str
@@ -41,14 +37,27 @@ def get_sponsors_ws_data(api_key_file, doc_key, file_header=billing_form_hdr):
                        start_row=1)
 
 
+def get_sponsor(sponsor_name, sponsors, col_name='company'):
+    """ Return a dict with the data of the sponsor given its name
+    and the content of the billing form responses spreadsheet.
 
-def fetch_finaid_submissions(out_filepath, conf='ep2016'):
-    """ Create csv file with the data of the Financial Aid submissions. """
-    return epcon_fetch_file(cmd='get_attendees_csv {} {}'.format(conf, 'complete'),
-                            fpath=out_filepath)
+    Parameters
+    ----------
+    sponsor_name: str
+        This value will be used to search in the `col_name` of
+        `sponsor_ws_data`.
+        This function looks for any cell with a `lower`-ed string
+        that containts the `lower`-ed `sponsor_name`.
 
+    sponsors: pandas.DataFrame
+        Content of the billing form responses spreadsheet.
 
-def fetch_ticketless_csv(out_filepath, conf='ep2016'):
-    """ Create csv file with participants without ticket.  """
-    return epcon_fetch_file(cmd='get_attendees_csv {} {}'.format(conf, 'incomplete'),
-                            fpath=out_filepath)
+    col_name: str
+        Name of the column that holds the name of the company.
+
+    Returns
+    -------
+    sponsor: pandas.DataFrame
+    """
+    return find_one_row(sponsor_name, sponsors, col_name=col_name)
+

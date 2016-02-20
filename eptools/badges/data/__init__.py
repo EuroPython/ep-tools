@@ -8,10 +8,6 @@ badge_templates_dir = op.join(templates_dir, 'with_cut_marks')
 pythonpower_dir     = op.join(templates_dir, 'python_power')
 dailypasses_dir     = op.join(templates_dir, 'daily_passes')
 
-# somewhere to save the participants data. It is in .gitignore.
-participants_csv  = "participants_assigned.csv"
-participants_json = "participants_assigned.json"
-
 # badges types
 keynote_badge_file     = op.join(badge_templates_dir, 'keynote_2.svg'  )
 organizer_badge_file   = op.join(badge_templates_dir, 'organizer_2.svg')

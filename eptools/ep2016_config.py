@@ -21,3 +21,7 @@ elif hn == 'corsair':
 # the ep2016 responses spreadsheet
 sponsors_billing_worksheet = ('1Dbxy1a0c-IbXdxVXmbTeU6zE6AKV4N0xKK2GANSw9Mw',
                               'Form responses 1')
+
+
+# TODO: add the key to the finaid submissions spreadsheet
+finaid_submissions_worksheet = ('TBD', 'Form responses 1')

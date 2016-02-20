@@ -35,8 +35,6 @@ from .printer import (merge_badge_svgfiles,
 
 
 # talks
-SESSIONS       = json.load(open(TALKSFILE, 'r'))
-EVENTS         = [event for name in SESSIONS for event in SESSIONS[name].values()]
 
 SPEAKERS, TRAINERS = get_speakers_trainers(EVENTS)
 KEYNOTERS          = read_email_list(op.join(DATA_DIR, 'keynoters.txt'))

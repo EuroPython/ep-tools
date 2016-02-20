@@ -1,0 +1,364 @@
+#LyX 2.1 created this file. For more info see http://www.lyx.org/
+\lyxformat 474
+\begin_document
+\begin_header
+\textclass paper
+\begin_preamble
+\usepackage{multirow}
+\usepackage[a4paper]{geometry}
+\geometry{verbose,lmargin=20mm,rmargin=14mm,top={22mm},bottom={30mm}}
+
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\usepackage{enumerate}
+\end_preamble
+\use_default_options true
+\maintain_unincluded_children false
+\language spanish
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman Ubuntu
+\font_sans Ubuntu
+\font_typewriter default
+\font_math auto
+\font_default_family default
+\use_non_tex_fonts true
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing onehalf
+\use_hyperref false
+\papersize a4paper
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 1.5cm
+\topmargin 2cm
+\rightmargin 1cm
+\bottommargin 2cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language french
+\papercolumns 1
+\papersides 1
+\paperpagestyle fancy
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+thispagestyle{fancy}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+fancyhf{} % sets both header and footer to nothing 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+renewcommand{
+\backslash
+headrulewidth}{0pt}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+lhead{}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+rhead{}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+chead{}
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+lfoot{}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+rfoot{}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+cfoot{
+\backslash
+textsf{ 
+\backslash
+scriptsize 
+\backslash
+thepage
+\backslash
+ of 1}}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Title
+\begin_inset Graphics
+	filename logo_acpyss.pdf
+	height 2cm
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+Recibí
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Graphics
+	filename 03-EP2015-logo-one_colour-red.eps
+	height 2cm
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align right
+En Bilbao, a 20 de julio de 2015
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+\align right
+ 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+today
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace 2cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align block
+Don (Doña) 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{{ full_name }}
+\end_layout
+
+\end_inset
+
+ con _____________________ 
+\emph on
+(doc type) 
+\emph default
+número ______________________
+\emph on
+ (number)
+\emph default
+ con domicilio en 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{{ address }}
+\end_layout
+
+\end_inset
+
+ en nombre propio.
+\end_layout
+
+\begin_layout Standard
+\align center
+CERTIFICA:
+\end_layout
+
+\begin_layout Standard
+\align block
+He recibido por parte de la Asociación de Ciencias de la Programación Python
+ San Sebastián la cantidad de 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{{ amount }}
+\end_layout
+
+\end_inset
+
+€ (
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{{ amount_script }}
+\end_layout
+
+\end_inset
+
+ euros) para financiar parte de los gastos de viaje y estancia para poder
+ acudir al congreso EuroPython 2015 celebrado en Bilbao entre las fechas
+ 20 de Julio a 26 de Julio de 2015.
+\end_layout
+
+\begin_layout Standard
+\align block
+A modo de justificante, se presentan los justificantes de los siguientes
+ gastos:
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{{ expense_docs }}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace 2cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+recibí 
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace 3cm
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+------------------------------------------
+\end_layout
+
+\begin_layout Standard
+\align center
+Fdo.: 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+{{ full_name }}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document

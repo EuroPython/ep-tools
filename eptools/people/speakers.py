@@ -5,7 +5,7 @@ Functions to read talks data.
 
 from   enum import Enum
 
-from ..talks.data import talk_type, get_talk_type
+from ..talks.fetch import talk_type, get_talk_type
 
 
 

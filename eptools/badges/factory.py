@@ -9,8 +9,8 @@ import time
 import json
 import shutil
 import filecmp
-from   collections   import OrderedDict
-from   operator      import itemgetter
+from   collections import OrderedDict
+from   operator    import itemgetter
 
 from   docstamp.file_utils import csv_to_json
 from   docstamp.pdf_utils  import merge_pdfs

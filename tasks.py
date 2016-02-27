@@ -55,6 +55,7 @@ def sponsor_agreement(company_name, output_dir,
     else:
         fpath = create_sponsor_agreement(sponsor_data,
                                          template_file=template_file,
+                                         field_name='company',
                                          output_dir=output_dir)
 
         print('Created {}.'.format(fpath))

@@ -22,6 +22,12 @@ badge_files = {'keynote':     keynote_badge_file,
                'participant': participant_badge_file,
                }
 
+badge_color = {'keynote':   'e37500',
+               'organizer': 'bc445c',
+               'trainer':   '5e9e90',
+               'speaker':   'a98700', #'e2b000',
+               'attendee':  'a3150e'}
+
 # python power stars
 pythonpower_svg_0 = op.join(pythonpower_dir, '0.svg')
 pythonpower_svg_1 = op.join(pythonpower_dir, '1.svg')

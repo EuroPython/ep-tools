@@ -2,11 +2,9 @@
 """
 Functions to read talks data.
 """
-
-from   enum import Enum
+from enum import Enum
 
 from ..talks.fetch import talk_type, get_talk_type
-
 
 
 def get_speakers_and_trainers(event_list):

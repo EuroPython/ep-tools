@@ -23,7 +23,7 @@ sponsors_billing_worksheet = ('1Dbxy1a0c-IbXdxVXmbTeU6zE6AKV4N0xKK2GANSw9Mw',
                               'Form responses 1')
 
 docker_name = 'webarch_ep2016_1'
-#epcon_db_path = '/var/lib/docker/volumes/4ebc6aa5d8404ad0e201ae9b70b64e1d2fe7739fee5d1c1ae89c49743b0c4e60/_data'
+epcon_db_path = '/var/lib/docker/volumes/4ebc6aa5d8404ad0e201ae9b70b64e1d2fe7739fee5d1c1ae89c49743b0c4e60/_data'
 
 # TODO: add the key to the finaid submissions spreadsheet
 finaid_submissions_worksheet = ('TBD', 'Form responses 1')

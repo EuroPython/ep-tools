@@ -5,6 +5,7 @@ Helper functions to run commands on the epcon server.
 """
 import os
 import os.path as op
+import logging as log
 
 from invoke import task
 
@@ -20,14 +21,19 @@ def epcon_exe_manage(cmd, user='root', host='epcon', docker_name=docker_name):
     host: str
     docker_name: str
     """
-    os.system('ssh {}@{} docker exec {} python manage.py {}'.format(user,
+    rmt_cmd = 'ssh {}@{} docker exec {} python manage.py {}'.format(user,
                                                                     host,
                                                                     docker_name,
-                                                                    cmd))
+                                                                    cmd)
+    log.info('Running {}.'.format(rmt_cmd))
+    os.system(rmt_cmd)
 
 
 def epcon_fetch_file(cmd, fpath, user='root', host='epcon'):
-    os.system('rm {}'.format(fpath))
+    """ Execute python manage.py command in epcon server to fetch a file. Will overwrite `fpath`. """
+    if op.exists(fpath):
+        os.remove(fpath)
+
     epcon_exe_manage(cmd='{} >> {}'.format(cmd, fpath),
                      user=user,
                      host=host)

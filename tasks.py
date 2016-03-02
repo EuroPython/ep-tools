@@ -5,6 +5,7 @@ import os.path as op
 from invoke import task
 
 from eptools.server_utils import epcon_fetch_p3db
+from eptools.talks import fetch_talk_json
 
 from eptools.sponsors import (get_sponsor,
                               get_sponsors_ws_data,

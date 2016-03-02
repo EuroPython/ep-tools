@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-sponsors=('STX Next' 'Abilisoft')
+sponsors=('Intel')
 
 dst="$HOME/Google Drive/EP2016/Sponsors WG/Agreements"
 

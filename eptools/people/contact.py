@@ -31,12 +31,27 @@ def create_contact(person_info):
 
 
 def parse_email_contact(email_str):
-    """ Parse a string in the format '<FirstName, SurName> EmailAddress'
+    """ Parse a string in the format '<name, surname> email'
     Returns
     -------
     given_name, family_name, email: str
     """
     pattern = re.compile(r"<(?P<name>.*),(?P<surname>.*)>(?P<email>.*@.*)")
+    try:
+        matches = pattern.match(email_str)
+    except:
+        raise ValueError('Error reading email in line {}.'.format(email_str))
+    else:
+        return matches.groups()
+
+
+def parse_email_contact_fmt2(email_str):
+    """ Parse a string in the format 'full_name <email>'
+    Returns
+    -------
+    given_name, family_name, email: str
+    """
+    pattern = re.compile(r"^(?P<name>[\S]*)[ ]*?(?P<surname>.*)[ ]*?<(?P<email>.*@.*)>.*?$")
     try:
         matches = pattern.match(email_str)
     except:

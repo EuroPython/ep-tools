@@ -58,9 +58,9 @@ def create_document(df, template_file, field_name, index=None, output_dir='.'):
     cmd += ' -i "{data_file}"'
     cmd += ' -t "{template}"'
     cmd += ' -o "{output_dir}"'
-    cmd += ' -f {field_name}'
+    cmd += ' -f "{field_name}"'
     cmd += ' -c xelatex'
-    cmd += ' --idx {index}'
+    cmd += ' --idx "{index}"'
     cmd += ' -v'
     cmd = cmd.format(data_file=path,
                      template=template_file,
@@ -68,7 +68,7 @@ def create_document(df, template_file, field_name, index=None, output_dir='.'):
                      field_name=field_name,
                      index=index)
 
-    log.debug('Calling {}'.format(cmd))
+    log.info('Calling {}'.format(cmd))
 
     oldcwd = op.abspath(op.curdir)
     os.chdir(op.dirname(template_file))

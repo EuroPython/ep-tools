@@ -4,12 +4,16 @@ Functions to read talks data.
 """
 import json
 
+from invoke import task
+
 from ..server_utils import epcon_fetch_file
 
 
-def fetch_talk_json(out_filepath, conf='ep2016'):
-    """ Create json file with talks data. """
-    return epcon_fetch_file(cmd='accepted_talks_abstracts {}'.format(conf),
+@task
+def fetch_talk_json(out_filepath, status='accepted', conf='ep2016'):
+    """ Create json file with talks data. `status` choices: ['accepted', 'proposed']
+    """
+    return epcon_fetch_file(cmd='talk_abstracts {} --talk_status {}'.format(conf, status),
                             fpath=out_filepath)
 
 

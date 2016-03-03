@@ -4,7 +4,7 @@ Functions to download and process the sponsors billing data
 """
 
 from .data import billing_form_hdr
-from ..gspread import get_ws_data, find_one_row
+from ..gspread_utils import get_ws_data, find_one_row
 
 
 def get_sponsors_ws_data(api_key_file, doc_key, file_header=billing_form_hdr):
@@ -60,4 +60,3 @@ def get_sponsor(sponsor_name, sponsors, col_name='company'):
     sponsor: pandas.DataFrame
     """
     return find_one_row(sponsor_name, sponsors, col_name=col_name)
-

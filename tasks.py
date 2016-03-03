@@ -19,16 +19,16 @@ from eptools.finaid import (get_finaid_ws_data,
                             create_receipt,
                            )
 
-from eptools.config import (api_key_file,
-                            sponsors_billing_worksheet,
+from eptools.config import (sponsors_billing_worksheet,
                             finaid_submissions_worksheet,
+                            get_api_key_file,
                             )
 
 
 @task
 def sponsor_agreement(company_name, output_dir,
                       template_file=contract_template,
-                      api_key_file=api_key_file):
+                      api_key_file=''):
     """ Call docstamp to produce a sponsor agreement for `company_name`
     using `template_file`. The output will be saved in `output_dir`.
 
@@ -42,7 +42,12 @@ def sponsor_agreement(company_name, output_dir,
     output_dir: str
 
     api_key_file: str
+        The path to the Google Credentials json file.
+        If left empty will try to look for its path in the config.py file.
     """
+    if not api_key_file:
+        api_key_file = get_api_key_file()
+
     output_dir = op.abspath(output_dir)
 
     responses = get_sponsors_ws_data(api_key_file=api_key_file,
@@ -66,7 +71,7 @@ def sponsor_agreement(company_name, output_dir,
 @task
 def finaid_receipt(applicant_name, output_dir,
                    template_file=receipt_template_spa,
-                   api_key_file=api_key_file):
+                   api_key_file=''):
     """ Call docstamp to produce a financial aid receipt
     for `applicant_name` using `template_file`.
     The output will be saved in `output_dir`.
@@ -80,7 +85,12 @@ def finaid_receipt(applicant_name, output_dir,
     output_dir: str
 
     api_key_file: str
+        Path to the Google credentials json file.
+        If left empty will try to look for its path in the config.py file.
     """
+    if not api_key_file:
+        api_key_file = get_api_key_file()
+
     output_dir = op.abspath(output_dir)
 
     responses = get_finaid_ws_data(api_key_file=api_key_file,

@@ -3,7 +3,7 @@
 Functions to produce the financial aid receipt document
 """
 from . import receipt_template_spa
-from ..docstamp import create_document
+from ..docstamp_utils import create_document
 
 
 def create_receipt(submission_data, template_file=None, output_dir='.'):

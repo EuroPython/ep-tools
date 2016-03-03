@@ -3,7 +3,7 @@
 Functions to get the data Financial Aid submissions.
 """
 from .data import finaid_submission_hdr
-from ..gspread import get_ws_data, find_one_row
+from ..gspread_utils import get_ws_data, find_one_row
 
 
 def get_finaid_ws_data(api_key_file, doc_key, file_header=finaid_submission_hdr):
@@ -58,4 +58,3 @@ def get_applicant(applicant_name, submissions, col_name='full_name'):
     applicant: dict
     """
     return find_one_row(applicant_name, submissions, col_name=col_name)
-

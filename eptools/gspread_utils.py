@@ -2,10 +2,19 @@
 Functions to access the data in google drive spreadsheets
 """
 
-import pandas as pd
-
 from   docstamp.gdrive import (get_spreadsheet,
                                worksheet_to_dict)
+
+
+def get_api_key_file():
+    """ Return the api_key_file path imported from the config.py file"""
+    try:
+        from .config import api_key_file
+    except:
+        raise ImportError('Could not find a path to the Google credentials file. '
+                          'You can set it up permanently in the config.py file.')
+    else:
+        return api_key_file
 
 
 def get_ws_data(api_key_file, doc_key, ws_tab_idx, header=None, start_row=1):
@@ -32,6 +41,8 @@ def get_ws_data(api_key_file, doc_key, ws_tab_idx, header=None, start_row=1):
     -------
     content: pandas.DataFrame
     """
+    import pandas as pd
+
     spread = get_spreadsheet(api_key_file, doc_key)
     ws     = spread.get_worksheet(ws_tab_idx)
 

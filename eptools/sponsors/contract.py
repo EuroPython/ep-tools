@@ -3,7 +3,7 @@ Functions to generate sponsor agreement documents.
 """
 
 from .data import contract_template
-from ..docstamp import create_document
+from ..docstamp_utils import create_document
 
 
 def create_sponsor_agreement(sponsor_data, field_name='company', template_file=None, output_dir='.'):

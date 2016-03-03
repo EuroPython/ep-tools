@@ -4,8 +4,9 @@ Invoke tasks to be run from the command line.
 import os.path as op
 from invoke import task
 
-from eptools.server_utils import epcon_fetch_p3db
-from eptools.talks import fetch_talk_json
+from eptools.server_utils  import epcon_fetch_p3db
+from eptools.gspread_utils import get_api_key_file
+from eptools.talks         import fetch_talk_json
 
 from eptools.sponsors import (get_sponsor,
                               get_sponsors_ws_data,
@@ -21,7 +22,6 @@ from eptools.finaid import (get_finaid_ws_data,
 
 from eptools.config import (sponsors_billing_worksheet,
                             finaid_submissions_worksheet,
-                            get_api_key_file,
                             )
 
 

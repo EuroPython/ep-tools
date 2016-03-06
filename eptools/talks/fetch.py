@@ -10,11 +10,12 @@ from ..server_utils import epcon_fetch_file
 
 
 @task
-def fetch_talk_json(out_filepath, status='accepted', conf='ep2016'):
+def fetch_talk_json(out_filepath, status='accepted', conf='ep2016', host='europython.io'):
     """ Create json file with talks data. `status` choices: ['accepted', 'proposed']
     """
     return epcon_fetch_file(cmd='talk_abstracts {} --talk_status {}'.format(conf, status),
-                            fpath=out_filepath)
+                            fpath=out_filepath,
+                            host=host)
 
 
 def load_events(talks_filepath):

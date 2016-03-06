@@ -8,18 +8,6 @@ from eptools.server_utils  import epcon_fetch_p3db
 from eptools.gspread_utils import get_api_key_file
 from eptools.talks         import fetch_talk_json
 
-from eptools.sponsors import (get_sponsor,
-                              get_sponsors_ws_data,
-                              create_sponsor_agreement,
-                              contract_template,
-                              )
-
-from eptools.finaid import (get_finaid_ws_data,
-                            get_applicant,
-                            receipt_template_spa,
-                            create_receipt,
-                           )
-
 from eptools.config import (sponsors_billing_worksheet,
                             finaid_submissions_worksheet,
                             )
@@ -27,7 +15,7 @@ from eptools.config import (sponsors_billing_worksheet,
 
 @task
 def sponsor_agreement(company_name, output_dir,
-                      template_file=contract_template,
+                      template_file='',
                       api_key_file=''):
     """ Call docstamp to produce a sponsor agreement for `company_name`
     using `template_file`. The output will be saved in `output_dir`.
@@ -45,6 +33,16 @@ def sponsor_agreement(company_name, output_dir,
         The path to the Google Credentials json file.
         If left empty will try to look for its path in the config.py file.
     """
+
+    from eptools.sponsors import (get_sponsor,
+                                  get_sponsors_ws_data,
+                                  create_sponsor_agreement,
+                                  contract_template,
+                                  )
+
+    if not template_file:
+        template_file = contract_template
+
     if not api_key_file:
         api_key_file = get_api_key_file()
 
@@ -70,7 +68,7 @@ def sponsor_agreement(company_name, output_dir,
 
 @task
 def finaid_receipt(applicant_name, output_dir,
-                   template_file=receipt_template_spa,
+                   template_file='',
                    api_key_file=''):
     """ Call docstamp to produce a financial aid receipt
     for `applicant_name` using `template_file`.
@@ -88,6 +86,16 @@ def finaid_receipt(applicant_name, output_dir,
         Path to the Google credentials json file.
         If left empty will try to look for its path in the config.py file.
     """
+
+    from eptools.finaid import (get_finaid_ws_data,
+                                get_applicant,
+                                receipt_template_spa,
+                                create_receipt,
+                               )
+
+    if not template_file:
+        template_file = receipt_template_spa
+
     if not api_key_file:
         api_key_file = get_api_key_file()
 

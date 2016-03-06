@@ -150,20 +150,3 @@ def get_pyss_client():
     password = PYSS_PASSWORD
 
     return PySSMailClient(username, password)
-
-
-def get_google_auth():
-    import json
-    import gspread
-    from   oauth2client.client import SignedJwtAssertionCredentials
-
-    from credentials import GOOGLE_OAUTH_JSON_FILE
-
-    json_key = json.load(open(GOOGLE_OAUTH_JSON_FILE))
-    scope = ["https://spreadsheets.google.com/feeds"]
-
-    # authenticate
-    credentials = SignedJwtAssertionCredentials(json_key["client_email"],
-                                                json_key["private_key"].encode("utf-8"), scope)
-    return gspread.authorize(credentials)
-

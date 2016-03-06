@@ -46,7 +46,7 @@ def parse_email_contact(email_str):
 
 
 def parse_email_contact_fmt2(email_str):
-    """ Parse a string in the format 'full_name <email>'
+    """ Parse a string in the format 'Name Surname <email>'
     Returns
     -------
     given_name, family_name, email: str

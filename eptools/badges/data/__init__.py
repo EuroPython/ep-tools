@@ -1,5 +1,7 @@
 import os.path as op
 
+from ...people.contact import ATTENDEE_TYPE as roles
+
 # declaring folder paths
 module_dir          = op.abspath(op.dirname(__file__))
 
@@ -15,18 +17,18 @@ trainer_badge_file     = op.join(badge_templates_dir, 'trainer_2.svg'  )
 speaker_badge_file     = op.join(badge_templates_dir, 'speaker_2.svg'  )
 participant_badge_file = op.join(badge_templates_dir, 'attendee_2.svg' )
 
-badge_files = {'keynote':     keynote_badge_file,
-               'organizer':   organizer_badge_file,
-               'trainer':     trainer_badge_file,
-               'speaker':     speaker_badge_file,
-               'participant': participant_badge_file,
+badge_files = {roles.keynote:     keynote_badge_file,
+               roles.organizer:   organizer_badge_file,
+               roles.trainer:     trainer_badge_file,
+               roles.speaker:     speaker_badge_file,
+               roles.participant: participant_badge_file,
                }
 
-badge_color = {'keynote':   'e37500',
-               'organizer': 'bc445c',
-               'trainer':   '5e9e90',
-               'speaker':   'a98700', #'e2b000',
-               'attendee':  'a3150e'}
+badge_color = {roles.keynote:   'e37500',
+               roles.organizer: 'bc445c',
+               roles.trainer:   '5e9e90',
+               roles.speaker:   'a98700', #'e2b000',
+               roles.attendee:  'a3150e'}
 
 # python power stars
 pythonpower_svg_0 = op.join(pythonpower_dir, '0.svg')

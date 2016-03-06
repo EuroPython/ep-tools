@@ -1,6 +1,8 @@
+# coding: utf-8
 """
 A Borg that holds the records of the conference people data given a CSV file.
 """
+
 import os.path as op
 import json
 from   collections import OrderedDict, defaultdict
@@ -8,14 +10,9 @@ from   operator    import itemgetter
 
 from   docstamp.file_utils import csv_to_json
 
-from .contact import CONTACT_FIELDS, ATTENDEE_TYPE
-
-class Borg:
-    __shared_state = {}
-
-    def __init__(self):
-        self.__dict__ = self.__shared_state
-    # and whatever else you want in your class -- that's all!
+from .contact import CONTACT_FIELDS
+from .contact import ATTENDEE_TYPE as roles
+from .._utils import Borg
 
 
 class ParticipantsRecords(Borg):
@@ -24,43 +21,40 @@ class ParticipantsRecords(Borg):
     def __init__(self, participants_csv):
         super(ParticipantsRecords, self).__init__()
 
-        self._data = self._read_participants_csv(participants_csv)
-        self.emails = self.emails_dict()
+        self._people     = self._read_participants_csv(participants_csv)
+        self.emails      = self.emails_dict()
         self.person_type = defaultdict(list)
 
-    def _read_participants_csv(self, csv_file):
+    @staticmethod
+    def _read_participants_csv(csv_file):
         json_file = op.join(op.dirname(csv_file), op.basename(csv_file).split('.')[:-1] + '.json')
         csv_to_json(csv_file, json_file, CONTACT_FIELDS)
-        participants = json.load(open(json_file, 'r'))
-        return sorted(participants, key=itemgetter('Name'))
+        people = json.load(open(json_file, 'r'))
+        return sorted(people, key=itemgetter('Name'))
 
     def emails_dict(self):
-        return OrderedDict([(p['Email'], p) for p in self.participants])
+        return OrderedDict([(p['Email'], p) for p in self._people])
 
-    def set_people_kind(self, emails, type):
-        """
-
+    def set_people_role(self, emails, role=roles.attendee):
+        """ Set the roll of all the contacts in `emails` as `role`.
         Parameters
         ----------
         emails: list of str
             A list of email addresses.
 
-        type: ATTENDEE_TYPE
+        roll: ATTENDEE_TYPE
         """
-        self.person_type[type].extend(emails)
+        self.person_type[role].extend(emails)
 
-    def get_person_type(self, email):
-        """ Return the type of participant given the person's email. """
-        if email in KEYNOTERS:
-            return ATTENDEE_TYPE.keynote
-        elif email in ORGANIZERS:
-            return ATTENDEE_TYPE.organizer
-        elif email in TRAINERS:
-            return ATTENDEE_TYPE.trainer
-        elif email in SPEAKERS:
-            return ATTENDEE_TYPE.speaker
-        else:
-            return ATTENDEE_TYPE.attendee
+    @staticmethod
+    def role(self, email):
+        """ Return the role of the participant given the person's email. """
+        for role in list(roles):
+            if email in self.emails_dict[role]:
+                return role
+
+        raise KeyError('Could not find role for {}.'.format(email))
+
 
 # talks
 SPEAKERS, TRAINERS = get_speakers_trainers(EVENTS)

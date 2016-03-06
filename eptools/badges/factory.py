@@ -13,30 +13,28 @@ from   docstamp.pdf_utils  import merge_pdfs
 from   docstamp.inkscape   import svg2pdf
 from   docstamp.qrcode     import save_into_qrcode
 from   docstamp.xml_utils  import change_xml_encoding
+import docstamp.vcard      as dvcard
 
 from .printer import (merge_badge_svgfiles,
                       fill_text_contact_badge,
                       )
 
-from .data import (badge_color,
-                   badge_files
+from .data import (
+                   badge_files,
+                   badge_color,
+                   pythonpower_svg,
+                   coordinates,
                    )
 
-from ..people import (
-
-                     ParticipantsRecords,
-                     )
+from ..people import ParticipantsRecords as people
+from .._utils import Borg
 
 
-
-class BadgeFactory():
-
-
-
-
-
+class BadgeFactory(Borg):
 
     def __init__(self, out_basedir):
+        super(BadgeFactory, self).__init__()
+
         self.out_dir = ''
         self.tmp_dir = ''
 
@@ -55,13 +53,12 @@ class BadgeFactory():
         self.out_dir = out_dir
         self.tmp_dir = tmp_dir
 
-
-    def _get_badge_template_file(self, attendee_email):
+    @staticmethod
+    def _template_file(attendee_email):
         """ Return the path to the corresponding svg template file for the given attendee."""
-        return ATTENDEE_BADGETYPE[self.get_attendee_type(attendee_email)]
+        return badge_files[people.role(attendee_email)]
 
-
-    def _get_badge_filepath(self, contact, with_email=True, prefix='badge_ep2016_'):
+    def _build_filepath(self, contact, outdir, with_email=True, prefix='badge_ep2016_'):
         """ Return the filepath to the corresponding svg file of the contact in the `outdir`
         folder.
 
@@ -69,16 +66,22 @@ class BadgeFactory():
         ----------
         contact: Contact
 
+        outdir: str
+            Path to the output folder.
+
         with_email: bool
+            If True will include the email address of the badge owner
+            to the file name. False otherwise.
 
         prefix: str
+            Prefix to include in the file name.
 
         Returns
         -------
         filepath: str
         """
         #badge name
-        contact_type = get_attendee_type(contact.Email)
+        contact_type = people.role(contact.Email)
         if with_email:
             fname_template = '{prefix}_{type}_{name}_{surname}_{email}.svg'
         else:
@@ -92,34 +95,35 @@ class BadgeFactory():
         return op.join(outdir, badge_filename)
 
 
-    def create_badge_svg(contact):
+    def _badge_svg(self, contact):
         """ return a badge svgfigure for the contact """
-        badge_template = ATTENDEE_BADGETYPE[get_attendee_type(contact.Email)]
-        pypower_file   = PYTHONPOWER_SVG[int(contact.Python_experience)]
-        badge_color    = BADGE_COLOR[badge_template]
-        vcard          = vcard_text(contact)
+        badge_template = self._template_file([people.role(contact.Email)])
+        pypower_file   = pythonpower_svg[int(contact.Python_experience)]
+        color          = badge_color[badge_template]
+        vcard          = dvcard.create_vcard3_str(**dict(contact))
 
-        qrcode_file    = op.join(TRASH_DIR,
+        qrcode_file    = op.join(self.tmp_dir,
                                  'qrcode_{}.svg'.format(contact.Email.replace('@', '.')))
         save_into_qrcode(vcard, qrcode_file, badge_color)
 
         return merge_badge_svgfiles(badge_template,
                                     pypower_file,
                                     qrcode_file,
-                                    box_size=QRCODE_SIZE)
+                                    box_size=coordinates['qrcode_size'])
 
 
-    def generate_contact_badge(contact, badge_filepath):
+    def generate_contact_badge(self, contact, badge_filepath):
         """ create a badge file for contact in outputdir. """
         #create badge image and save it
-        badge = create_badge_svg(contact)
+        badge = self._badge_svg(contact)
         badge.save(badge_filepath)
         change_xml_encoding(badge_filepath, 'ASCII', 'utf-8')
-        fill_text_contact_badge(contact, badge_filepath, max_length=BADGE_TEXT_MAXLENGTH)
+        fill_text_contact_badge(contact, badge_filepath,
+                                max_length=coordinates['badge_text_maxlength'])
         return badge
 
 
-    def create_badge_pdf(contact, output_dir,  ):
+    def create_badge(self, contact, output_dir,  ):
         """
 
         Parameters

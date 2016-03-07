@@ -1,2 +1,2 @@
 
-from .fetch import fetch_talk_json
+from .fetch import fetch_talks_json

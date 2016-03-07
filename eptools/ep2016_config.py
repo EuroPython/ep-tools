@@ -27,3 +27,6 @@ epcon_db_path = '/var/lib/docker/volumes/4ebc6aa5d8404ad0e201ae9b70b64e1d2fe7739
 
 # TODO: add the key to the finaid submissions spreadsheet
 finaid_submissions_worksheet = ('TBD', 'Form responses 1')
+
+# EPS members
+epsmembers_dockey = '1HUGxWLbAXg3VFIlbsiTaHTGvhf67_tXgiVCpmay6v4U/edit?ts=56dd7c8d'

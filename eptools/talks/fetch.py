@@ -33,9 +33,7 @@ def fetch_talks_json(out_filepath='', status='proposed', conf='ep2016', host='eu
     if not out_filepath:
         out_filepath = tempfile.NamedTemporaryFile(suffix='.json').name
 
-    out_filepath = _call_for_talks(out_filepath=out_filepath,
-                                   status=status,
-                                   conf=conf)
+    _ = _call_for_talks(out_filepath=out_filepath, status=status, conf=conf, host=host)
 
     with open(out_filepath, 'r') as f:
         talks = json.load(f)

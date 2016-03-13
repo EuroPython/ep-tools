@@ -2,6 +2,8 @@
 """
 Functions to get the data of conference participants.
 """
+from invoke import task
+
 from ..server_utils import epcon_fetch_file
 
 
@@ -15,6 +17,34 @@ def fetch_ticketless_csv(out_filepath, conf='ep2016'):
     """ Create csv file with participants without ticket.  """
     return epcon_fetch_file(cmd='get_attendees_csv {} {}'.format(conf, 'incomplete'),
                             fpath=out_filepath)
+
+
+@task
+def fetch_ticket_profiles(out_filepath, conf='ep2016', status='all',
+                          nondups=False, raise_=False, ticket_id=''):
+    """ Create a json file with the all the tickets of the conference.
+        make_option('--status',
+                    choices=['all', 'complete', 'incomplete'],
+                    help='Status of the orders related with the tickets.',
+        make_option('--nondups',
+                    help='If enables will remove the tickets with '
+                         'same owner/email.',
+        make_option('--raise',
+                    help='If enabled will raise any error that it may find.',
+        make_option('--ticket-id',
+                    help='Will output the profile of the given ticket only.',
+    """
+    cmd = 'ticket_profiles {} --status {}'.format(conf, status)
+    if nondups:
+        cmd += ' --nondups'
+
+    if raise_:
+        cmd += ' --raise'
+
+    if ticket_id:
+        cmd += ' --ticket_id {}'.format(ticket_id)
+
+    return epcon_fetch_file(cmd=cmd, fpath=out_filepath)
 
 
 def genderize(first_name):

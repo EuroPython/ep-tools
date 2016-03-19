@@ -1,7 +1,9 @@
 # coding: utf-8
 """
-Functions to process data of one talk.
+Functions to process talk data and its speakers.
 """
+from collections import defaultdict
+
 
 TALK_TYPE = (
     ('t_30', 'Talk (30 mins)'),
@@ -55,3 +57,27 @@ def get_speaker_type(talk_code):
         return 'trainer'
     else:
         return None
+
+
+def get_type_speakers(talks):
+    """ Return a dictionary [type of speaker] -> list of emails.
+    See ..talks.get_speaker_type and
+
+    Parameters
+    ----------
+    talks: dict of talks
+        dict[talk.id] -> talk dict
+        From the talk_abstract.json file.
+        Note that you have to remove the first key layer of the json content
+        before using it as input to this function.
+
+    Returns
+    -------
+    type_speaker: dict
+        Type of speaker -> list of emails
+    """
+    type_speakers = defaultdict(list)
+    for tid, talk in talks.items():
+        stype = get_speaker_type(get_talk_code(talk['type']))
+        type_speakers[stype].extend(talk['emails'].split(', '))
+    return type_speakers

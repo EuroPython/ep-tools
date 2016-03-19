@@ -18,12 +18,18 @@ Contact = namedtuple('Contact', CONTACT_FIELDS)
 
 # regexes
 email_regex = r"[\w0-9\.\+\_\-]+@[\w0-9\.\+\_\-]+\.\w+"
+name_regex  = r"[\w0-9\.\_\-\']+"
+person_name = r"{name}([ ]{name})*".format(name=name_regex)
 
 #'<name, surname> email'
-contact_regex1 = r"^<(?P<name>[\w0-9\. ]+),[ ]?((?P<surname>[\w0-9\. ]+))>[ ]?(?P<email>{email})?$".format(email=email_regex)
+contact_regex1 = r"^<(?P<name>{name})[ ]*,[ ]*((?P<surname>{name}))>"\
+                  "[ ]*(?P<email>{email})?$".format(name=person_name,
+                                                    email=email_regex)
 
 # name, surname <email>
-contact_regex2 = "^(?P<name>[\w0-9\.\_\- ]+)[ ]*,[ ]*(?P<surname>[\w0-9\. ]+)([ ]*<(?P<email>{email})>)?$".format(email=email_regex)
+contact_regex2 = "^(?P<name>{name})[ ]*,[ ]*(?P<surname>{name})"\
+                 "([ ]*<(?P<email>{email})>)?$".format(name=person_name,
+                                                       email=email_regex)
 
 
 def create_contact(person_info):

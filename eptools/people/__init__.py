@@ -9,4 +9,5 @@ from .contact import (
                       contact_regex2,
                       )
 
-from .fetch import fetch_ticket_profiles
+from .fetch import (fetch_ticket_profiles,
+                    fetch_users)

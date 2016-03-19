@@ -13,6 +13,12 @@ def fetch_participant_csv(out_filepath, conf='ep2016'):
                             fpath=out_filepath)
 
 
+def fetch_users(out_filepath):
+    """ Create a json file with the users in the database."""
+    return epcon_fetch_file(cmd='users',
+                            fpath=out_filepath)
+
+
 def fetch_ticketless_csv(out_filepath, conf='ep2016'):
     """ Create csv file with participants without ticket.  """
     return epcon_fetch_file(cmd='get_attendees_csv {} {}'.format(conf, 'incomplete'),

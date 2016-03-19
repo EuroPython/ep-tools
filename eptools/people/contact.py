@@ -16,6 +16,15 @@ CONTACT_FIELDS = ("Name", "Surname", "Tagline", "Affiliation", "Python_experienc
 
 Contact = namedtuple('Contact', CONTACT_FIELDS)
 
+# regexes
+email_regex = r"[\w0-9\.\+_-]+@[\w0-9\._-]+[.][w\]+"
+
+#'<name, surname> email'
+contact_regex1 = r"^<(?P<name>[\w0-9\. ]+),[ ]?((?P<surname>[\w0-9\. ]+))>[ ]?(?P<email>{email})?$".format(email=email_regex)
+
+# name, surname <email>
+contact_regex2 = "^(?P<name>[\w0-9\. ]+)[ ]*,[ ]*(?P<surname>[\w0-9\. ]+)([ ]*<(?P<email>{email})>)?$".format(email=email_regex)
+
 
 def create_contact(person_info):
     person = copy(person_info)
@@ -30,55 +39,20 @@ def create_contact(person_info):
     return Contact(**person)
 
 
-def parse_email_contact(email_str):
-    """ Parse a string in the format '<name, surname> email'
+def parse_contact(string, regex=contact_regex2):
+    """ Parse a string in the format given by the regex
     Returns
     -------
     given_name, family_name, email: str
     """
-    pattern = re.compile(r"<(?P<name>.*),(?P<surname>.*)>(?P<email>.*@.*)")
+    pattern = re.compile(regex, re.IGNORECASE | re.UNICODE)
     try:
-        matches = pattern.match(email_str)
+        matches = pattern.match(string)
     except:
-        raise ValueError('Error reading email in line {}.'.format(email_str))
+        raise ValueError('Error reading contact in line {}.'.format(string))
     else:
-        return matches.groups()
-
-
-def parse_email_contact_fmt2(email_str):
-    """ Parse a string in the format 'Name Surname <email>'
-    Returns
-    -------
-    given_name, family_name, email: str
-    """
-    pattern = re.compile(r"^(?P<name>[\S]*)[ ]*?(?P<surname>.*)[ ]*?<(?P<email>.*@.*)>.*?$")
-    try:
-        matches = pattern.match(email_str)
-    except:
-        raise ValueError('Error reading email in line {}.'.format(email_str))
-    else:
-        return matches.groups()
-
-
-def get_contacts(strlist):
-    """ Parse a list of contact strings `strlist` into a dict[email]->(name, surname).
-
-    Parameters
-    ----------
-    strlist: list of str
-
-    Returns
-    -------
-    emails: dict
-        A dict[email] = (firstname, surname)
-    """
-    if strlist is None:
-        return {}
-
-    contacts = [parse_email_contact(line) for line in strlist]
-    emails   = {email: (name, surname) for name, surname, email in contacts}
-
-    return emails
+        m = matches.groupdict()
+        return m['name'], m['surname'], m['email']
 
 
 def read_contacts_file(filepath):

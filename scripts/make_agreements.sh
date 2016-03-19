@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-sponsors=('Intel')
+sponsors=('Codesyntax')
 
 dst="$HOME/Google Drive/EP2016/Sponsors WG/Agreements"
 

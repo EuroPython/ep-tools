@@ -1,8 +1,12 @@
 
-# from .data import  ParticipantsRecords
+from .data import  ParticipantsRegistry
 
-from .contact import (parse_email_contact,
-                      parse_email_contact_fmt2,
+from .contact import (
                       create_contact,
                       read_contacts_file,
+                      parse_contact,
+                      contact_regex1,
+                      contact_regex2,
                       )
+
+from .fetch import fetch_ticket_profiles

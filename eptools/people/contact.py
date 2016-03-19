@@ -17,13 +17,13 @@ CONTACT_FIELDS = ("Name", "Surname", "Tagline", "Affiliation", "Python_experienc
 Contact = namedtuple('Contact', CONTACT_FIELDS)
 
 # regexes
-email_regex = r"[\w0-9\.\+_-]+@[\w0-9\._-]+[.][w\]+"
+email_regex = r"[\w0-9\.\+\_\-]+@[\w0-9\.\+\_\-]+\.\w+"
 
 #'<name, surname> email'
 contact_regex1 = r"^<(?P<name>[\w0-9\. ]+),[ ]?((?P<surname>[\w0-9\. ]+))>[ ]?(?P<email>{email})?$".format(email=email_regex)
 
 # name, surname <email>
-contact_regex2 = "^(?P<name>[\w0-9\. ]+)[ ]*,[ ]*(?P<surname>[\w0-9\. ]+)([ ]*<(?P<email>{email})>)?$".format(email=email_regex)
+contact_regex2 = "^(?P<name>[\w0-9\.\_\- ]+)[ ]*,[ ]*(?P<surname>[\w0-9\. ]+)([ ]*<(?P<email>{email})>)?$".format(email=email_regex)
 
 
 def create_contact(person_info):
@@ -46,13 +46,12 @@ def parse_contact(string, regex=contact_regex2):
     given_name, family_name, email: str
     """
     pattern = re.compile(regex, re.IGNORECASE | re.UNICODE)
-    try:
-        matches = pattern.match(string)
-    except:
+    matches = pattern.match(string)
+    if matches is None:
         raise ValueError('Error reading contact in line {}.'.format(string))
-    else:
-        m = matches.groupdict()
-        return m['name'], m['surname'], m['email']
+
+    m = matches.groupdict()
+    return m['name'], m['surname'], m['email']
 
 
 def read_contacts_file(filepath):

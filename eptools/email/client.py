@@ -9,7 +9,6 @@ from   email.mime.multipart import MIMEMultipart
 from   email.header         import Header
 from   email.generator      import Generator
 
-
 try:
     from   email     import Charset as charset
     from   cStringIO import StringIO
@@ -17,15 +16,14 @@ except:
     from   io        import StringIO
     from   email     import charset
 
+# Default encoding mode set to Quoted Printable. Acts globally!
+charset.add_charset('utf-8', charset.QP, charset.QP, 'utf-8')
+
 # from   credentials          import GMAIL_MAILADDR, GMAIL_PASSWORD, GMAIL_SENDER_NAME
 # GMAIL_SENDER = (GMAIL_SENDER_NAME, GMAIL_MAILADDR)
 #
 # from   credentials          import PYSS_MAILADDR, PYSS_PASSWORD, PYSS_SENDER_NAME
 # PYSS_SENDER = (PYSS_SENDER_NAME, PYSS_MAILADDR)
-
-
-# Default encoding mode set to Quoted Printable. Acts globally!
-charset.add_charset('utf-8', charset.QP, charset.QP, 'utf-8')
 
 
 class EMailClient(object):

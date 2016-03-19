@@ -26,7 +26,7 @@ class ParticipantsRegistry(object):
         Parameters
         ----------
         emails: list of str
-            A list of email addresses.
+            A list of emails addresses.
 
         role: str
             The default is 'participant' but you can add whatever you need.

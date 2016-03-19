@@ -1,6 +1,6 @@
 #coding: utf-8
 """
-Python email clients
+Python emails clients
 """
 
 import smtplib
@@ -76,7 +76,7 @@ class EMailClient(object):
         self.msg = MIMEMultipart('alternative')
         self.msg['Subject'] = "{}".format(Header(subject, 'utf-8'))
 
-        # Only descriptive part of recipient and sender shall be encoded, not the email address
+        # Only descriptive part of recipient and sender shall be encoded, not the emails address
         self._add_from_addr(from_addr)
         self._add_addr_list(to_addr_list, field='To')
 
@@ -105,11 +105,11 @@ class EMailClient(object):
             problems = self.session.sendmail("", self.msg['To'], str_io.getvalue())
 
         except smtplib.SMTPException:
-            print("Error: unable to send email")
+            print("Error: unable to send emails")
             print(problems)
             raise
         else:
-            print("Successfully sent email")
+            print("Successfully sent emails")
 
 
 class GMailClient(EMailClient):

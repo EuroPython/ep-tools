@@ -38,7 +38,7 @@ def read_gspread(doc_key, worksheet_name=''):
 
     gc = get_google_auth()
 
-    #Go to Google Sheets and share your spreadsheet with an email you have in your json_key['client_email'].
+    #Go to Google Sheets and share your spreadsheet with an emails you have in your json_key['client_email'].
     #Otherwise you’ll get a SpreadsheetNotFound exception when trying to open it.
     spread   = gc.open_by_key(doc_key)
 

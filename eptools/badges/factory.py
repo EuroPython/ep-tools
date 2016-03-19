@@ -26,7 +26,8 @@ from .data import (
                    coordinates,
                    )
 
-from ..people import ParticipantsRecords as people
+from .profiles import get_profiles_registry
+
 from .._utils import Borg
 
 
@@ -70,7 +71,7 @@ class BadgeFactory(Borg):
             Path to the output folder.
 
         with_email: bool
-            If True will include the email address of the badge owner
+            If True will include the emails address of the badge owner
             to the file name. False otherwise.
 
         prefix: str
@@ -83,7 +84,7 @@ class BadgeFactory(Borg):
         #badge name
         contact_type = people.role(contact.Email)
         if with_email:
-            fname_template = '{prefix}_{type}_{name}_{surname}_{email}.svg'
+            fname_template = '{prefix}_{type}_{name}_{surname}_{emails}.svg'
         else:
             fname_template = '{prefix}_{type}_{name}_{surname}.svg'
 

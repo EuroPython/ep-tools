@@ -60,7 +60,7 @@ def parse_contact(string, regex=contact_regex2):
     return m['name'], m['surname'], m['email']
 
 
-def read_contacts_file(filepath):
+def read_contacts_file(filepath, contact_regex=contact_regex2):
     """ Read a list of contacts from a text file in `filepath`.
     The contact format is: <FirstName, SurName> EmailAddress
 
@@ -71,12 +71,12 @@ def read_contacts_file(filepath):
 
     Returns
     -------
-    emails: dict
+    email: dict
         A dict[email] = (firstname, surname)
     """
     with open(filepath, 'r') as f:
         content = f.readlines()
 
-    return get_contacts(content)
+    return [parse_contact(line, regex=contact_regex) for line in content]
 
 

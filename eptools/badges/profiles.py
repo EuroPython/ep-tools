@@ -10,15 +10,15 @@ import io
 import json
 from itertools import chain
 
-from eptools.people import (ParticipantsRegistry,
-                            fetch_ticket_profiles,
-                            contact_regex2,
-                            parse_contact,
-                            )
+from ..people import (ParticipantsRegistry,
+                      fetch_ticket_profiles,
+                      contact_regex2,
+                      parse_contact,
+                      )
 
-from eptools.talks import (fetch_talks_json,
-                           get_type_speakers,
-                          )
+from ..talks import (fetch_talks_json,
+                     get_type_speakers,
+                     )
 
 
 # these files can be generated/downloaded from the server

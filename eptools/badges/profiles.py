@@ -75,6 +75,10 @@ def get_profiles_registry(fetch_data=False,
     talk_status: str
         choices: 'proposed', 'accepted'
         In the end this should be 'accepted'
+        Be careful, if the talks.json file is already downloaded with not accepted talks
+        and `fetch_data` is False the result won't be correct.
+        You need to either set `fetch_data` to True or download a new talks.json
+        file with the accepted talks.
 
     Returns
     -------

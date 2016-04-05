@@ -27,7 +27,7 @@ comp_operators = {'==': operator.eq,
                   '>': operator.gt,
                   '<=': operator.le,
                   '>=': operator.ge,
-                  '_has': operator.contains,
+                  'has': operator.contains,
                  }
 
 logic_operators = {'and': operator.and_,

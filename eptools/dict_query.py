@@ -7,12 +7,13 @@ Example
 >>> talk = {'title': 'Meeting',
 >>>         'duration': 60,
 >>>         'admin_type': 'EPS session',
+>>>         'language': 'English',
 >>>        }
 >>> conds = [('duration',   (30, 45, 60)),
 >>>          ('language',   'English'),
 >>>          ('admin_type', 'EPS session')]
 >>> query = build_query(conds)
->>> assert exec_query(talk, query)
+>>> assert run_query(talk, query)
 
 Note
 ----
@@ -27,7 +28,7 @@ comp_operators = {'==': operator.eq,
                   '>': operator.gt,
                   '<=': operator.le,
                   '>=': operator.ge,
-                  '_has': operator.contains,
+                  'has': operator.contains,
                  }
 
 logic_operators = {'and': operator.and_,
@@ -106,6 +107,9 @@ def _comparison_op(op_func, field_name, value):
     comparison: 3-tuple
         Format: (operation symbol, dict field name, value)
     """
+    if not value:
+        return None
+
     if isinstance(value, (tuple, list)):
         ops   = [_parse_comparison(val, default_op=op_func) for val in value]
         comps = [(op, field_name, val) for op, val in ops]
@@ -136,13 +140,25 @@ def _query(op_func, conditions):
         yield _comparison_op(op_func, cond[0], cond[1])
 
 
+def _exec_comparison(talk, comp, get=operator.itemgetter):
+    return comp_operators[comp[0]](get(comp[1])(talk), comp[2])
+
+
 def build_query(conditions, op_func='and'):
     """ Build a query tree following the list of conditions. """
     return _binary_op(op_func, tuple(_query('==', conditions)))
 
 
-def _exec_comparison(talk, comp, get=operator.itemgetter):
-    return comp_operators[comp[0]](get(comp[1])(talk), comp[2])
+def or_condition(field, op, seq):
+    """ Return an 'or' condition of the format:
+    ((field, ('op seq[0]', 'op seq[1]'...), )
+
+    Example
+    -------
+    >>> or_condition('tag', 'has', ('Web', 'Case Study', 'Testing'))
+    >>> ('tag', ('has Web', 'has Case Study', 'has Testing'),
+    """
+    return ((field, tuple(['{} {}'.format(op, tag) for tag in seq])), )
 
 
 def run_query(adict, query, get=operator.itemgetter):

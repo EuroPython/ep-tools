@@ -17,6 +17,9 @@ if hn == 'calm.local':
 elif hn == 'corsair':
     ROOT_DIR     = op.expanduser('~/Dropbox/ep15/badge/factory')
     api_key_file = op.expanduser('~/Projects/ep16/google_api_key.json')
+elif hn == "opobook.local":
+    ROOT_DIR     = op.expanduser('~/Dropbox/ep15/badge/factory')
+    api_key_file = op.expanduser('~/Projects/ep16/google_api_key.json')
 
 # the ep2016 responses spreadsheet
 sponsors_billing_worksheet = ('1Dbxy1a0c-IbXdxVXmbTeU6zE6AKV4N0xKK2GANSw9Mw',

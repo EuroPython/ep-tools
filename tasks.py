@@ -6,7 +6,7 @@ from invoke import task
 
 from eptools.server_utils  import epcon_fetch_p3db
 from eptools.gspread_utils import get_api_key_file
-from eptools.talks         import fetch_talks_json
+from eptools.talks         import fetch_talks_json, check_schedule
 from eptools.people        import fetch_ticket_profiles
 
 from eptools.config import (sponsors_billing_worksheet,

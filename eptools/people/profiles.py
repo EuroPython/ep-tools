@@ -10,15 +10,15 @@ import io
 import json
 from itertools import chain
 
-from ..people import (ParticipantsRegistry,
-                      fetch_ticket_profiles,
-                      contact_regex2,
-                      parse_contact,
-                      )
+from ..people import (  ParticipantsRegistry,
+                        fetch_ticket_profiles,
+                        contact_regex2,
+                        parse_contact,
+                        )
 
 from ..talks import (fetch_talks_json,
                      get_type_speakers,
-                     )
+                    )
 
 
 # these files can be generated/downloaded from the server
@@ -36,8 +36,15 @@ def flatten(listOfLists):
     return chain.from_iterable(listOfLists)
 
 
-def load_id_json(json_path):
-    return [item for eid, item in json.load(open(json_path)).items()]
+def load_id_json(json_path, add_id=False):
+    if not add_id:
+        return [item for eid, item in json.load(open(json_path)).items()]
+    else:
+        items = []
+        for eid, item in json.load(open(json_path)).items():
+            item['id'] = eid
+            items.append(item)
+        return items
 
 
 def read_lines(txt_file):
@@ -56,22 +63,24 @@ def read_contacts(txt_file=organizers_txt):
 
 
 def fetch_files(conf='ep2016', host='europython.io', talk_status='accepted'):
-    # fetch the data
-    _ = fetch_ticket_profiles(profiles_json, conf=conf)
-    _ = fetch_talks_json     (talks_json,    conf=conf, status=talk_status, host=host, with_votes=True)
-
-
-def get_profiles_registry(fetch_data=False,
-                          conf='ep2016',
-                          host='europython.io',
-                          talk_status='accepted'):
-    """ Return a ParticipantsRegistry with the ticket profiles data and the people's roles.
-
+    """
     Parameters
     ----------
-    fetch_data
-    conf
-    host
+    fetch_data: bool
+        If True will download the data from the web server.
+
+    conf: str
+        The string identifying the conference.
+
+    host: str
+        The IP address to where the web server is.
+        These parameters might not be enough to set up the connection to the server to
+        download the data.
+
+        Note:
+        You may want to check the server_utils.epcon_fetch_file function:
+        change the default arguments or make them available through this function.
+
     talk_status: str
         choices: 'proposed', 'accepted'
         In the end this should be 'accepted'
@@ -82,14 +91,24 @@ def get_profiles_registry(fetch_data=False,
 
     Returns
     -------
+    profiles_file, talks_file: str
+        Files paths of the fetched data.
+    """
+    profiles_file = fetch_ticket_profiles(profiles_json, conf=conf)
+    _             = fetch_talks_json     (talks_json,    conf=conf, status=talk_status,
+                                          host=host, with_votes=True)
+    return profiles_file, talks_json
+
+
+def get_profiles_registry():
+    """ Return a ParticipantsRegistry with the ticket profiles data and the people's roles.
+
+    Returns
+    -------
     pr: ParticipantsRegistry
     """
-    # load the data
-    if fetch_data:
-        fetch_files(conf=conf, host=host, talk_status=talk_status)
-
     talks = {}
-    people = load_id_json(profiles_json)
+    people = load_id_json(profiles_json, add_id=True)
     type_talks = dict(json.load(open(talks_json)).items())
     _ = [talks.update(talkset) for ttype, talkset in type_talks.items()]
 

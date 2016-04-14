@@ -2,24 +2,27 @@
 """
 Helper functions to add content and setup one badge file.
 """
-
 import svgutils.transform as sg
 from   docstamp.svg_utils import merge_svg_files, replace_chars_for_svg_code
 from   docstamp.pdf_utils import merge_pdfs
-from   docstamp.vcard     import create_vcard3_str
+from   docstamp.qrcode    import save_into_qrcode
+import docstamp.vcard     as dvcard
 
 from   .utils import split_in_two
 from   .data  import coordinates
 
 
-def vcard_text(contact):
-    """ Return the VCARD string for contact. """
-    return create_vcard3_str(name=contact.Name,
-                             surname=contact.Surname,
-                             displayname='{} {}'.format(contact.Name, contact.Surname),
-                             email=contact.Email,
-                             url=contact.Personal_homepage,
-                             )
+def create_qrcode(contact, color, file_path):
+    """return the file path to the svg file with a QRCode containing the contact VCard info."""
+    vcard = dvcard.create_vcard3_str(name=contact.name,
+                                     surname=contact.surname,
+                                     displayname='',
+                                     email=contact.email,
+                                     org=contact.company,
+                                     url=contact.persweb,
+                                     note=contact.phone)
+    save_into_qrcode(vcard, file_path, color)
+    return file_path
 
 
 def duplicate_badge_file(pdf_filepath, suffix='-joined'):
@@ -41,15 +44,16 @@ def duplicate_badge_file(pdf_filepath, suffix='-joined'):
     return merge_pdfs([pdf_filepath]*2, pdf_filepath.replace('.pdf', suffix + '.pdf'))
 
 
-def _add_python_power(badge_svg, pypower_svgfile, coords, scale):
+def _add_python_power(badge_svgfile, pypower_svgfile, coords, scale):
     """ Add the pypower_svgfile to the badge svg.
 
     Parameters
     ----------
-    badge_svg: SVG content
+    badge_svgfile: str
+        Path to the SVG file.
 
     pypower_svgfile: str
-        Path to the SVG file
+        Path to the SVG file.
 
     coords: 2-tuple of int
         Example: (STARS_X, STARS_Y)
@@ -61,18 +65,18 @@ def _add_python_power(badge_svg, pypower_svgfile, coords, scale):
     -------
     SVG content
     """
-    pp = sg.fromfile(pypower_svgfile)
-    badge_height = float(badge_svg.get_size()[1])
+    bg = sg.fromfile(badge_svgfile)
+    badge_height = float(bg.get_size()[1])
+    return merge_svg_files(badge_svgfile, pypower_svgfile, coords[0], badge_height - coords[1], scale=scale)
 
-    return merge_svg_files(badge_svg, pp, coords[0], badge_height - coords[1], scale=scale)
 
-
-def _add_qrcode(badge_svg, qrcode_svgfile, coords, box_size=10):
+def _add_qrcode(badge_svgfile, qrcode_svgfile, coords, box_size=10):
     """ Add a QRCode SVG content to badge_svg.
 
     Parameters
     ----------
-    badge_svg: SVG content
+    badge_svgfile: str
+        Path to the SVG file.
 
     qrcode_svgfile: str
         Path to the SVG file
@@ -95,12 +99,12 @@ def _add_qrcode(badge_svg, qrcode_svgfile, coords, box_size=10):
     #print(qr.get_size())
     #qr.set_size(('57mm', '57mm'))
     qr = sg.fromfile(qrcode_svgfile)
-
+    bg = sg.fromfile(badge_svgfile)
     qr_height = float(qr.height.replace('mm', ''))
-    badge_height = float(badge_svg.get_size()[1])
+    badge_height = float(bg.get_size()[1])
     scale = box_size/qr_height
 
-    return merge_svg_files(badge_svg, qr, coords[0], badge_height - coords[1], scale=scale)
+    return merge_svg_files(badge_svgfile, qrcode_svgfile, coords[0], badge_height - coords[1], scale=scale)
 
 
 def merge_badge_svgfiles(template_svgfile, pypower_svgfile, qrcode_svgfile, box_size=10):
@@ -127,14 +131,13 @@ def merge_badge_svgfiles(template_svgfile, pypower_svgfile, qrcode_svgfile, box_
     -------
     SVG content
     """
-    bg = sg.fromfile(template_svgfile)
-
+    #bg = sg.fromfile(template_svgfile)
     stars_coords = (coordinates['stars_x'], coordinates['stars_y'])
     stars_scale  = coordinates['stars_scale']
-    bg = _add_python_power(bg, pypower_svgfile, coords=stars_coords, scale=stars_scale)
+    bg = _add_python_power(template_svgfile, pypower_svgfile, coords=stars_coords, scale=stars_scale)
 
     qrcode_coords = (coordinates['qrcode_x'], coordinates['qrcode_y'])
-    bg = _add_qrcode(bg,  qrcode_svgfile, coords=qrcode_coords, box_size=box_size)
+    bg = _add_qrcode(template_svgfile,  qrcode_svgfile, coords=qrcode_coords, box_size=box_size)
 
     return bg
 
@@ -178,11 +181,11 @@ def fill_text_contact_badge(contact, badge_filepath, max_length):
     """
     with open(badge_filepath) as f: svg = f.read()
 
-    name, _            = split_in_two(contact.Name,        max_length=max_length)
-    surname, _         = split_in_two(contact.Surname,     max_length=max_length)
-    tagline1, tagline2 = split_in_two(contact.Tagline,     max_length=max_length)
-    org1, org2         = split_in_two(contact.Affiliation, max_length=max_length)
-    shirt_code         = tshirt_code(contact.T_shirt)
+    name, _            = split_in_two(contact.name,        max_length=max_length)
+    surname, _         = split_in_two(contact.surname,     max_length=max_length)
+    tagline1, tagline2 = split_in_two(contact.tagline,     max_length=max_length)
+    org1, org2         = split_in_two(contact.company,     max_length=max_length)
+    shirt_code         = tshirt_code(contact.tshirt)
 
     svg = svg.replace('{{ name }}',    replace_chars_for_svg_code(name))
     svg = svg.replace('{{ surname }}', replace_chars_for_svg_code(surname))

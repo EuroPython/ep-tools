@@ -21,7 +21,7 @@ badge_files = {roles.keynote:     keynote_badge_file,
                roles.organizer:   organizer_badge_file,
                roles.trainer:     trainer_badge_file,
                roles.speaker:     speaker_badge_file,
-               roles.participant: participant_badge_file,
+               roles.attendee:    participant_badge_file,
                }
 
 badge_color = {roles.keynote:   'e37500',

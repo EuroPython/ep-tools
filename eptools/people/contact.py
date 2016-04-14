@@ -11,8 +11,8 @@ ATTENDEE_TYPE = Enum('Attendee_Type', 'keynote organizer trainer speaker attende
 TALK_TYPE     = Enum('Talk_Type',     'talk tutorial helpdesk')
 
 # contact class
-CONTACT_FIELDS = ("Name", "Surname", "Tagline", "Affiliation", "Python_experience",
-                  "T_shirt", "Email", "Phone", "Company_homepage", "Personal_homepage")
+CONTACT_FIELDS = ("id", "name", "surname", "tagline", "company", "pypower",
+                  "tshirt", "email", "phone", "compweb", "persweb")
 
 Contact = namedtuple('Contact', CONTACT_FIELDS)
 
@@ -34,13 +34,15 @@ contact_regex2 = "^(?P<name>{name})[ ]*,[ ]*(?P<surname>{name})"\
 
 def create_contact(person_info):
     person = copy(person_info)
-    person['Personal_homepage'] = person['Personal_homepage'].replace('http://', '')
-    person['Company_homepage']  = person['Company_homepage'].replace('http://', '')
-    if not person['Affiliation']:
-        person['Affiliation'] = person['Company_homepage']
 
-    #for field in person:
-    #    person[field] = to_str(person[field])
+    if 't-shirt' in person:
+        person['tshirt'] = person.get('t-shirt', None)
+        del person['t-shirt']
+
+    person['persweb'] = person['persweb'].replace('http://', '')
+    person['compweb'] = person['compweb'].replace('http://', '')
+    if not person['company']:
+        person['company'] = person['compweb']
 
     return Contact(**person)
 

@@ -18,7 +18,7 @@ class ParticipantsRegistry(object):
           ...},
     """
     def __init__(self, profiles):
-        self._people     = sorted(profiles, key=itemgetter('email'))
+        self.people     = sorted(profiles, key=itemgetter('email'))
         self.role_emails = defaultdict(list)
 
     def set_people_role(self, emails, role):
@@ -35,4 +35,8 @@ class ParticipantsRegistry(object):
 
     def get_roles_of(self, email):
         """ Return the roles of the participant given the person's email. """
-        return (role for role in self.role_emails if email in self.role_emails[role])
+        return (role_name for role_name, roles in self.role_emails.items()
+                          if email in roles)
+
+    def __iter__(self):
+        yield from self.people

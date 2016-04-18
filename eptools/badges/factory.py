@@ -11,10 +11,11 @@ from   docstamp.xml_utils  import change_xml_encoding
 
 from .data import (
                    badge_files,
-                   badge_color,
+                   qrcode_color,
                    pythonpower_svg,
-                   coordinates,
+                   badge_text_maxlength
                    )
+
 from .printer import (merge_badge_svgfiles,
                       fill_text_contact_badge,
                       create_qrcode,
@@ -75,7 +76,7 @@ class BadgeFactory(object):
         self.out_dir = out_dir
         self.tmp_dir = tmp_dir
 
-    def _badge_filepath(self, contact, role, outdir, with_email=True, prefix='badge_ep2016_'):
+    def _badge_filepath(self, contact, role, outdir, with_email=True, prefix='badge_ep2016'):
         """ Return the filepath to the corresponding svg file of the contact in the `outdir`
         folder.
 
@@ -99,29 +100,33 @@ class BadgeFactory(object):
         """
         #badge name
         if with_email:
-            fname_template = '{prefix}_{role}_{name}_{surname}_{emails}.svg'
+            fname_template = '{prefix}_{role}_{id}_{name}_{surname}_{emails}.svg'
         else:
-            fname_template = '{prefix}_{role}_{name}_{surname}.svg'
+            fname_template = '{prefix}_{role}_{id}_{name}_{surname}.svg'
 
         badge_filename = fname_template.format(prefix=prefix,
                                                role=role,
+                                               id=contact.id,
                                                name=contact.name.replace      (' ', '' ),
                                                surname=contact.surname.replace(' ', '' ),
                                                emails=contact.email.replace    ('@', '.'),)
         return op.join(outdir, badge_filename)
 
-    def _badge_svg(self, contact, role, badge_template):
+    def _badge_svg(self, contact, badge_role, other_roles, badge_template):
         """ return a badge svgfigure for the contact """
-        pypower_file   = pythonpower_svg[int(contact.pypower)]
-        color          = badge_color[role]
-        qrcode_file    = op.join(self.tmp_dir, 'qrcode_{}.svg'.format(contact.email.replace('@', '.')))
+        pypower_file = ''
+        if int(contact.pypower) > 0:
+            pypower_file = pythonpower_svg[int(contact.pypower)]
 
-        _ = create_qrcode(contact, color, qrcode_file)
+        qrcode_file = op.join(self.tmp_dir, 'qrcode_{}.svg'.format(contact.email.replace('@', '.')))
+        _ = create_qrcode(contact, color=qrcode_color[badge_role], file_path=qrcode_file)
 
-        return merge_badge_svgfiles(badge_template,
-                                    pypower_file,
-                                    qrcode_file,
-                                    box_size=coordinates['qrcode_size'])
+        badge_svg = merge_badge_svgfiles(badge_template,
+                                         pypower_file,
+                                         qrcode_file,
+                                         other_roles)
+
+        return badge_svg
 
     def generate_badge_svg(self, contact, roles, badge_filepath=None):
         """ create a badge file for contact in outputdir. """
@@ -135,11 +140,11 @@ class BadgeFactory(object):
                                                   outdir=self.tmp_dir,
                                                   with_email=True,)
 
-        badge = self._badge_svg(contact, role, template)
+        badge = self._badge_svg(contact, role, roles, template)
         badge.save(badge_filepath)
 
         change_xml_encoding(badge_filepath, 'ASCII', 'utf-8')
         fill_text_contact_badge(contact, badge_filepath,
-                                max_length=coordinates['badge_text_maxlength'])
+                                max_length=badge_text_maxlength)
 
         return badge_filepath

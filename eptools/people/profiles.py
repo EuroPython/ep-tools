@@ -96,7 +96,7 @@ def fetch_files(conf='ep2016', host='europython.io', talk_status='accepted'):
     """
     profiles_file = fetch_ticket_profiles(profiles_json, conf=conf)
     _             = fetch_talks_json     (talks_json,    conf=conf, status=talk_status,
-                                          host=host, with_votes=True)
+                                          host=host,     with_votes=True)
     return profiles_file, talks_json
 
 
@@ -122,11 +122,15 @@ def get_profiles_registry():
     pr = ParticipantsRegistry(people)
 
     for stype, emails in type_speakers.items():
-        pr.set_people_role(emails, stype)
+        pr.set_emails_role(emails, stype)
 
-    pr.set_people_role([p[2] for p in organizers], 'organizer')
-    pr.set_people_role([p[2] for p in volunteers], 'volunteer')
-    pr.set_people_role([p[2] for p in epsmembers], 'epsmember')
+    pr.set_emails_role([p[2] for p in organizers], 'organizer')
+    pr.set_emails_role([p[2] for p in volunteers], 'volunteer')
+    pr.set_emails_role([p[2] for p in epsmembers], 'epsmember')
+
+    pr.set_names_role([(p[0], p[1]) for p in organizers], 'organizer')
+    pr.set_names_role([(p[0], p[1]) for p in volunteers], 'volunteer')
+    pr.set_names_role([(p[0], p[1]) for p in epsmembers], 'epsmember')
 
     return pr
 

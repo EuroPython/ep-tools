@@ -12,13 +12,12 @@ ROOT_DIR = ''
 if hn == 'calm.local':
     # It is a good idea to setup the INKSCAPE_BINPATH for docstamp on Mac computers.
     INKSCAPE_BIN = '/Applications/Inkscape.app/Contents/Resources/bin/inkscape'
-    ROOT_DIR     = op.expanduser('~/Dropbox (Personal)/ep15/badge/factory')
     api_key_file = op.expanduser('~/Projects/ep16/google_api_key.json')
 elif hn == 'corsair':
-    ROOT_DIR     = op.expanduser('~/Dropbox/ep15/badge/factory')
+    api_key_file = op.expanduser('~/Projects/ep16/google_api_key.json')
+elif hn == "ferrari":
     api_key_file = op.expanduser('~/Projects/ep16/google_api_key.json')
 elif hn == "opobook.local":
-    ROOT_DIR     = op.expanduser('~/Dropbox/ep15/badge/factory')
     api_key_file = op.expanduser('~/Projects/ep16/google_api_key.json')
 
 # the ep2016 responses spreadsheet

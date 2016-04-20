@@ -6,7 +6,8 @@ from .data import contract_template
 from ..docstamp_utils import create_document
 
 
-def create_sponsor_agreement(sponsor_data, field_name='company', template_file=None, output_dir='.'):
+def create_sponsor_agreement(sponsor_data, field_name='company',
+                             template_file=None, output_dir='.'):
     """ Call docstamp to use xelatex to produce a sponsor agreement
     for the company in `sponsor_data`. The output will be saved
     in output_dir.
@@ -31,5 +32,7 @@ def create_sponsor_agreement(sponsor_data, field_name='company', template_file=N
     if template_file is None:
         template_file = contract_template
 
-    return create_document(df=sponsor_data, field_name=field_name,
-                           template_file=template_file, output_dir=output_dir)
+    return create_document(df=sponsor_data,
+                           field_name=field_name,
+                           template_file=template_file,
+                           output_dir=output_dir)

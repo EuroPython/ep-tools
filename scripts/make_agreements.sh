@@ -1,8 +1,9 @@
 #!/bin/zsh
 
-sponsors=('Codesyntax')
+sponsors=('Red Hat')
 
-dst="$HOME/Google Drive/EP2016/Sponsors WG/Agreements"
+#dst="$HOME/Google Drive/EP2016/Sponsors WG/Agreements"
+dst="$HOME/Desktop"
 
 cd ..
 for i in $sponsors; do

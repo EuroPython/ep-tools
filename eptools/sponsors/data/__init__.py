@@ -10,7 +10,7 @@ contract_template = op.join(module_dir, 'sponsor_agreement_1invoice.tex')
 # spreadsheet headers
 billing_form_hdr  = ['date', 'company', 'country', 'address',
                      'vat', 'Others', 'representative',
-                     'identification', 'document', 'emails',
+                     'identification', 'document', 'email',
                      'services', 'price', 'VAT']
 
 control_ws_hdr = ['Sponsor', 'Contact', 'Manager',
@@ -23,4 +23,3 @@ control_ws_hdr = ['Sponsor', 'Contact', 'Manager',
                   '1st invoice paid',
                   '2dn invoice sent',
                   '2nd invoice paid']
-

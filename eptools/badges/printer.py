@@ -9,7 +9,7 @@ from   docstamp.qrcode    import save_into_qrcode
 import docstamp.vcard     as dvcard
 
 from   .utils import split_in_two
-from   .data  import coordinates, scales, medal_files, badge_text_maxlength
+from   .data  import coordinates, scales, medal_files, maxlengths
 
 
 def create_qrcode(contact, color, file_path):
@@ -132,7 +132,7 @@ def tshirt_code(tshirt_string):
     return tshirt_code
 
 
-def fill_text_contact_badge(contact, badge_filepath, max_length):
+def fill_text_contact_badge(contact, badge_filepath):
     """ Fill the contact information in the template badge file.
 
     contact: .people.Contact
@@ -140,20 +140,33 @@ def fill_text_contact_badge(contact, badge_filepath, max_length):
     badge_filepath: str
         Path to the template badge file.
 
-    max_length: int
-        Maximum number of characters of text allowed in the template fields.
-        This does not take into account the font type/size.
-        This number should be checked manually filling the badge.
-        Example: 35
     """
     with open(badge_filepath) as f: svg = f.read()
 
-    cid, _             = split_in_two(contact.id,      max_length=max_length)
-    name, _            = split_in_two(contact.name,    max_length=max_length)
-    surname, _         = split_in_two(contact.surname, max_length=max_length)
-    tagline1, tagline2 = split_in_two(contact.tagline, max_length=max_length)
-    company1, company2 = split_in_two(contact.company, max_length=max_length)
+    cid, _             = split_in_two(contact.id)
+    name1, name2       = split_in_two(contact.name,    max_length=maxlengths['name'])
+    surname1, surname2 = split_in_two(contact.surname, max_length=maxlengths['surname'])
+    tagline1, tagline2 = split_in_two(contact.tagline, max_length=maxlengths['tagline'])
+    company1, company2 = split_in_two(contact.company, max_length=maxlengths['company'])
 
+    # give some slack to the names
+    name = name1
+    surname = surname1
+    if name2 and not surname2:
+        if len(name1 + ' ' + name2[0] + '.') <= maxlengths['name']:
+            name = name1 + ' ' + name2[0] + '.'
+        elif len(name2 + ' ' + surname1) <= maxlengths['surname']:
+            surname = name2 + ' ' + surname1
+    elif name2 and surname2:
+        if len(name1 + ' ' + name2[0] + '.') <= maxlengths['name']:
+            name = name1 + ' ' + name2[0] + '.'
+        if len(surname1 + ' ' + surname2[0] + '.') <= maxlengths['surname']:
+            surname = surname1 + ' ' + surname2[0] + '.'
+    elif not name2 and surname2:
+        if len(surname1 + ' ' + surname2[0] + '.') <= maxlengths['surname']:
+            surname = surname1 + ' ' + surname2[0] + '.'
+
+    # replace the svg content
     svg = svg.replace('{{ name }}',     replace_chars_for_svg_code(name))
     svg = svg.replace('{{ surname }}',  replace_chars_for_svg_code(surname))
     svg = svg.replace('{{ tagline1 }}', replace_chars_for_svg_code(tagline1))

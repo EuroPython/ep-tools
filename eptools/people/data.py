@@ -24,7 +24,7 @@ class ParticipantsRegistry(object):
           ...},
     """
     def __init__(self, profiles):
-        self.people      = sorted(profiles, key=itemgetter('email'))
+        self.people      = sorted(profiles, key=itemgetter('id'))
         self.role_emails = defaultdict(list)
         self.role_names  = defaultdict(list)
 

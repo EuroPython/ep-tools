@@ -13,7 +13,6 @@ from .data import (
                    badge_files,
                    qrcode_color,
                    pythonpower_svg,
-                   badge_text_maxlength
                    )
 
 from .printer import (merge_badge_svgfiles,
@@ -79,6 +78,7 @@ class BadgeFactory(object):
     def _badge_filepath(self, contact, role, outdir, with_email=True, prefix='badge_ep2016'):
         """ Return the filepath to the corresponding svg file of the contact in the `outdir`
         folder.
+        '{prefix}_{role}_{id}_{name}_{surname}_{emails}.svg'
 
         Parameters
         ----------
@@ -112,6 +112,34 @@ class BadgeFactory(object):
                                                emails=contact.email.replace    ('@', '.'),)
         return op.join(outdir, badge_filename)
 
+    def _simple_badge_path(self, contact, role, outdir, prefix='badge_ep2016'):
+        """ Return the filepath to the corresponding svg file of the contact in the `outdir`
+        folder.
+        '{prefix}_{role}_{id}.svg'
+
+        Parameters
+        ----------
+        contact: Contact
+
+        outdir: str
+            Path to the output folder.
+
+
+        prefix: str
+            Prefix to include in the file name.
+
+        Returns
+        -------
+        filepath: str
+        """
+        # badge name
+        fname_template = '{prefix}_{role}_{id}.svg'
+
+        badge_filename = fname_template.format(prefix=prefix,
+                                               role=role,
+                                               id=contact.id,)
+        return op.join(outdir, badge_filename)
+
     def _badge_svg(self, contact, badge_role, other_roles, badge_template):
         """ return a badge svgfigure for the contact """
         pypower_file = ''
@@ -135,16 +163,14 @@ class BadgeFactory(object):
         template = get_badge_template_file(role)
 
         if badge_filepath is None:
-            badge_filepath = self._badge_filepath(contact,
-                                                  role=role.name,
-                                                  outdir=self.tmp_dir,
-                                                  with_email=True,)
+            badge_filepath = self._simple_badge_path(contact,
+                                                     role=role.name,
+                                                     outdir=self.tmp_dir,)
 
         badge = self._badge_svg(contact, role, roles, template)
         badge.save(badge_filepath)
 
         change_xml_encoding(badge_filepath, 'ASCII', 'utf-8')
-        fill_text_contact_badge(contact, badge_filepath,
-                                max_length=badge_text_maxlength)
+        fill_text_contact_badge(contact, badge_filepath)
 
         return badge_filepath

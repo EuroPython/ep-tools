@@ -1,9 +1,9 @@
 #!/bin/zsh
 
-sponsors=('Red Hat')
+sponsors=('Hired')
 
-#dst="$HOME/Google Drive/EP2016/Sponsors WG/Agreements"
-dst="$HOME/Desktop"
+dst="$HOME/Google Drive/EP2016/Sponsors WG/Agreements"
+#dst="$HOME/Desktop"
 
 cd ..
 for i in $sponsors; do

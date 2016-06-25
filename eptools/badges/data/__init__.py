@@ -60,14 +60,18 @@ pythonpower_svg = {0: pythonpower_svg_0,
                    4: pythonpower_svg_4,
                    5: pythonpower_svg_5,}
 
-# positions in the badges
-# these positions
-badge_text_maxlength = 27
+# max number of chars for each line type
+maxlengths = {'name':    13,
+              'surname': 18,
+              'tagline': 26,
+              'company': 26,
+              }
 
+# positions in the badges
 coordinates = {'qrcode'   : (755, -100),
                'pypower'  : (642,  180),
-               'epsmember': (775,  200),
-               'volunteer': (715,  200),
+               'epsmember': (750,  200),
+               'volunteer': (695,  200),
                }
 
 

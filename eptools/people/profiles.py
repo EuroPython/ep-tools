@@ -20,15 +20,18 @@ from ..talks import (fetch_talks_json,
                      get_type_speakers,
                     )
 
+from .data import clean_name
 
 # these files can be generated/downloaded from the server
 talks_json     = 'talks_with_votes.json'
 profiles_json  = 'profiles.json'
 
 # these files were created manually (you need these)
-organizers_txt = 'organizers.txt'
-volunteers_txt = 'volunteers.txt'
-epsmembers_txt = 'epsmembers.txt'
+peoplelist_files = {'organizer': 'organizers.txt',
+                    'volunteer': 'volunteers.txt',
+                    'epsmember': 'epsmembers.txt',
+                    'keynote'  : 'keynoters.txt',
+                   }
 
 
 def flatten(listOfLists):
@@ -58,7 +61,7 @@ def read_names(txt_file):
     return [(name.split(' ')[0], ' '.join(name.split(' ')[1:])) for name in lines]
 
 
-def read_contacts(txt_file=organizers_txt):
+def read_contacts(txt_file):
     return [parse_contact(line, regex=contact_regex2) for line in read_lines(txt_file)]
 
 
@@ -112,25 +115,18 @@ def get_profiles_registry():
     type_talks = dict(json.load(open(talks_json)).items())
     _ = [talks.update(talkset) for ttype, talkset in type_talks.items()]
 
-    # speakers and trainers
-    type_speakers = get_type_speakers(talks)
-    organizers    = read_contacts(organizers_txt)
-    volunteers    = read_contacts(volunteers_txt)
-    epsmembers    = read_contacts(epsmembers_txt)
-
     # create and fill the registry
     pr = ParticipantsRegistry(people)
 
+    type_speakers = get_type_speakers(talks)
     for stype, emails in type_speakers.items():
         pr.set_emails_role(emails, stype)
 
-    pr.set_emails_role([p[2] for p in organizers], 'organizer')
-    pr.set_emails_role([p[2] for p in volunteers], 'volunteer')
-    pr.set_emails_role([p[2] for p in epsmembers], 'epsmember')
-
-    pr.set_names_role([(p[0], p[1]) for p in organizers], 'organizer')
-    pr.set_names_role([(p[0], p[1]) for p in volunteers], 'volunteer')
-    pr.set_names_role([(p[0], p[1]) for p in epsmembers], 'epsmember')
+    # keynotes, organizers, volunteers....
+    peopleslists = {ptype: read_contacts(txtfile) for ptype, txtfile in peoplelist_files.items()}
+    for ptype, people in peopleslists.items():
+        pr.set_emails_role([p[2] for p in people], ptype)
+        pr.set_names_role ([(clean_name(p[0]), clean_name(p[1])) for p in people], ptype)
 
     return pr
 

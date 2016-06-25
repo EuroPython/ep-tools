@@ -40,14 +40,22 @@ def flatten(listOfLists):
 
 
 def load_id_json(json_path, add_id=False):
+    """ Return a list of the objects in the json file.
+    If the JSON is a dictionary, will insert the object key value
+    into the object's 'id' field.
+    """
     if not add_id:
         return [item for eid, item in json.load(open(json_path)).items()]
-    else:
-        items = []
-        for eid, item in json.load(open(json_path)).items():
-            item['id'] = eid
-            items.append(item)
-        return items
+
+    data = json.load(open(json_path))
+    if isinstance(data, list):
+        return data
+
+    items = []
+    for eid, item in data.items():
+        item['id'] = eid
+        items.append(item)
+    return items
 
 
 def read_lines(txt_file):
@@ -129,4 +137,3 @@ def get_profiles_registry():
         pr.set_names_role ([(clean_name(p[0]), clean_name(p[1])) for p in people], ptype)
 
     return pr
-

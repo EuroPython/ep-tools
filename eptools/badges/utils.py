@@ -2,9 +2,9 @@
 """
 Utility functions for badges.
 """
+import textwrap
 
-
-def split_in_two(string, separator=' ', max_length=30):
+def split_in_two(string, max_length=30):
     """ Split `string` in two strings of maximum length `max_length`.
     The rest is thrown away, sorry.
     This function looks for a `separator` before `max_length`,
@@ -15,11 +15,9 @@ def split_in_two(string, separator=' ', max_length=30):
     ------
     split: 2-tuple of str
     """
-    if len(string) <= max_length:
-        return string, ''
+    wrap = textwrap.wrap(string, width=max_length)
 
-    idx = string[:max_length].rfind(separator)
-    if idx > 0:
-        return string[:idx], string[idx+1:idx+1+max_length]
-    else:
-        return string[:max_length], string[max_length:max_length*2]
+    if len(wrap) >= 2:
+        return wrap[0], wrap[1]
+
+    return wrap[0], ''

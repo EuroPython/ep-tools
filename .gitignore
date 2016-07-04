@@ -73,7 +73,6 @@ attendees*
 *.csv
 *.json
 *.out
-*.ipynb
 *.pdf
 tmp*
 

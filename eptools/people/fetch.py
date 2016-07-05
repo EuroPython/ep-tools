@@ -26,7 +26,7 @@ def fetch_ticketless_csv(out_filepath, conf='ep2016'):
 
 
 @task
-def fetch_ticket_profiles(out_filepath, conf='ep2016', status='all',
+def fetch_ticket_profiles(ctx, out_filepath, conf='ep2016', status='all',
                           nondups=False, raise_=False, ticket_id=''):
     """ Create a json file with the all the tickets of the conference.
         make_option('--status',
@@ -54,9 +54,12 @@ def fetch_ticket_profiles(out_filepath, conf='ep2016', status='all',
 
 
 def genderize(first_name):
-    """ Use genderize.io to return a dictionary with the result of the probability
-    of a first name being of a man or a woman.
-    Example: {'count': 5856, 'gender': 'male', 'name': 'Alex', 'probability': '0.87'}
+    """ Use genderize.io to return a dictionary with the result of the
+    probability of a first name being of a man or a woman.
+    Example: {'count': 5856,
+              'gender': 'male',
+              'name': 'Alex',
+              'probability': '0.87'}
 
     Parameters
     ----------
@@ -67,4 +70,5 @@ def genderize(first_name):
     query_result: dict
     """
     import requests
-    return requests.get('https://api.genderize.io/', params={'name': first_name}).json()
+    return requests.get('https://api.genderize.io/',
+                        params={'name': first_name}).json()

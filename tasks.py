@@ -15,7 +15,7 @@ from eptools.config import (sponsors_billing_worksheet,
 
 
 @task
-def sponsor_agreement(company_name, output_dir,
+def sponsor_agreement(ctx, company_name, output_dir,
                       template_file='',
                       api_key_file=''):
     """ Call docstamp to produce a sponsor agreement for `company_name`
@@ -68,7 +68,7 @@ def sponsor_agreement(company_name, output_dir,
 
 
 @task
-def finaid_receipt(applicant_name, output_dir,
+def finaid_receipt(cts, applicant_name, output_dir,
                    template_file='',
                    api_key_file=''):
     """ Call docstamp to produce a financial aid receipt

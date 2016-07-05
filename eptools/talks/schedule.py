@@ -8,8 +8,11 @@ from ..server_utils import epcon_exe_manage
 
 
 @task
-def check_schedule(what='all_scheduled', conf='ep2016'):
-    """ Check if all accepted talks are scheduled and if all scheduled talks are accepted. Choices for 'what': ('all_scheduled', 'all_accepted'). """
+def check_schedule(ctx, what='all_scheduled', conf='ep2016'):
+    """ Check if all accepted talks are scheduled and if all scheduled talks
+    are accepted.
+    Choices for 'what': ('all_scheduled', 'all_accepted').
+    """
     cmd = 'check_schedule {conf} --{what}'.format(conf=conf, what=what)
     stdout = epcon_exe_manage(cmd)
 

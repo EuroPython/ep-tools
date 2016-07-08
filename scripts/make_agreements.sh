@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-sponsors=('Hired')
+sponsors=('Hotjar')
 
 dst="$HOME/Google Drive/EP2016/Sponsors WG/Agreements"
 #dst="$HOME/Desktop"

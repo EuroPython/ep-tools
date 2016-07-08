@@ -36,7 +36,7 @@ def load_events(talks_filepath):
 
 
 @task
-def fetch_talks_json(out_filepath='',
+def fetch_talks_json(ctx, out_filepath='',
                      status='proposed',
                      conf='ep2016',
                      host='europython.io',

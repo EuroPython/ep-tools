@@ -523,114 +523,6 @@
       "url": "https://ep2016.europython.eu//conference/talks/reserved-for-2nd-call-for-proposals-1",
       "admin_type": "Reserved slot",
       "companies": ""
-    },
-    "700": {
-      "abstract_short": "Sponsored Talk",
-      "sub_title": "",
-      "timerange": "",
-      "sub_community": "",
-      "duration": 30,
-      "twitters": "@",
-      "id": 700,
-      "speakers": "To be announced",
-      "title": "Sponsored Talk",
-      "have_tickets": [
-        false
-      ],
-      "type": "Talk (30 mins)",
-      "status": "accepted",
-      "track_title": "",
-      "tags": [
-        "python"
-      ],
-      "abstract_long": [
-        "Sponsored Talk",
-        "",
-        "",
-        ""
-      ],
-      "abstract_extra": "Sponsored Talk",
-      "tag_categories": [
-        ""
-      ],
-      "emails": "alex@hendorf.com",
-      "language": "English",
-      "level": "Beginner",
-      "url": "https://ep2016.europython.eu//conference/talks/sponsored-talk",
-      "admin_type": "Reserved slot",
-      "companies": ""
-    },
-    "701": {
-      "abstract_short": "Sponsored Talk",
-      "sub_title": "",
-      "timerange": "",
-      "sub_community": "",
-      "duration": 30,
-      "twitters": "@",
-      "id": 701,
-      "speakers": "To be announced",
-      "title": "Sponsored Talk",
-      "have_tickets": [
-        false
-      ],
-      "type": "Talk (30 mins)",
-      "status": "accepted",
-      "track_title": "",
-      "tags": [
-        "python"
-      ],
-      "abstract_long": [
-        "Sponsored Talk",
-        "",
-        "",
-        ""
-      ],
-      "abstract_extra": "Sponsored Talk",
-      "tag_categories": [
-        ""
-      ],
-      "emails": "alex@hendorf.com",
-      "language": "English",
-      "level": "Beginner",
-      "url": "https://ep2016.europython.eu//conference/talks/sponsored-talk-1",
-      "admin_type": "Reserved slot",
-      "companies": ""
-    },
-    "704": {
-      "abstract_short": "Sponsored Talk",
-      "sub_title": "",
-      "timerange": "",
-      "sub_community": "",
-      "duration": 30,
-      "twitters": "@",
-      "id": 704,
-      "speakers": "To be announced",
-      "title": "Sponsored talk",
-      "have_tickets": [
-        false
-      ],
-      "type": "Talk (30 mins)",
-      "status": "accepted",
-      "track_title": "",
-      "tags": [
-        "python"
-      ],
-      "abstract_long": [
-        "-",
-        "",
-        "",
-        ""
-      ],
-      "abstract_extra": "Sponsored Talk",
-      "tag_categories": [
-        ""
-      ],
-      "emails": "alex@hendorf.com",
-      "language": "English",
-      "level": "Beginner",
-      "url": "https://ep2016.europython.eu//conference/talks/sponsored-talk-2",
-      "admin_type": "Reserved slot",
-      "companies": ""
     }
   },
   "training": {
@@ -2308,7 +2200,7 @@
       "speakers": "Takuro Wada",
       "title": "3D Modeling and Printing by Python",
       "have_tickets": [
-        false
+        true
       ],
       "type": "Talk (30 mins)",
       "status": "accepted",
@@ -2470,8 +2362,8 @@
       "speakers": "iztok kucan, Joris Peeters",
       "title": "Algorithmic Trading with Python",
       "have_tickets": [
-        false,
-        false
+        true,
+        true
       ],
       "type": "Talk (30 mins)",
       "status": "accepted",
@@ -2735,7 +2627,7 @@
       "speakers": "Theo Crevon",
       "title": "Automate, contribute, repeat.",
       "have_tickets": [
-        false
+        true
       ],
       "type": "Talk (45 mins)",
       "status": "accepted",
@@ -3347,7 +3239,7 @@
     "746": {
       "abstract_short": "please fill here",
       "sub_title": "",
-      "timerange": "2016-07-22 16:15:00, 2016-07-22 16:45:00, 2016-07-21 17:15:00, 2016-07-21 17:45:00",
+      "timerange": "2016-07-22 16:15:00, 2016-07-22 16:45:00",
       "sub_community": "",
       "duration": 30,
       "twitters": "@",
@@ -3859,7 +3751,7 @@
       "speakers": "Leire Ozaeta",
       "title": "Endor, ipuinak kontatzen zituen Nao robota.",
       "have_tickets": [
-        false
+        true
       ],
       "type": "Talk (30 mins)",
       "status": "accepted",
@@ -4451,7 +4343,7 @@
       "speakers": "John Kraal",
       "title": "High Availability Scaling with Share Nothing Architecture",
       "have_tickets": [
-        false
+        true
       ],
       "type": "Talk (30 mins)",
       "status": "accepted",
@@ -4698,11 +4590,12 @@
       "timerange": "2016-07-19 11:15:00, 2016-07-19 12:00:00",
       "sub_community": "",
       "duration": 45,
-      "twitters": "@zuriich92",
+      "twitters": "@zuriich92, @DanielDomeneL",
       "id": 633,
-      "speakers": "Zuria Bauer",
+      "speakers": "Zuria Bauer, Daniel Domene L\u00f3pez",
       "title": "How to improve your diet and save money with Python",
       "have_tickets": [
+        true,
         true
       ],
       "type": "Talk (45 mins)",
@@ -4729,12 +4622,12 @@
         "Everything Else",
         ">>> Suggested Track"
       ],
-      "emails": "zuriich92@gmail.com",
+      "emails": "zuriich92@gmail.com, daniel.domene.lopez2@gmail.com",
       "language": "English",
       "level": "Beginner",
       "url": "https://ep2016.europython.eu//conference/talks/how-to-improve-your-diet-and-save-money-with-python",
       "admin_type": "",
-      "companies": ""
+      "companies": ", CAChemE"
     },
     "401": {
       "abstract_short": "This talk is for people who have a lot of floating numbers inside\r\nPostgreSQL tables. I will bring as an example my personal experience\r\nwith a scientific project that used PostgreSQL as storage for a rather\r\ncomplex set of composite multidimensional arrays and ran into all\r\nsorts of performances issues, both in reading and writing the data. I\r\nwill explain how I solved all that by dropping the database in favor\r\nof an HDF5 file, while keeping the application running and the users\r\nhappy.\r\n",
@@ -4747,7 +4640,7 @@
       "speakers": "Michele Simionato",
       "title": "How to migrate from PostgreSQL to HDF5 and live happily ever after",
       "have_tickets": [
-        true
+        false
       ],
       "type": "Talk (45 mins)",
       "status": "accepted",
@@ -4770,7 +4663,7 @@
         ">>> Suggested Track",
         "Testing"
       ],
-      "emails": "michele.simionato@globalquakemodel.org",
+      "emails": "michele.simionato@gmail.com",
       "language": "English",
       "level": "Intermediate",
       "url": "https://ep2016.europython.eu//conference/talks/how-to-migrate-from-postgresql-to-hdf5-and-live-happily-ever-after",
@@ -4952,11 +4845,11 @@
       "duration": 45,
       "twitters": "@, @",
       "id": 654,
-      "speakers": "Moshe Goldstein, Dr. David Dayan",
+      "speakers": "Moshe Goldstein, david dayan",
       "title": "Implementing Parallel Programming Design Patterns using EFL for Python",
       "have_tickets": [
         true,
-        false
+        true
       ],
       "type": "Talk (45 mins)",
       "status": "accepted",
@@ -4982,7 +4875,7 @@
         "Programming",
         "Python"
       ],
-      "emails": "goldmosh@g.jct.ac.il, dayandav@mail.huji.ac.il",
+      "emails": "goldmosh@g.jct.ac.il, dayandav@g.jct.ac.il",
       "language": "English",
       "level": "Advanced",
       "url": "https://ep2016.europython.eu//conference/talks/implementing-parallel-programming-design-patterns-using-efl-for-python",
@@ -5935,7 +5828,7 @@
       "duration": 30,
       "twitters": "@chescales",
       "id": 503,
-      "speakers": "Francisco Igual Herrero",
+      "speakers": "Francisco Igual",
       "title": "MiniBrew: Brewing beer with Python",
       "have_tickets": [
         true
@@ -5964,7 +5857,7 @@
         "Web",
         "Web"
       ],
-      "emails": "wouter@elements.nl",
+      "emails": "chesco@elements.nl",
       "language": "English",
       "level": "Beginner",
       "url": "https://ep2016.europython.eu//conference/talks/minibrew-brewing-beer-with-python",
@@ -6502,7 +6395,7 @@
       "speakers": "Scott Triglia",
       "title": "Protect your users with Circuit Breakers",
       "have_tickets": [
-        false
+        true
       ],
       "type": "Talk (30 mins)",
       "status": "accepted",
@@ -6984,7 +6877,7 @@
       "speakers": "Ben Nuttall",
       "title": "Raspberry Pi GPIO Zero",
       "have_tickets": [
-        false
+        true
       ],
       "type": "Talk (45 mins)",
       "status": "accepted",
@@ -7091,7 +6984,7 @@
       "companies": ""
     },
     "621": {
-      "abstract_short": "It is important to understand from the beginning how model API should look like.\r\nDo not repeat your friends\u2019 mistakes and make developers upset!\r\nThere are some simple rules that can make your API cooler - clean, safe and efficient.\r\n\r\nBased on both bad and good examples of REST APIs (I had to deal with) we will learn about best practises.",
+      "abstract_short": "It is important to understand from the beginning how model API should look like.\r\nDo not repeat your friends\u2019 mistakes and make developers upset!\r\nThere are some simple rules that can make your API cooler - clean, safe and efficient.\r\n\r\nBased on both bad and good examples of REST APIs (I had to deal with) we will learn about best practices.",
       "sub_title": "",
       "timerange": "2016-07-22 14:30:00, 2016-07-22 15:00:00",
       "sub_community": "",
@@ -7099,7 +6992,7 @@
       "twitters": "@",
       "id": 621,
       "speakers": "Malwina Nowakowska",
-      "title": "RESTful API - Best Practises.",
+      "title": "RESTful API - Best Practices.",
       "have_tickets": [
         true
       ],
@@ -7112,7 +7005,7 @@
         "APIs"
       ],
       "abstract_long": [
-        "Nowadays building and integrating with Representational State Transfer web services is a very common thing. It seems that creating RESTful API is trivial - nothing could be more wrong.\r\nIn my previous projects I had to integrate with lots of APIs. Unfortunately only some of them were easy to work with. Most of the APIs did not follow the main rules of model API.\r\n\r\nIt is really important to understand how model REST API should look like.\r\nTo make developers happy we will learn best practises of creating REST API from the beginning.\r\n\r\nWe will start with quick introduction what REST is, why principle of REST is so amazing, talk about identifires and explain some key terms.\r\nWe will discuss about architectall constraints and properties.\r\n\r\nMistakes and best practises are based on my experience of developing and maintaining the projects. After this talk you will be able to create model RESTful API developers will be happy to work with.\r\n"
+        "Nowadays building and integrating with Representational State Transfer web services is a very common thing. It seems that creating RESTful API is trivial - nothing could be more wrong.\r\nIn my previous projects I had to integrate with lots of APIs. Unfortunately only some of them were easy to work with. Most of the APIs did not follow the main rules of model API.\r\n\r\nIt is really important to understand how model REST API should look like.\r\nTo make developers happy we will learn best practices of creating REST API from the beginning.\r\n\r\nWe will start with quick introduction what REST is, why principle of REST is so amazing, talk about identifires and explain some key terms.\r\nWe will discuss about architectall constraints and properties.\r\n\r\nMistakes and best practices are based on my experience of developing and maintaining the projects. After this talk you will be able to create model RESTful API developers will be happy to work with.\r\n"
       ],
       "abstract_extra": "",
       "tag_categories": [
@@ -7418,7 +7311,7 @@
       "speakers": "Christie Wilson, Michael Tom-Wing",
       "title": "System Testing with pytest and docker-py",
       "have_tickets": [
-        false,
+        true,
         true
       ],
       "type": "Talk (30 mins)",

@@ -26,7 +26,10 @@ u[o]&&(delete u[o],c?delete n[l]:typeof n.removeAttribute!==i?n.removeAttribute(
 <script src="list.fuzzysearch.js"></script> -->
 
 <meta charset=utf-8 />
-<title>Monkey List</title>
+<title>EuroPython Ticket Search App</title>
+<meta name="viewport" content="width=device-width, initial-scale=0.9">
+<link rel="stylesheet" href="css/materialize.min.css">
+
 </head>
 
 
@@ -65,18 +68,13 @@ input:focus {
   border-color:#aaa;
 }
 .sort {
-  padding:8px 30px;
-  border-radius: 6px;
   border:none;
   display:inline-block;
   color:#fff;
   text-decoration: none;
-  background-color: #28a8e0;
-  height:30px;
 }
 .sort:hover {
   text-decoration: none;
-  background-color:#1b8aba;
 }
 .sort:focus {
   outline:none;
@@ -120,16 +118,25 @@ input:focus {
 
 <body>
 
-  <div id="monkeys">
-    Exact Search: <input type="text" class="search" />
-    :::
-    Fuzzy Search: <input type="text" class="fuzzy-search" />
-    :::
-  <button class="sort" data-sort="name">
-    Sort by name
-  </button>
-  <ul class="list"> </ul>
-  </div>
+<h3 class="center-align hide-on-small-only">Ticket Search App</h3>
+
+<div id="ticketlist" class="container">
+
+<p>
+<label for="exact_search" class="hide-on-small-only">Exact search</label>
+<input id="exact_search" type="text" class="search" placeholder="Exact search"/>
+<label for="fuzzy_search" class="hide-on-small-only">Fuzzy search</label>
+<input id="fuzzy_search" type="text" class="fuzzy-search" placeholder="Fuzzy search"/>
+</p>
+
+<p class="row">
+<button class="sort btn col s5" data-sort="name">Sort by name</button>
+<button class="sort btn col s5 offset-s2" data-sort="tid">Sort by ticket ID</button>
+</p>
+
+<ul class="list"> </ul>
+
+</div>
 
 
 <script type="text/javascript" src="profiles.json"></script>
@@ -174,7 +181,7 @@ $.ajax({
     async: false
 });
 
-var monkeyList = new List('monkeys', options, items);
+var monkeyList = new List('ticketlist', options, items);
 
 </script>
 

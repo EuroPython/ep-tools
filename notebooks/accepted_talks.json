@@ -670,7 +670,10 @@
         "Performance"
       ],
       "abstract_long": [
-        "Python is a great language. But it can be slow compared to other languages\r\nfor certain types of tasks. If applied appropriately, optimization may reduce\r\nprogram runtime or memory consumption considerably. But this often comes at a\r\nprice. Optimization can be time consuming and the optimized program may be more\r\ncomplicated. This, in turn, means more maintenance effort. How do you find\r\nout if it is worthwhile to optimize your program? Where should you start?\r\nThis tutorial will help you to answer these questions. You will learn how\r\nto find  an optimization strategy based on quantitative and objective criteria.\r\nYou will experience that one's gut feeling what to optimize is often wrong.\r\n\r\nThe solution to this problem is: \u201eMeasure, Measure, and Measure!\u201c. You will\r\nlearn how to measure program run times as well as profile CPU and memory.\r\nThere are great tools available. You will learn how to use some of them.\r\nMeasuring is not easy because, by definition, as soon as you start to measure,\r\nyou influence your system. Keeping this impact as small as possible is\r\nimportant. Therefore, we will cover different measuring techniques.\r\n\r\nFurthermore, we will look at algorithmic improvements. You will see that the\r\nright data structure for the job can make a big difference. Finally, you will\r\nlearn about different caching techniques.\r\n"
+        "Python is a great language. But it can be slow compared to other languages\r\nfor certain types of tasks. If applied appropriately, optimization may reduce\r\nprogram runtime or memory consumption considerably. But this often comes at a\r\nprice. Optimization can be time consuming and the optimized program may be more\r\ncomplicated. This, in turn, means more maintenance effort. How do you find\r\nout if it is worthwhile to optimize your program? Where should you start?\r\nThis tutorial will help you to answer these questions. You will learn how\r\nto find  an optimization strategy based on quantitative and objective criteria.\r\nYou will experience that one's gut feeling what to optimize is often wrong.\r\n\r\nThe solution to this problem is: \u201eMeasure, Measure, and Measure!\u201c. You will\r\nlearn how to measure program run times as well as profile CPU and memory.\r\nThere are great tools available. You will learn how to use some of them.\r\nMeasuring is not easy because, by definition, as soon as you start to measure,\r\nyou influence your system. Keeping this impact as small as possible is\r\nimportant. Therefore, we will cover different measuring techniques.\r\n\r\nFurthermore, we will look at algorithmic improvements. You will see that the\r\nright data structure for the job can make a big difference. Finally, you will\r\nlearn about different caching techniques.\r\n\r\n\r\n## Software Requirements\r\n\r\nYou will need Python 2.7 or 3.5 installed on your laptop. Python 2.6 or 3.3/3.4\r\nshould also work. Python 3.x is strongly preferred.\r\n\r\n\r\n### IPython Notebook\r\n\r\nI will use an IPython Notebook for the tutorial because it makes a very good\r\nteaching tool. You are welcome to use the setup you prefer, i.e editor, IDE,\r\nREPL. If you also like to use an IPython Notebook, I recommend `conda` for\r\neasy installation. Similarly to `virtualenv`, `conda` allows creating isolated\r\nenvironments but allows binary installs for all platforms.\r\n\r\nThere are two ways to install`IPython` via `conda`:\r\n\r\n1. Use [Minconda][1]. This is a  small install and (after you installed it)\r\n   you can use the command  `conda` to create an environment:\r\n  `conda create -n pycon2016 python=3.5`\r\n   Now you can change into this environment:\r\n   `source activate pycon2016`. The prompt should change to `(pycon2016)`.\r\n   Now you can install IPython: `conda install IPython`.\r\n\r\n2. Install [Anaconda][2] and you are ready to go if you don't mind installing\r\n   lots of packages from the scientific field.\r\n\r\n\r\nThe second option also gives you `conda` and you can create more environments\r\njust as with Miniconda (see 1.).\r\n\r\n### Working witch ``conda`` environments\r\n\r\nAfter creating a new environment, the system might still work with some\r\nstale settings. Even when the command ``which`` tells you that you are using an\r\nexecutable from your environment, this might actually not be the case.\r\nIf you see strange behavior using a command line tool in your environment,\r\nuse ``hash -r`` and try again. Please install ``pip`` inside this environment:\r\n\r\n      conda install pip\r\n\r\n\r\n### Tools\r\n\r\nYou can install these with ``pip`` (in the active ``conda`` environment):\r\n\r\n* [SnakeViz][3]\r\n* [line_profiler][4]\r\n* [Pympler][6]\r\n* [memory_profiler][7]\r\n* [pyprof2calltree][9]\r\n\r\n\r\n\r\n#### Linux\r\n\r\nUsing the package manager of your OS should be the best option.\r\n\r\n\r\n[1]: http://conda.pydata.org/miniconda.html\r\n[2]: http://continuum.io/downloads\r\n[3]: http://jiffyclub.github.io/snakeviz/\r\n[4]: https://pypi.python.org/pypi/line_profiler/\r\n[6]: https://pypi.python.org/pypi/Pympler\r\n[7]: https://pypi.python.org/pypi/memory_profiler\r\n[8]: http://kcachegrind.sourceforge.net/html/Home.html\r\n[9]: https://github.com/pwaller/pyprof2calltree/\r\n",
+        "",
+        "",
+        ""
       ],
       "abstract_extra": "## Outline\r\n\r\n* How Fast is Fast Enough? (5 min)\r\n* Optimization Guidelines and Strategy  (10 min)\r\n* Measuring run time\r\n    * ``time``, ``timeit``, decorators for timing (5 min)\r\n    * Wall Clock vs. CPU Time (2 min)\r\n* Profiling CPU Usage\r\n    * cProfile (10 min)\r\n    * A Picture is Worth a Thousand Words\r\n        * SnakeViz (10 min)\r\n    * Going Line-by-Line (5 min)\r\n    * Exercise (15 min)\r\n* Profiling Memory Usage\r\n    * Pympler (5 min)\r\n    * Memory Usage Line-by-Line with memory_profiler (5 min)\r\n    * Roll your own (5 min)\r\n    * Exercise (10 min)\r\n* Algorithms and Anti-patterns\r\n    * String Concatenation (3 min)\r\n    * List and Generator Comprehensions (5 min)\r\n    * Think Global buy Local (5 min)\r\n    * Exercise (5 min)\r\n* The Right Data Structure\r\n    * Use built-in Data Types (2 min)\r\n    * ``list`` vs. ``set`` (3 min)\r\n    * ``list`` vs. ``deque`` (5 min)\r\n    * ``dict`` vs. ``defaultdict`` (5 min)\r\n    * Big-O notation and Data Structures (5 min)\r\n    * O(1) vs. O(n) vs. O(n) (5 min)\r\n    * Exercise (15 min)\r\n* Caching\r\n    * Reuse before You Recalculate (5 min)\r\n    * Deterministic caching (5 min)\r\n    * Non-deterministic caching (5 min)\r\n    * Least Recently Used Cache (5 min)\r\n    * Memcached (5 min)\r\n    * Exercise (10 min)\r\n\r\n## Software Requirements\r\n\r\nYou will need Python 2.7 or 3.5 installed on your laptop. Python 2.6 or 3.3/3.4\r\nshould also work. Python 3.x is strongly preferred.\r\n\r\n\r\n### IPython Notebook\r\n\r\nI will use an IPython Notebook for the tutorial because it makes a very good\r\nteaching tool. You are welcome to use the setup you prefer, i.e editor, IDE,\r\nREPL. If you also like to use an IPython Notebook, I recommend `conda` for\r\neasy installation. Similarly to `virtualenv`, `conda` allows creating isolated\r\nenvironments but allows binary installs for all platforms.\r\n\r\nThere are two ways to install`IPython` via `conda`:\r\n\r\n1. Use [Minconda][1]. This is a  small install and (after you installed it)\r\n   you can use the command  `conda` to create an environment:\r\n  `conda create -n pycon2016 python=3.5`\r\n   Now you can change into this environment:\r\n   `source activate pycon2016`. The prompt should change to `(pycon2016)`.\r\n   Now you can install IPython: `conda install IPython`.\r\n\r\n2. Install [Anaconda][2] and you are ready to go if you don't mind installing\r\n   lots of packages from the scientific field.\r\n\r\n\r\nThe second option also gives you `conda` and you can create more environments\r\njust as with Miniconda (see 1.).\r\n\r\n### Working witch ``conda`` environments\r\n\r\nAfter creating a new environment, the system might still work with some\r\nstale settings. Even when the command ``which`` tells you that you are using an\r\nexecutable from your environment, this might actually not be the case.\r\nIf you see strange behavior using a command line tool in your environment,\r\nuse ``hash -r`` and try again. Please install ``pip`` inside this environment:\r\n\r\n      conda install pip\r\n\r\n\r\n### Tools\r\n\r\nYou can install these with ``pip`` (in the active ``conda`` environment):\r\n\r\n* [SnakeViz][3]\r\n* [line_profiler][4]\r\n* [Pympler][6]\r\n* [memory_profiler][7]\r\n* [pyprof2calltree][9]\r\n\r\n\r\n\r\n#### Linux\r\n\r\nUsing the package manager of your OS should be the best option.\r\n\r\n\r\n[1]: http://conda.pydata.org/miniconda.html\r\n[2]: http://continuum.io/downloads\r\n[3]: http://jiffyclub.github.io/snakeviz/\r\n[4]: https://pypi.python.org/pypi/line_profiler/\r\n[6]: https://pypi.python.org/pypi/Pympler\r\n[7]: https://pypi.python.org/pypi/memory_profiler\r\n[8]: http://kcachegrind.sourceforge.net/html/Home.html\r\n[9]: https://github.com/pwaller/pyprof2calltree/\r\n\r\n## About the trainer\r\n\r\nI've been teaching Python courses since 2004. According to my statistics,\r\nI taught about 250 Python courses totaling over 600 teaching day.\r\nThis includes 16 tutorials at PyCon as well as numerous tutorials at\r\nEuroPython, EuroSciPy, PyCon DE, PyCon PL, PyCon IE, PyCon AsiaPacific\r\nas well as at PyData London and Berlin.\r\n\r\nI've been teaching tutorials about this topic every year at PyCon US from 2007\r\nthrough 2014 as well at PyData Berlin 2015 and at EuroPython 2015 in Bilbao.\r\nThis version has been revised **based on the feedback from the last tutorial\r\ndeliveries**.\r\n\r\nFirst, the tutorial covers fewer topics. I cut out tools that do not support\r\nPython 3 such as SnakeRunSnake and Heapy.\r\n\r\nSecond, I added more exercises. This should allow more focus on the core of the\r\ntutorial and also include more hands-on work by the participants. This \u201eLess is\r\nMore\u201c approach is additionally justified because the content of the tutorial\r\ngrew over time as more very useful tools became available. I think more\r\ndepths and less range makes sense for this topic.\r\n\r\nThere is a 60-page PDF handout that is rather comprehensive and can serve for\r\nself-study after the tutorial.\r\n",
       "tag_categories": [
@@ -773,14 +776,12 @@
       "timerange": "2016-07-20 10:15:00, 2016-07-20 13:15:00",
       "sub_community": "pydata",
       "duration": 180,
-      "twitters": "@bargava, @nischalhp, @raghothams",
+      "twitters": "@bargava",
       "id": 629,
-      "speakers": "Bargava Subramanian, Nischal HP, Raghotham Sripadraj",
+      "speakers": "Bargava Subramanian",
       "title": "Introduction to Deep Learning for Natural Language Processing",
       "have_tickets": [
-        true,
-        false,
-        false
+        true
       ],
       "type": "Training (180 mins)",
       "status": "accepted",
@@ -806,12 +807,12 @@
         "Data Science",
         "Data Science"
       ],
-      "emails": "bargava@gmail.com, nischal.hp@gmail.com, raghotham.s@gmail.com",
+      "emails": "bargava@gmail.com",
       "language": "English",
       "level": "Intermediate",
       "url": "https://ep2016.europython.eu//conference/talks/introduction-to-deep-learning-for-natural-language-processing",
       "admin_type": "",
-      "companies": "Cisco, Unnati Data Labs"
+      "companies": "Cisco"
     },
     "425": {
       "abstract_short": "We will run through a fork of the publicly available ipython-in-depth tutorial \r\n    [https://github.com/mjbright/ipython-in-depth][1]\r\nto discover many of the capabilities of Jupyter and IPython.\r\n\r\n  [1]: https://github.com/mjbright/ipython-in-depth\r\n",
@@ -859,10 +860,10 @@
       "duration": 180,
       "twitters": "@",
       "id": 615,
-      "speakers": "holger krekel",
+      "speakers": "Floris Bruynooghe",
       "title": "Manage your Python packages professionally with devpi",
       "have_tickets": [
-        true
+        false
       ],
       "type": "Training (180 mins)",
       "status": "accepted",
@@ -873,20 +874,23 @@
         "Packaging"
       ],
       "abstract_long": [
-        "The devpi server can manage all your private python packages and documentation and you can use well-known python tools like pip, tox, twine and sphinx to work with it. It also serves as a caching proxy for pypi.python.org and indexes can be configured to work as an \"overlay\" where your private packages appear in addition to public python ones. The server provides a web interface which integrates search and sphinx-generated documentation. All of this will be demonstrated and learned through little exercises during the course.\r\n\r\nThe devpi client side provides help for creating users, indexes, uploading packages, documentation and performing package-defined tests. In the course you'll learn the basics of command line usage with devpi and how to use it to implement custom work flows.\r\n\r\nMore info on the devpi system at doc.devpi.net"
+        "The devpi server can manage all your private python packages and documentation and you can use well-known python tools like pip, tox, twine and sphinx to work with it. It also serves as a caching proxy for pypi.python.org and indexes can be configured to work as an \"overlay\" where your private packages appear in addition to public python ones. The server provides a web interface which integrates search and sphinx-generated documentation. All of this will be demonstrated and learned through little exercises during the course.\r\n\r\nThe devpi client side provides help for creating users, indexes, uploading packages, documentation and performing package-defined tests. In the course you'll learn the basics of command line usage with devpi and how to use it to implement custom work flows.\r\n\r\nMore info on the devpi system at doc.devpi.net",
+        "",
+        "",
+        ""
       ],
-      "abstract_extra": "",
+      "abstract_extra": "null",
       "tag_categories": [
         "DevOps",
         "Testing",
         "Python"
       ],
-      "emails": "holger@merlinux.eu",
+      "emails": "floris.bruynooghe@gmail.com",
       "language": "English",
       "level": "Intermediate",
       "url": "https://ep2016.europython.eu//conference/talks/manage-your-python-packages-professionally-with-devpi",
       "admin_type": "",
-      "companies": "merlinux GmbH"
+      "companies": ""
     },
     "650": {
       "abstract_short": "Learn how to use the [Cython][1] compiler to bring complex array computations to the speed of C without resorting to low level languages.\r\n\r\n  [1]: http://cython.org/\r\n",
@@ -1029,9 +1033,12 @@
         "Programming"
       ],
       "abstract_long": [
-        "PyCharm is a powerful development environment for Python and web programming, with many tools and features to boost productivity. This tutorial covers a broad selection of these features, in the context of hands-on development. The outline focuses on Python, but includes a treatment of the HTML/JS/CSS features PyCharm inherits from its IntelliJ/WebStorm foundation.\r\n\r\nDuring this tutorial we'll also take a look on how good code practices can help the IDE to assist you on Python coding: writing docstrings, type hints with Python 3.5 latest standards, etc.\r\n\r\nAfter this tutorial, attendees should part with a basic understanding of the myriad of PyCharm features: what they are, why they help, how to use them, and how to find more information.\r\n\r\nAttendees should arrive at the tutorial with an installation of Python and and installation of the latest PyCharm. A list of required packages will be provide the week before, to help minimize the network impact of PyPI access. (An attempt will be made to run a local mirror.)"
+        "PyCharm is a powerful development environment for Python and web programming, with many tools and features to boost productivity. This tutorial covers a broad selection of these features, in the context of hands-on development. The outline focuses on Python, but includes a treatment of the HTML/JS/CSS features PyCharm inherits from its IntelliJ/WebStorm foundation.\r\n\r\nDuring this tutorial we'll also take a look on how good code practices can help the IDE to assist you on Python coding: writing docstrings, type hints with Python 3.5 latest standards, etc.\r\n\r\nAfter this tutorial, attendees should part with a basic understanding of the myriad of PyCharm features: what they are, why they help, how to use them, and how to find more information.\r\n\r\nAttendees should arrive at the tutorial with an installation of Python and and installation of the latest PyCharm. A list of required packages will be provide the week before, to help minimize the network impact of PyPI access. (An attempt will be made to run a local mirror.)",
+        "",
+        "",
+        ""
       ],
-      "abstract_extra": "##Tutorial format\r\n\r\nHands-on environment with multiple people from the PyCharm team to walk around and help. The approach is based on how I taught my \u201cPython 3 Web Development with Pyramid\u201d at two previous PyCons, a format that received strong feedback scores. The tutorial is broken into 10-12 sections. Each section begins with some talking, then has the students do hands-on work, then finishes with a wrap-up.\r\n\r\n## Class Size\r\n\r\nWe can handle a large class (I have a lot of experience over the years teaching Python in larger settings.)\r\n\r\n## Previous Experience\r\n\r\nI have conducted two PyCon tutorials in the past 3 years, plus a tutorial at PyCon Brasil. Before that, my tutorial work goes back to teaching CGI at the Python workshop in 1995.",
+      "abstract_extra": "##Tutorial format\r\n\r\nHands-on environment with multiple people from the PyCharm team to walk around and help. The approach is based on how I taught my \u201cPython 3 Web Development with Pyramid\u201d at two previous PyCons, a format that received strong feedback scores. The tutorial is broken into 10-12 sections. Each section begins with some talking, then has the students do hands-on work, then finishes with a wrap-up.\r\n\r\n## Class Size\r\n\r\nWe can handle a large class (I have a lot of experience over the years teaching Python in larger settings.)\r\n\r\n## Previous Experience\r\n\r\nI have conducted two PyCon tutorials in the past 3 years, plus a tutorial at PyCon Brasil. Before that, my tutorial work goes back to teaching CGI at the Python workshop in 1995.\r\n\r\n## The tutorial / example code can be found here: \r\nhttp://www.pauleveritt.org/productive/",
       "tag_categories": [
         "Programming"
       ],
@@ -1160,7 +1167,7 @@
       "speakers": "Daniele Procida, Stefan Foulis",
       "title": "So, what's all the fuss about Docker?",
       "have_tickets": [
-        false,
+        true,
         true
       ],
       "type": "Training (180 mins)",
@@ -2073,47 +2080,6 @@
       "admin_type": "",
       "companies": "Numberly"
     },
-    "712": {
-      "abstract_short": "First we will talk about coding interviews: How to prepare and\r\nwhat to expect.  Then, we will cover software engineering resumes, typical coding\r\nquestions and tasks that companies usually give to candidates.\r\n\r\nWe end with a discussion on long-term career paths\r\nof software engineers. The hypothesis is that true engineering careers\r\nexist at maybe Google but normal firms unfortunately only allow growth by\r\nforcing engineers into management.",
-      "sub_title": "Going from junior to senior and from interviewee to interviewer",
-      "timerange": "2016-07-19 14:00:00, 2016-07-19 15:00:00",
-      "sub_community": "",
-      "duration": 60,
-      "twitters": "@",
-      "id": 712,
-      "speakers": "Iwan Gulenko",
-      "title": "Programming interviews and careers",
-      "have_tickets": [
-        true
-      ],
-      "type": "Interactive (60 mins)",
-      "status": "accepted",
-      "track_title": "Barria 2",
-      "tags": [
-        "General",
-        "Use Case",
-        "Business",
-        "Best Practice",
-        "failures/mistakes"
-      ],
-      "abstract_long": [
-        "First we will talk about coding interviews: How to prepare and\r\nwhat to expect.  Then, we will cover software engineering resumes, typical coding\r\nquestions and tasks that companies usually give to candidates.\r\n\r\nWe end with a discussion on long-term career paths\r\nof software engineers. The hypothesis is that true engineering careers\r\nexist at maybe Google but normal firms unfortunately only allow growth by\r\nforcing engineers into management."
-      ],
-      "abstract_extra": "",
-      "tag_categories": [
-        "",
-        "Best Practice and Use Cases",
-        "",
-        "Best Practice and Use Cases",
-        "Best Practice and Use Cases"
-      ],
-      "emails": "iwan@gulenko.ch",
-      "language": "English",
-      "level": "Beginner",
-      "url": "https://ep2016.europython.eu//conference/talks/coding-interviews-what-to-expect-and-how-to-prepare",
-      "admin_type": "",
-      "companies": ""
-    },
     "697": {
       "abstract_short": "EuroPython Meeting of the Python Software Foundation\r\n\r\nMembers and non-members are invited to this EuroPython meeting of the PSF! Please join us for some updates from the PSF board.",
       "sub_title": "",
@@ -2841,7 +2807,7 @@
     "596": {
       "abstract_short": "While microservices are rather commonly implemented using JSON over\r\nHTTP this is merely an implementation choice.  This talk will cover\r\nthe reasons why you might want to choose ZeroMQ as communication\r\ntransport between your microservices instead.  It will show how ZeroMQ\r\nis used from within Python and the common patterns which can simplify\r\nthe overal architecture while at the same time providing reliable and\r\nlow-latency communications between your services.",
       "sub_title": "Low-latency communications for your backend architecture",
-      "timerange": "2016-07-20 14:00:00, 2016-07-20 14:30:00",
+      "timerange": "2016-07-21 14:00:00, 2016-07-21 14:30:00",
       "sub_community": "",
       "duration": 30,
       "twitters": "@flubdevork",
@@ -2958,7 +2924,7 @@
       "companies": "Intel Corporation"
     },
     "682": {
-      "abstract_short": "Ever wondered how to keep track of all of your services and their APIs? I'm going to explore how to build your Python services with OpenAPI/Swagger and how it helps you solve problems like communication between services, request and response validation, and documentation of your API. I'll also discuss some challenges you might face, gathered from over a year of heavy usage at Yelp.",
+      "abstract_short": "Ever wondered how to keep track of all of your services and their APIs? I'm going to explore how to build your Python services with OpenAPI/Swagger and how it helps you solve problems like communication between services, request and response validation, and documentation of your API. I'll also discuss some challenges you might face when running Swagger in production, gathered from over a year of heavy usage at Yelp.",
       "sub_title": "Document, validate and connect your Python services",
       "timerange": "2016-07-20 12:00:00, 2016-07-20 12:45:00",
       "sub_community": "",
@@ -2980,7 +2946,7 @@
         "Pyramid"
       ],
       "abstract_long": [
-        "Implementing a service-oriented architecture (SOA) is a proven way to split up large monolithic codebases and to scale development when your organization grows to hundreds or thousands of engineers. I'm going to explore how to build and document your services with OpenAPI (formerly known as Swagger). I\u2019ll discuss the benefits and why you should standardize on the API and protocols, but not on SDKs or client libraries. Find out how to make sure the caller as well as your service is conforming to the specification by using request and response validation, how to generate a beautiful HTML documentation for your API, and how you can effortlessly make calls to your services. I'll also discuss and tell you how to overcome challenges you might face, gathered from over a year of heavy usage at Yelp for hundreds of services. I'll present the OpenAPI tools and libraries available for the Python ecosystem for client and server development.\r\n\r\nThe OpenAPI initiative is a cross-vendor consortium focused on creating, evolving and promoting a vendor neutral description format. As an open governance structure under the Linux Foundation, its members include Google, IBM, Atlassian and PayPal.",
+        "Implementing a service-oriented architecture (SOA) is a proven way to split up large monolithic codebases and to scale development when your organization grows to hundreds or thousands of engineers. I'm going to explore how to build and document your services with OpenAPI (formerly known as Swagger). I\u2019ll discuss the benefits, how to generate a beautiful HTML documentation for your API, and how you can effortlessly make calls to your services. In the second part of the talk I'll discuss and tell you how to overcome challenges you might face when running OpenAPI in production, gathered from over a year of heavy usage at Yelp for hundreds of services. \r\n\r\nThe OpenAPI initiative is a cross-vendor consortium focused on creating, evolving and promoting a vendor neutral description format. As an open governance structure under the Linux Foundation, its members include Google, IBM, Atlassian and PayPal.",
         "",
         "",
         ""
@@ -3237,16 +3203,17 @@
       "companies": "Vinco Orbis"
     },
     "746": {
-      "abstract_short": "please fill here",
+      "abstract_short": "When people talk about cybersecurity they often think about ethical hacking and exploits, that is but a fraction of what cybersecurity is about, today we are going to talk about another aspect, which is often deemed as not too important.",
       "sub_title": "",
-      "timerange": "2016-07-22 16:15:00, 2016-07-22 16:45:00",
+      "timerange": "2016-07-21 12:00:00, 2016-07-21 12:30:00",
       "sub_community": "",
       "duration": 30,
-      "twitters": "@",
+      "twitters": "@, @rodynnz",
       "id": 746,
-      "speakers": "Miguel Reguero",
+      "speakers": "Miguel Reguero, Rodrigo N\u00fa\u00f1ez",
       "title": "Cybersecurity in the financial sector with Python",
       "have_tickets": [
+        true,
         true
       ],
       "type": "Talk (30 mins)",
@@ -3256,13 +3223,16 @@
         "Security"
       ],
       "abstract_long": [
-        "please fill here"
+        "When people talk about cybersecurity they often think about ethical hacking and exploits, that is but a fraction of what cybersecurity is about, today we are going to talk about another aspect, which is often deemed as not too important.",
+        "",
+        "",
+        ""
       ],
-      "abstract_extra": "",
+      "abstract_extra": "none",
       "tag_categories": [
         "Security"
       ],
-      "emails": "miguel.reguero@i4s.com",
+      "emails": "miguel.reguero@i4s.com, rodrigo.nunez@innovation4security.com",
       "language": "English",
       "level": "Beginner",
       "url": "https://ep2016.europython.eu//conference/talks/ciberseguridad-en-el-sector-financiero-con-python",
@@ -3391,7 +3361,7 @@
     "388": {
       "abstract_short": "This talk shares some insights into Aldryn, a platform used daily to execute hundreds of Django based website-deployments, and the various components that intervene to deploy a Django project from its git repository to the cloud.\r\n\r\nWe will discuss some of the problems we faced, and the solutions we adopted, to deploy Django projects at scale to the cloud, including topics like PyPI wheel proxies, dynamic traffic-rerouting, live data-center migrations, etc.",
       "sub_title": "A journey through various challenges and solutions we adopted to deploy Django at scale on Aldryn",
-      "timerange": "2016-07-22 14:30:00, 2016-07-22 15:15:00",
+      "timerange": "2016-07-21 14:30:00, 2016-07-21 15:15:00",
       "sub_community": "",
       "duration": 45,
       "twitters": "@garet_jax",
@@ -3403,7 +3373,7 @@
       ],
       "type": "Talk (45 mins)",
       "status": "accepted",
-      "track_title": "Barria 1",
+      "track_title": "A1",
       "tags": [
         "Django Track",
         "Configuration Management (Ansible/Fabric/Chef/...)",
@@ -3498,7 +3468,7 @@
         "Data Science",
         "Data Science"
       ],
-      "emails": "msanchez@opensistemas.com",
+      "emails": "peque@neosit.es",
       "language": "English",
       "level": "Advanced",
       "url": "https://ep2016.europython.eu//conference/talks/developing-a-real-time-automated-trading-platform-with-python",
@@ -3748,7 +3718,7 @@
       "duration": 30,
       "twitters": "@",
       "id": 604,
-      "speakers": "Leire Ozaeta",
+      "speakers": "L. Ozaeta",
       "title": "Endor, ipuinak kontatzen zituen Nao robota.",
       "have_tickets": [
         true
@@ -4022,7 +3992,7 @@
       "speakers": "Angelo Failla",
       "title": "FBTFTP: Facebook's open source python3 framework for dynamic TFTP servers.",
       "have_tickets": [
-        false
+        true
       ],
       "type": "Talk (30 mins)",
       "status": "accepted",
@@ -4066,7 +4036,7 @@
       "speakers": "Alexander Hendorf",
       "title": "Game Theory to the Rescue When Hard Decisions Are to Be Made",
       "have_tickets": [
-        false
+        true
       ],
       "type": "Talk (30 mins)",
       "status": "accepted",
@@ -4338,7 +4308,7 @@
       "timerange": "2016-07-21 16:15:00, 2016-07-21 16:45:00",
       "sub_community": "",
       "duration": 30,
-      "twitters": "@",
+      "twitters": "@niet_lezen",
       "id": 726,
       "speakers": "John Kraal",
       "title": "High Availability Scaling with Share Nothing Architecture",
@@ -4541,9 +4511,9 @@
       "companies": "OpenStack Foundation, Red Hat"
     },
     "435": {
-      "abstract_short": "The popular board game of Risk has many fans around the world. \r\nUsing a Python-based simulation of the game, we try to answer several questions that went through the minds of many players:\r\n- Which missions are easiest to attain?\r\n- Does your starting position influence your chances?\r\n- Which regions are easiest to defend?",
+      "abstract_short": "The popular board game of Risk has many fans around the world. \r\nUsing a Python-based simulation of the game, we use a genetic algorithm to train a risk-playing algorithm.",
       "sub_title": "analyzing the game of Risk with Python",
-      "timerange": "2016-07-22 12:00:00, 2016-07-22 12:45:00",
+      "timerange": "2016-07-21 12:00:00, 2016-07-21 12:45:00",
       "sub_community": "",
       "duration": 45,
       "twitters": "@",
@@ -4564,7 +4534,7 @@
         "Programming"
       ],
       "abstract_long": [
-        "The popular board game of Risk has many fans around the world. \r\nUsing a Python-based simulation of the game, we try to answer several questions that went through the minds of many players;\r\n\r\n- Which missions are easiest to attain?\r\n- Does your starting position influence your chances?\r\n- Which regions are easiest to defend?\r\n\r\nDuring this talk we'll explain what genetic algorithms are and we'll explain an entertaining use-case: how to win at popular board games. During the talk we'll  demo how object oriented patterns help with the design and implementation of these algorithms. We'll also demonstrate a library that allows users to push their own risk bots into a game and battle it out on.",
+        "The popular board game of Risk has many fans around the world. \r\nUsing a Python-based simulation of the game, we use a genetic algorithm to train a risk-playing algorithm.\r\n\r\nDuring this talk we'll explain what genetic algorithms are and we'll explain an entertaining use-case: how to win at popular board games. During the talk we'll  demo how object oriented patterns help with the design and implementation of these algorithms. We'll also demonstrate a library that allows users to push their own risk bots into a game and battle it out on.",
         "",
         "",
         ""
@@ -4629,6 +4599,47 @@
       "admin_type": "",
       "companies": ", CAChemE"
     },
+    "712": {
+      "abstract_short": "I am a programmer and I am on a mission to make IT-recruiting suck less.\r\n\r\n This talk should be useful for both hiring managers and job-seekers. We will assess the status-quo of hiring engineers and talk about resumes, coding questions and tasks that firms make up to assess engineers. Also, we'll discuss salary negotiation best-practises from a candidate perspective.\r\n\r\nWe end with a discussion on different \"types\" of programmers (http://blog.triplebyte.com/who-y-combinator-companies-want).\r\n\r\n",
+      "sub_title": "",
+      "timerange": "2016-07-19 14:00:00, 2016-07-19 14:30:00",
+      "sub_community": "",
+      "duration": 30,
+      "twitters": "@",
+      "id": 712,
+      "speakers": "Iwan Gulenko",
+      "title": "How to make IT-recruiting suck less.",
+      "have_tickets": [
+        true
+      ],
+      "type": "Talk (30 mins)",
+      "status": "accepted",
+      "track_title": "Barria 2",
+      "tags": [
+        "General",
+        "Use Case",
+        "Business",
+        "Best Practice",
+        "failures/mistakes"
+      ],
+      "abstract_long": [
+        "I am a programmer and I am on a mission to make IT-recruiting suck less.\r\n\r\n This talk should be useful for both hiring managers and job-seekers. We will assess the status-quo of hiring engineers and talk about resumes, coding questions and tasks that firms make up to assess engineers. Also, we'll discuss salary negotiation best-practises from a candidate perspective.\r\n\r\nWe end with a discussion on different \"types\" of programmers (http://blog.triplebyte.com/who-y-combinator-companies-want).\r\n\r\n"
+      ],
+      "abstract_extra": "",
+      "tag_categories": [
+        "",
+        "Best Practice and Use Cases",
+        "",
+        "Best Practice and Use Cases",
+        "Best Practice and Use Cases"
+      ],
+      "emails": "iwan@gulenko.ch",
+      "language": "English",
+      "level": "Beginner",
+      "url": "https://ep2016.europython.eu//conference/talks/coding-interviews-what-to-expect-and-how-to-prepare",
+      "admin_type": "",
+      "companies": ""
+    },
     "401": {
       "abstract_short": "This talk is for people who have a lot of floating numbers inside\r\nPostgreSQL tables. I will bring as an example my personal experience\r\nwith a scientific project that used PostgreSQL as storage for a rather\r\ncomplex set of composite multidimensional arrays and ran into all\r\nsorts of performances issues, both in reading and writing the data. I\r\nwill explain how I solved all that by dropping the database in favor\r\nof an HDF5 file, while keeping the application running and the users\r\nhappy.\r\n",
       "sub_title": "Refactoring a distributed parallel earthquake simulation engine",
@@ -4640,7 +4651,7 @@
       "speakers": "Michele Simionato",
       "title": "How to migrate from PostgreSQL to HDF5 and live happily ever after",
       "have_tickets": [
-        false
+        true
       ],
       "type": "Talk (45 mins)",
       "status": "accepted",
@@ -4663,7 +4674,7 @@
         ">>> Suggested Track",
         "Testing"
       ],
-      "emails": "michele.simionato@gmail.com",
+      "emails": "michele.simionato@globalquakemodel.org",
       "language": "English",
       "level": "Intermediate",
       "url": "https://ep2016.europython.eu//conference/talks/how-to-migrate-from-postgresql-to-hdf5-and-live-happily-ever-after",
@@ -4883,8 +4894,8 @@
       "companies": ",  Jerusalem College of Technology, HebrewUniversity"
     },
     "628": {
-      "abstract_short": "One of the biggest differences, in the Python community, is its effort to improve diversity. I was fortunate enough to take part in nine different PyCon's.  I always took note of experiences on how to improve diversity,  that could be useful and replicable in my local community and would like to share at EuroPython. There are other reports, that also I would like to share, which are only beautiful stories of how Python reaches the most distant people and places you may never have imagined.",
-      "sub_title": "Nine Different PyCon's in Two Year's: Lessons on Diversity that I Learned",
+      "abstract_short": "One of the biggest differences, in the Python community, is its effort to improve diversity. The authors will share experiences on diversity obtained from ten different countries: Namibia, UK, Japan, Brazil, Italy, Argentina, Uruguay, Germany, Canada and Spain. There are other reports, that also we would like to share, which are only beautiful stories of how Python reaches the most distant people and places you may never have imagined.",
+      "sub_title": "Ten Different Countries in Two Year's: Lessons on Diversity",
       "timerange": "2016-07-20 16:15:00, 2016-07-20 16:45:00",
       "sub_community": "",
       "duration": 30,
@@ -4904,7 +4915,7 @@
         "Community"
       ],
       "abstract_long": [
-        "One of the biggest differences, in the Python community, in relation to other communities, is its effort to improve diversity. There is even a Diversity Statement at PSF: \"We have created this diversity statement because we believe that a diverse Python community is stronger and more vibrant. A diverse community where people treat each other with respect has more potential contributors and more sources for ideas.\" In last two years I was fortunate enough to take part in nine PyCon's in ten different countries: Namibia, UK, Japan, Brazil, Italy, Argentina, Uruguay, Germany, Canada and Spain. Some were not national conferences, but were EuroPython or PyConUS. I was coach in three Django Girls at PyCon Namibia, Argentina and Brazil.  I always took note of experiences on how to improve diversity, that could be useful and replicable in my local community and would like to share at EuroPython. There are other reports that I also would like to share, which are only beautiful stories of how Python reaches the most distant people and places you may never have imagined.",
+        "One of the biggest differences, in the Python community, in relation to other communities, is its effort to improve diversity. There is even a Diversity Statement at PSF: \"We have created this diversity statement because we believe that a diverse Python community is stronger and more vibrant. A diverse community where people treat each other with respect has more potential contributors and more sources for ideas.\" The authors will share experiences on diversity obtained from ten different countries: Namibia, UK, Japan, Brazil, Italy, Argentina, Uruguay, Germany, Canada and Spain. There are other reports that we also would like to share, which are only beautiful stories of how Python reaches the most distant people and places you may never have imagined.",
         "",
         "",
         ""
@@ -5159,7 +5170,7 @@
     "545": {
       "abstract_short": "There should be something for everyone in this whistle\u2013stop tour of iteration in Python setting off from `for`\u2013loops, and riding cross\u2013country to multiplexing coroutines!\r\n\r\nSee and hear the amazing sights and sounds of list comprehensions, and generators. Take in the amazing vistas from `itertools`, and be amazed at the magnificent `yield`!",
       "sub_title": "A whistle\u2013stop tour of iteration in Python",
-      "timerange": "2016-07-22 16:15:00, 2016-07-22 16:45:00",
+      "timerange": "2016-07-22 15:45:00, 2016-07-22 16:15:00",
       "sub_community": "",
       "duration": 30,
       "twitters": "@sneeu",
@@ -5796,7 +5807,7 @@
       "speakers": "Daniele Procida",
       "title": "Minds, machines and Python",
       "have_tickets": [
-        false
+        true
       ],
       "type": "Talk (45 mins)",
       "status": "accepted",
@@ -5903,10 +5914,10 @@
     "625": {
       "abstract_short": "Monkey-patching is a dynamic modification of a class or a module at runtime.\r\n\r\nThe Python gives developers a great opportunity to use monkey-patching almost everywhere. But should developers do it? Is it a magic trick or a powerful tool? In this talk we will try to give the answers to these questions and try to figure out pros and cons of using monkey-patching.",
       "sub_title": "Pros and cons of using monkey-patching in projects",
-      "timerange": "2016-07-22 15:45:00, 2016-07-22 16:15:00",
+      "timerange": "2016-07-22 14:30:00, 2016-07-22 15:00:00",
       "sub_community": "",
       "duration": 30,
-      "twitters": "@itsmyprototype",
+      "twitters": "@lisa_shashkova",
       "id": 625,
       "speakers": "Elizaveta Shashkova",
       "title": "Monkey-patching: a magic trick or a powerful tool?",
@@ -6027,7 +6038,7 @@
     "502": {
       "abstract_short": "Visual data exploration, e.g. of social networks, can be ugly manual work. The talk will be an introduction for the combined usage of NetworkX and Bokeh in a Jupyter Notebook to show how easy interactive network visualization can be.",
       "sub_title": "Network Manipulation Meets Interactive Visualization",
-      "timerange": "2016-07-22 16:15:00, 2016-07-22 16:45:00",
+      "timerange": "2016-07-22 15:45:00, 2016-07-22 16:15:00",
       "sub_community": "",
       "duration": 30,
       "twitters": "@",
@@ -6142,47 +6153,6 @@
       "admin_type": "",
       "companies": "Continuum Analytics"
     },
-    "422": {
-      "abstract_short": "ZeroDB is an end-to-end encrypted database that lets users operate on encrypted data without exposing encryption keys to the database server. The familiar client-server architecture is unchanged, but query logic and encryption keys are pushed client-side. Since the server has no insight into the nature of the data, the risk of data being exposed via a server-side data breach is eliminated.",
-      "sub_title": "Search, sort, query, and share ciphertext without exposing encryption keys to the database serve",
-      "timerange": "2016-07-21 10:30:00, 2016-07-21 11:15:00",
-      "sub_community": "",
-      "duration": 45,
-      "twitters": "@https://twitter.com/newmichwill",
-      "id": 422,
-      "speakers": "Michael Egorov",
-      "title": "Operating on Encrypted Data with ZeroDB",
-      "have_tickets": [
-        false
-      ],
-      "type": "Talk (45 mins)",
-      "status": "accepted",
-      "track_title": "A2",
-      "tags": [
-        "Security",
-        "Infrastructure",
-        "Open-Source",
-        "Cryptography",
-        "Databases"
-      ],
-      "abstract_long": [
-        "ZeroDB is an open-source end-to-end encrypted database that enables clients to operate on (search, sort, query, and share) encrypted data without exposing encryption keys or cleartext data to the database server. The familiar client-server architecture is unchanged, but query logic and encryption keys are pushed client-side. Since the server has no insight into the nature of the data, the risk of data being exposed via a server-side data breach is eliminated. Even if the server is successfully infiltrated, adversaries would not have access to the cleartext data and cannot derive anything useful out of disk or RAM snapshots. \r\n\r\nZeroDB provides end-to-end encryption while maintaining much of the functionality expected of a modern database, such as full-text search, sort, and range queries. Additionally, ZeroDB uses proxy re-encryption and/or delta key technology to enable secure, granular sharing of encrypted data without exposing keys to the server and without sharing the same encryption key between users of the database.\r\n\r\nZeroDB can be used by enterprises to securely outsource on-premise database and storage infrastructure to cloud environments. Enterprises can encrypt client-side and keep keys on-premise, so that they're only pushing encrypted data to the cloud.\r\n\r\nAdditionally, developers can easily write end-to-end encrypted applications with strong security and privacy guarantees."
-      ],
-      "abstract_extra": "Interview on The Changelog: https://changelog.com/190/\r\n\r\nBlog: https://medium.com/@ZeroDB_/\r\n\r\nWhite paper: http://arxiv.org/abs/1602.07168\r\n\r\nGitHub org: https://github.com/zero-db\r\n",
-      "tag_categories": [
-        "Security",
-        "DevOps",
-        "Open Source",
-        "Security",
-        "Databases"
-      ],
-      "emails": "michwill@gmail.com",
-      "language": "English",
-      "level": "Advanced",
-      "url": "https://ep2016.europython.eu//conference/talks/operating-on-encrypted-data-with-zerodb",
-      "admin_type": "",
-      "companies": "ZeroDB"
-    },
     "551": {
       "abstract_short": "There's a ton of digital ink spent on the subject of productivity. Choosing the right tools, the right editor, plugins, the right OS, keyboard shortcuts, mouse gestures, etc.\r\n\r\nWell, this is not what this talk is about! It's about everything else around your computer that can boost your productivity. It's about communication, getting things done, working less while doing more, sleeping good, and ultimately, staying healthy. ",
       "sub_title": "Staying productive beyond your keyboard",
@@ -6194,7 +6164,7 @@
       "speakers": "Nejc Zupan",
       "title": "Optimize Thyself",
       "have_tickets": [
-        true
+        false
       ],
       "type": "Talk (30 mins)",
       "status": "accepted",
@@ -6385,7 +6355,7 @@
       "companies": "JetBrains"
     },
     "613": {
-      "abstract_short": "Failures are the bane of scaling a modern web service and can cause serious pain for end users! Lucky for us, there are techniques that can help protect your product handle failures in subsystems gracefully. This talk will dive into one of these in depth, the Circuit Breaker pattern, and explore the options it gives us for keeping all our users safe. We will be focusing on several real-world problems and options for how to implement your circuit breaker setup in nice, readable python code.",
+      "abstract_short": "Failures are the bane of scaling a modern web service and can cause serious pain for end users! Lucky for us, there are techniques that can help protect your product and handle failures in subsystems gracefully. This talk will dive into one of these in depth, the Circuit Breaker pattern, and explore the options it gives us for keeping all our users safe. We will be focusing on several real-world problems and options for how to implement your circuit breaker setup in nice, readable python code.",
       "sub_title": "Handling errors in production with shocking ease",
       "timerange": "2016-07-19 14:00:00, 2016-07-19 14:30:00",
       "sub_community": "",
@@ -6427,7 +6397,7 @@
     "395": {
       "abstract_short": "As developers we all love well-documented, well-tested packages. If we do the same for our code it is easier for others to re-use our hard work, and maybe even contribute. We will take a quick look on how to do this using popular tools and only a small investment of time. With Github and some simple tools, setting up a well-groomed package doesn't have to be difficult.",
       "sub_title": "",
-      "timerange": "2016-07-21 14:00:00, 2016-07-21 14:30:00",
+      "timerange": "2016-07-20 14:00:00, 2016-07-20 14:30:00",
       "sub_community": "",
       "duration": 30,
       "twitters": "@",
@@ -6500,7 +6470,7 @@
       "level": "Beginner",
       "url": "https://ep2016.europython.eu//conference/talks/pygame-zero",
       "admin_type": "",
-      "companies": "Mauve Internet"
+      "companies": "Two Sigma"
     },
     "741": {
       "abstract_short": "\r\n\r\n - New features of pytest's upcoming major version 3.0\r\n - Breaking changes and other important information\r\n - Recap of the first developer sprint in June, 2016\r\n - Thank you notes to all who have contributed to the fundraiser\r\n\r\n",
@@ -6787,7 +6757,7 @@
     "570": {
       "abstract_short": "Approach to topics, evolution, correlations through the lyrics of some of the greatests rock bands of all times. We will talk about the different phases of this personal project, in which I approach to a passion through a scientific method. \r\n\r\nThis is a project that combine different techniques: \r\n- web crawling\r\n- NoSQL \r\n- Natural Language Processing \r\n- Data visualization",
       "sub_title": "Analysing the lyrics of the greatest rock bands of all time",
-      "timerange": "2016-07-22 15:45:00, 2016-07-22 16:15:00",
+      "timerange": "2016-07-22 12:00:00, 2016-07-22 12:30:00",
       "sub_community": "pydata",
       "duration": 30,
       "twitters": "@claudiaguirao",
@@ -6865,47 +6835,6 @@
       "url": "https://ep2016.europython.eu//conference/talks/query-embeddings",
       "admin_type": "",
       "companies": "Cliqz GmbH"
-    },
-    "614": {
-      "abstract_short": "GPIO Zero is a new friendly API for physical computing with Raspberry Pi. Like PyGame Zero, it's a minimal boilerplate module that lets you dive straight in and build things with physical components. The Pythonic API was designed for use in education, and was tried and tested with teachers. This talk is the story of how the library came about, how it was developed and I provide a close look at some of its cleverest features.",
-      "sub_title": "Developing a new friendly Python API for physical computing with Raspberry Pi",
-      "timerange": "2016-07-21 14:30:00, 2016-07-21 15:15:00",
-      "sub_community": "",
-      "duration": 45,
-      "twitters": "@https://twitter.com/ben_nuttall",
-      "id": 614,
-      "speakers": "Ben Nuttall",
-      "title": "Raspberry Pi GPIO Zero",
-      "have_tickets": [
-        true
-      ],
-      "type": "Talk (45 mins)",
-      "status": "accepted",
-      "track_title": "A1",
-      "tags": [
-        "Education",
-        "Raspberry PI",
-        "Open-Source",
-        "Internet of Things (IoT)",
-        "Community"
-      ],
-      "abstract_long": [
-        "I work at the Raspberry Pi Foundation and regularly give workshops on physical computing with Python to kids and teachers and we always found the existing GPIO library difficult to teach with due to its broad scope and verbose nature. Although technically possible to do all sorts of projects, it had a difficult learning curve and even the most basic of examples required explanation of code and electronics concepts.\r\n\r\nGPIO Zero is a new friendly API for physical computing with Raspberry Pi. Like PyGame Zero, it's a minimal boilerplate module that lets you dive straight in and build things with physical components. Simple interfaces are provided for everyday components with obvious features provided with guessable method names. The Pythonic API was designed for use in education, and was tried and tested with teachers. This talk is the story of how the library came about, how it was developed and I provide a close look at some of its cleverest features. The initial batch of work on the library was done by two people in different cities, with all features and changes discussed in length in a series of about 100 GitHub issues over 2 months, and additional features and expansions have been implemented since launch.\r\n\r\nGPIO Zero is now the Foundation's recommended method of interfacing with physical components, and comes pre-installed in the Raspbian Jessie image.\r\n\r\nDocumentation is provided at http://gpiozero.readthedocs.org/"
-      ],
-      "abstract_extra": "I wrote a blog post on this topic: http://bennuttall.com/gpio-zero-developing-a-new-friendly-python-api-for-physical-computing/\r\n\r\nI have given a number of talks on this subject to a range of audiences. At EuroPython, this will be the developer focused version of the talk, based on: https://speakerdeck.com/bennuttall/gpio-zero-developing-a-friendly-python-api-for-physical-computing-campug\r\n\r\nI spoke at EuroPython 2014 and 2015, PyConUK 2014 and 2015, PyCon Ireland 2014, and gave keynotes at PySS 2014 and EuroSciPy 2014.\r\n\r\nMy talks are documented at http://bennuttall.com/talks/\r\n\r\nNote: although this talk is related to Education, it's more focused at developers.",
-      "tag_categories": [
-        "Educational",
-        "Hardware",
-        "Open Source",
-        "Hardware",
-        "Community"
-      ],
-      "emails": "ben@raspberrypi.org",
-      "language": "English",
-      "level": "Beginner",
-      "url": "https://ep2016.europython.eu//conference/talks/raspberry-pi-gpio-zero",
-      "admin_type": "",
-      "companies": "Raspberry Pi Foundation"
     },
     "640": {
       "abstract_short": "As Armin Ronacher pointed out in a recent blog post, there is more to Python's regular expression module than meets the eye. His post made me wonder what other \u201chidden gems\u201d are stashed away in Python\u2019s `re`. In the talk I share what I\u2019ve learned about the inner workings of this extremely popular and heavily used module.",
@@ -7019,6 +6948,47 @@
       "url": "https://ep2016.europython.eu//conference/talks/restful-api-best-practises",
       "admin_type": "",
       "companies": "STX Next"
+    },
+    "411": {
+      "abstract_short": "SaltStack is a thriving configuration management system written in Python that leverages YAML and Jinja2 which, by now, probably needs no introduction. This talk will explore Salt beyond the minimum required setup, targeting developers/sysadmins already using Salt, and those considering making the switch from other systems but wishing to dive deeper first. Attendees should be familiar with configuration management systems and practices, and comfortable using and reading YAML and Jinja syntax.\r\n",
+      "sub_title": "Dig deeper into Salt, tips and tricks for real-world scenarios",
+      "timerange": "2016-07-19 10:30:00, 2016-07-19 11:15:00",
+      "sub_community": "",
+      "duration": 45,
+      "twitters": "@godlike64",
+      "id": 411,
+      "speakers": "Juan Manuel Santos",
+      "title": "Salting things up in the DevOps' World: things just got real",
+      "have_tickets": [
+        true
+      ],
+      "type": "Talk (45 mins)",
+      "status": "accepted",
+      "track_title": "A2",
+      "tags": [
+        "Saltstack",
+        "Python general",
+        "Configuration Management (Ansible/Fabric/Chef/...)",
+        "DevOps general",
+        "System Administration"
+      ],
+      "abstract_long": [
+        "There is much more to Salt than the basics. This talk will go beyond the minimum required setup and will take a look at Salt under the hood, which will appeal not only to system administrators, but will also be more interesting to developers and to the DevOps community in general as the talk progresses. Topics include:\r\n\r\n* Introduction and basics review (master/minions, matching, grains, pillar)\r\n* Salt Mine\r\n* Syndic node\r\n* State modules vs. runner modules\r\n* The Reactor\r\n* The Event System\r\n* Salt Beacons\r\n* Salt API\r\n\r\nAttendees should be familiar with configuration management systems and practices, and also feel comfortable using and reading YAML and Jinja syntax. This talk is targeted to developers or sysadmins already using Salt, and to those who are considering switching to it from other systems but wish to dive deeper before making that decision. After the talk, attendees will have a better grasp of the more advanced possibilities that Salt brings, and be ready to apply them to their use cases."
+      ],
+      "abstract_extra": "This is part 2 of the \"Salting things up in the sysadmin's world\" talk from EP2015 (https://www.youtube.com/watch?v=w1zcUNMwac0), going deeper into Salt internals and how to apply it to real world situations rather than generic scenarios.",
+      "tag_categories": [
+        "DevOps",
+        "Python",
+        "DevOps",
+        "DevOps",
+        "DevOps"
+      ],
+      "emails": "godlike64@gmail.com",
+      "language": "English",
+      "level": "Intermediate",
+      "url": "https://ep2016.europython.eu//conference/talks/salting-things-up-in-the-devops-world-things-just-got-real",
+      "admin_type": "",
+      "companies": "Red Hat"
     },
     "543": {
       "abstract_short": "Microservices offer an efficient way to only scale those parts of your application which are performance bottlenecks.\r\n\r\nWe will demo and explain open source tech which allows the easy scaling out across distributed devices. The audience will be able to donate processor cycles from their devices to our demo application (and win a hardware prize).\r\n\r\nThe demo uses [Crossbar.io][1], an open souce application router (written in Python), and all demo code is open source.\r\n\r\n  [1]: http://crossbar.io",
@@ -7228,39 +7198,6 @@
       "admin_type": "",
       "companies": "Blue Yonder "
     },
-    "748": {
-      "abstract_short": "a",
-      "sub_title": "",
-      "timerange": "2016-07-21 12:00:00, 2016-07-21 12:30:00",
-      "sub_community": "",
-      "duration": 30,
-      "twitters": "@",
-      "id": 748,
-      "speakers": "Solomon Bisker",
-      "title": "Sponsored talk: Hired",
-      "have_tickets": [
-        false
-      ],
-      "type": "Talk (30 mins)",
-      "status": "accepted",
-      "track_title": "A2",
-      "tags": [
-        "python"
-      ],
-      "abstract_long": [
-        "a"
-      ],
-      "abstract_extra": "",
-      "tag_categories": [
-        ""
-      ],
-      "emails": "solomon@hired.com",
-      "language": "English",
-      "level": "Beginner",
-      "url": "https://ep2016.europython.eu//conference/talks/sponsored-talk-hired",
-      "admin_type": "",
-      "companies": ""
-    },
     "524": {
       "abstract_short": "In times of NoSQL databases and Map Reduce Algorithms it's surprising how far\r\nyou can scale the relational data model. At [Blue Yonder](http://blue-yonder.com)\r\nwe use SQLAlchemy in all stages of our data science workflows and handle tenth\r\nof billions of records to feed our predictive algorithms. This talk will dive\r\ninto SQLAlchemy beyond the Object Relational Mapping (ORM) parts and conentrate\r\non the SQLAlchemy Core API, the Expression Language and Database Migrations\r\nwith Alembic.",
       "sub_title": "",
@@ -7433,7 +7370,7 @@
       "duration": 30,
       "twitters": "@andrewburrows",
       "id": 486,
-      "speakers": "Andrew Burrows",
+      "speakers": " ",
       "title": "Testing the untestable: a beginner\u2019s guide to mock objects",
       "have_tickets": [
         true
@@ -7508,7 +7445,7 @@
       "speakers": "Maciej Dziergwa",
       "title": "The Journey from Python Developer to Python Company Owner",
       "have_tickets": [
-        false
+        true
       ],
       "type": "Talk (30 mins)",
       "status": "accepted",
@@ -7597,7 +7534,7 @@
         "ASYNC / Concurreny"
       ],
       "abstract_long": [
-        "- Introduction (3 min)\r\n  - I\u2019m Amber Brown, Twisted Release Manager\r\n  - 3 years contributing to the Twisted Project\r\n- What is asynchronous I/O? (5 min)\r\n- How can it be implemented? (5 min)\r\n- The options (5 min)\r\n  - Twisted, Tornado, asyncio\r\n- Asynchronous I/O on Python 3, in 2012 (2 min)\r\n  - Tornado was only just ported\r\n  - twisted, gevent, eventlet, etc were not ported\r\n- asyncio (7 min)\r\n  - Designed as both a \u201ccommon API\u201d for async I/O frameworks, much like WSGI was for web servers\r\n  - Built using ideas from Twisted\r\n- asyncio exists, so Twisted and Tornado can go away, right? (5 min)\r\n  - asyncio is an \u201casync I/O thing\u201d, and twisted/tornado are \u201casync I/O things\u201d, so Twisted and Tornado aren\u2019t required now, right?\r\n- Twisted\u2019s Renaissance (5 min)\r\n  - 450,000 LoC, fifteen years of legacy, supports many many major protocols\r\n  - Twisted hits 50% on the port to Python 3\r\n  - Pressure from asyncio providing renewed competition\r\n  - The very existence of asyncio means we no longer need to have the \u201cwhy is asynchronous I/O a good idea\u201d\r\n- But It\u2019s Not Over Yet (5 min)\r\n  - Twisted does not implement nor use the asyncio standard APIs, Twisted needs help and developer support to do this\r\n  - Support on Windows is still subpar, as the asyncio IOCP proactor does not support UDP\r\n- The Future (8 min)\r\n  - A Twisted You Can Use\r\n  - WSGI 2\r\n  - asyncio standardisation\r\n- Questions (5 min)\r\n",
+        "Historically, there has been no \u201cstandard way\u201d of doing asynchronous I/O in Python. A variety of solutions, from using threads (WSGI), processes (multiprocessing), green threads (gevent), or selector loops (Tornado, Twisted) have all been used to similar degrees, but apart from the (now deprecated) standard library asyncore/asynchat, Python itself did not have a blessed option.\r\n\r\nPEP 3156, or \u201cthe asyncio PEP\u201d, introduced in Python 3.4, provides this blessed option, choosing a standard selector loop approach (or \u201creactor\u201d, in Twisted parlance). The role of asyncio may seem muddled in the eyes of developers new to asynchronous programming, or those that may not understand the technical details of asyncio nor the political environment in which it was created. This talk will teach you how Twisted or Tornado supplement asyncio, how asyncio can/is integrated with these frameworks, and makes a case for the continued development of new and existing selector-loop based frameworks. It will also paint a picture of the future direction of Twisted, why the original plan of asyncio as a standard API has not come to complete fruition, and what can be done about it.",
         "",
         "",
         ""
@@ -7617,7 +7554,7 @@
     "651": {
       "abstract_short": "Mindfulness has proven to be a foundational skill that started as a pure buddhist practice. Nowadays mindfulness serves as the core technique of several western programs ranging from  curing stress-induced medical problems to curricula for teaching successful business leadership, such as the Search Inside Yourself program developed at Google. \r\n\r\nThe aim of this seminar is to provide a practical experience of mindfulness with a short introduction to how it can be applied by digital workers.",
       "sub_title": "",
-      "timerange": "2016-07-22 16:15:00, 2016-07-22 16:45:00",
+      "timerange": "2016-07-22 15:45:00, 2016-07-22 16:15:00",
       "sub_community": "",
       "duration": 30,
       "twitters": "@https://twitter.com/ralhei",
@@ -7629,7 +7566,7 @@
       ],
       "type": "Talk (30 mins)",
       "status": "accepted",
-      "track_title": "Barria 2",
+      "track_title": "A1 [PyData Track]",
       "tags": [],
       "abstract_long": [
         "Mindfulness has proven to be a foundational skill that started as a pure buddhist practice. Nowadays mindfulness serves as the core technique of several western programs ranging from  curing stress-induced medical problems to curricula for teaching successful business leadership, such as the Search Inside Yourself  (SIY) program developed at Google in 2002. \r\n\r\nMind is the root of all things. Neuroscience shows that attention is a fundamental function of the mind. Being able to direct attention to the present moment - and keep it there while performing daily tasks - is a great tool to navigate through life and its  challenges with more engagement, more happiness, and more resilience. Focusing attention in a relaxed way enables us to disconnect from the overall noise found in a high-speed environment and get things done without feeling too overwhelmed by them. But being effective is not only about checking off more tasks - it is about how we are in resonance with our environment, how we interact with others, and how we face the increasing complexity in our professional life. \r\n\r\nThe aim of this seminar is to provide a practical experience of mindfulness with a short introduction to how it can be applied in a technology driven world as experience by digital workers."
@@ -7681,47 +7618,6 @@
       "url": "https://ep2016.europython.eu//conference/talks/things-i-wish-i-knew-before-starting-using-python-for-data-processing",
       "admin_type": "",
       "companies": "TrustYou"
-    },
-    "617": {
-      "abstract_short": "What systems and tools are useful for encrypting and securing email today? After discussing attack vectors we'll explore two user-side techniques for establishing end-to-end encryption, GPG and S/MIME. We then look at two projects which aim to provide ready-made email-server provisioning, Mail-in-a-box and LEAP and conclude with spotlights on ongoing EU-research projects aiming to improve email.  ",
-      "sub_title": "",
-      "timerange": "2016-07-19 10:30:00, 2016-07-19 11:15:00",
-      "sub_community": "",
-      "duration": 45,
-      "twitters": "@, @",
-      "id": 617,
-      "speakers": "holger krekel, Kali Kaneko",
-      "title": "Towards More Secure Emailing",
-      "have_tickets": [
-        true,
-        true
-      ],
-      "type": "Talk (45 mins)",
-      "status": "accepted",
-      "track_title": "A2",
-      "tags": [
-        "Security",
-        "Infrastructure",
-        "Best Practice"
-      ],
-      "abstract_long": [
-        "Email has been declared dead several times but refuses to die.  It remains the backbone of the web and remains the largest federated open social network to date. However, most people and organisations rely on a few big email operators which fund their operations through advertisements and user tracking. But is it neccessary to hand off email messaging operations to large operators? Is dealing with unsolicited email (SPAM) still too maintenance intensive to deploy it by yourself? Is handling secret keys to unlock encrypted mails still a nightmare? Are there somewhat secure email hosting solutions?\r\n\r\nIn recent years there have been renewed efforts to renovate the state of world wide email infrastructure with initiatives such as the \"Dark Mail Alliance\", \"FreedomBox\", \"Mailpile\", \"Mail-in-a-box\" and the \"LEAP encryption access project\". Some of them are using Python to provide security to users both from criminal, corporate and state level attacks and could use help from experienced python programmers.\r\n\r\nThe talk concludes with highlighting current ongoing research (Panoramix and NEXTLEAP) funded by the European Union over the next couple years. They try to ease and automate key management and provide \"encryption by default\" among other goals. After this talk you'll end up having a better understanding of how you can use existing technologies for yourself or your organisation and how you can possibly help to improve them and make life for users and activists safer world-wide.",
-        "",
-        "",
-        ""
-      ],
-      "abstract_extra": "I intend to give this talk with Kali Kaneko from Guatemala but didn't see a way to add him as co-speaker. ",
-      "tag_categories": [
-        "Security",
-        "DevOps",
-        "Best Practice and Use Cases"
-      ],
-      "emails": "holger@merlinux.eu, bennomadic@gmail.com",
-      "language": "English",
-      "level": "Advanced",
-      "url": "https://ep2016.europython.eu//conference/talks/towards-more-secure-emailing",
-      "admin_type": "",
-      "companies": "LEAP Encrypted Access Project, merlinux GmbH"
     },
     "644": {
       "abstract_short": "El ecosistema cient\u00edfico de python es extraordinario y saca m\u00fasculo con las \u00faltimas aportaciones de la comunidad cient\u00edfica. Revisaremos nuevas aproximaciones a la representaci\u00f3n de texto. \u00a1Tus cadenas de texto merecen algo m\u00e1s que una m\u00edsera bolsa de palabras! Veremos c\u00f3mo se aplica la representaci\u00f3n distribuida (word embeddings) en un caso pr\u00e1ctico de aprendizaje autom\u00e1tico, y daremos consejos para hacer experimentos replicables y obtener datos significativos.",
@@ -7889,7 +7785,7 @@
     "404": {
       "abstract_short": "Compare full text search engines for Python.\r\n",
       "sub_title": "",
-      "timerange": "2016-07-21 12:00:00, 2016-07-21 12:45:00",
+      "timerange": "2016-07-21 10:30:00, 2016-07-21 11:15:00",
       "sub_community": "pydata",
       "duration": 45,
       "twitters": "@a_soldatenko",
@@ -7901,7 +7797,7 @@
       ],
       "type": "Talk (45 mins)",
       "status": "accepted",
-      "track_title": "PyCharm Room [PyData Track]",
+      "track_title": "A2",
       "tags": [
         "PostgreSQL",
         "Python 3",
@@ -8021,7 +7917,7 @@
         "Code Analysis"
       ],
       "abstract_long": [
-        "Have you ever felt like your software is eating your resources and you have no clue why? Have you reviewed all the lines, debugged and printed everything but you still don't know what's wrong?\r\n\r\nIn this talk I will conduct a fast intro of a basic set of tools you can use to diagnose your software's performance and then we will go through a simple piece of code with different problems and solve them one by one, using those previously presented tools ending up with a decent and acceptable piece of code.\r\n\r\nThis set of tools will include basic ones given by the OS itself like `htop`, `lsof`, `ps` and more advanced ones that let you plot the memory usage for given functions like `memory_profiler`, check CPU usage and the call graph between functions like `cprofile` and `kcachegrind` and others.\r\n\r\nAlso, you will discover some bad practices and \"don't dos\" with python language that can slow you down.\r\n\r\nBy the end of the talk, you should have an idea of which are the most typical causes that can make your program slow and you will have a list of tools to search for and identify the source of the problems.\r\n"
+        "Have you ever felt like your software is eating your resources and you have no clue why? Have you reviewed all the lines, debugged and printed everything but you still don't know what's wrong?\r\n\r\nIn this talk I will conduct a fast intro of a basic set of tools you can use to diagnose your software's performance and then we will go through a simple piece of code to show how those tools work and what you can expect from them\r\n\r\nThis set of tools will include basic ones given by the OS itself like `htop`, `lsof`, `ps` and more advanced ones that let you plot the memory usage for given functions like `memory_profiler`, check CPU usage and the call graph between functions like `cprofile` and `kcachegrind` and others.\r\n\r\nBy the end of the talk, you should have an idea of which are the most typical causes that can make your program slow and you will have a list of tools to search for and identify the source of the problems.\r\n"
       ],
       "abstract_extra": "",
       "tag_categories": [

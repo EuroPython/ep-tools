@@ -62,5 +62,23 @@ class ParticipantsRegistry(object):
                        if (clean_name(name), clean_name(surname)) in roles)
         return set(itertools.chain(emails_roles, names_roles))
 
+    def difference(self, other, key_field='id'):
+        """ Return the profiles in `other` that are different from the ones in
+        self. """
+        pr1 = self.people.copy()
+
+        diff = []
+        pr2  = {p[key_field]:p for p in other.people}
+        for p in pr1:
+            p2 = pr2[p[key_field]]
+            if p == p2:
+                roles1 =  self.get_roles_of(p['email'], p['name'], p['surname'])
+                roles2 = other.get_roles_of(p['email'], p['name'], p['surname'])
+                if roles1 != roles2:
+                    diff.append(p)
+            else:
+                diff.append(p)
+        return diff
+
     def __iter__(self):
         yield from self.people

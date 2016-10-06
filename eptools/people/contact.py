@@ -31,9 +31,17 @@ contact_regex2 = "^(?P<name>{name})[ ]*,[ ]*(?P<surname>{name})"\
                  "([ ]*<(?P<email>{email})>)?$".format(name=person_name,
                                                        email=email_regex)
 
+def stringify(adict):
+    """ Convert all values of `adict` to str."""
+    for key, val in adict.items():
+        if not isinstance(val, str):
+            adict[key] = str(val)
+    return adict
 
-def create_contact(person_info):
-    person = copy(person_info)
+
+def contact_from_dict(person_info):
+    """ Create a Contact object from the `person_info` dictionary."""
+    person = stringify(copy(person_info))
 
     if 't-shirt' in person:
         person['tshirt'] = person.get('t-shirt', None)
@@ -80,5 +88,3 @@ def read_contacts_file(filepath, contact_regex=contact_regex2):
         content = f.readlines()
 
     return [parse_contact(line, regex=contact_regex) for line in content]
-
-

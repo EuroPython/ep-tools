@@ -6,8 +6,9 @@ from invoke import task
 
 from eptools.server_utils  import epcon_fetch_p3db
 from eptools.gspread_utils import get_api_key_file
-from eptools.talks         import fetch_talks_json, check_schedule
-from eptools.people        import fetch_ticket_profiles
+from eptools.talks         import check_schedule
+from eptools.talks         import fetch_talks_json as _fetch_talks
+from eptools.people        import fetch_ticket_profiles as _fetch_profiles
 
 from eptools.config import (sponsors_billing_worksheet,
                             finaid_submissions_worksheet,
@@ -117,3 +118,37 @@ def finaid_receipt(cts, applicant_name, output_dir,
                                output_dir=output_dir)
 
         print('Created {}.'.format(fpath))
+
+
+@task
+def fetch_ticket_profiles(ctx, out_filepath, conf='ep2016', status='all',
+                          nondups=False, raise_=False, ticket_id=''):
+    """ Create a json file with the all the tickets of the conference.
+        make_option('--status',
+                    choices=['all', 'complete', 'incomplete'],
+                    help='Status of the orders related with the tickets.',
+        make_option('--nondups',
+                    help='If enables will remove the tickets with '
+                         'same owner/email.',
+        make_option('--raise',
+                    help='If enabled will raise any error that it may find.',
+        make_option('--ticket-id',
+                    help='Will output the profile of the given ticket only.',
+    """
+    return _fetch_profiles(out_filepath, conf=conf, status=status,
+                           nondups=nondups, raise_=raise_, ticket_id=ticket_id)
+
+
+@task
+def fetch_talks_json(ctx, out_filepath='',
+                     status='proposed',
+                     conf='ep2016',
+                     host='europython.io',
+                     with_votes=False):
+    """ Return the talks in a json format. `status` choices: ['accepted', 'proposed']
+    """
+    return _fetch_talks(out_filepath=out_filepath,
+                        status=status,
+                        conf=conf,
+                        host=host,
+                        with_votes=with_votes)

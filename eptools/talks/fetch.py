@@ -5,8 +5,6 @@ Functions to read talks data.
 import tempfile
 import json
 
-from invoke import task
-
 from ..server_utils import epcon_fetch_file
 
 
@@ -35,8 +33,7 @@ def load_events(talks_filepath):
     return events
 
 
-@task
-def fetch_talks_json(ctx, out_filepath='',
+def fetch_talks_json(out_filepath='',
                      status='proposed',
                      conf='ep2016',
                      host='europython.io',

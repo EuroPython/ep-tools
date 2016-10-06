@@ -2,8 +2,6 @@
 """
 Functions to get the data of conference participants.
 """
-from invoke import task
-
 from ..server_utils import epcon_fetch_file
 
 
@@ -25,8 +23,7 @@ def fetch_ticketless_csv(out_filepath, conf='ep2016'):
                             fpath=out_filepath)
 
 
-@task
-def fetch_ticket_profiles(ctx, out_filepath, conf='ep2016', status='all',
+def fetch_ticket_profiles(out_filepath, conf='ep2016', status='all',
                           nondups=False, raise_=False, ticket_id=''):
     """ Create a json file with the all the tickets of the conference.
         make_option('--status',

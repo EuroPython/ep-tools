@@ -3,7 +3,8 @@
 """
 This is a intro on how to fill the PeopleRegistry with contact details of
 all the conference participants and their roles.
-This will be mostly to be able to produce the conference badges correctly and send emails.
+This will be mostly to be able to produce the conference badges correctly
+and send emails.
 """
 
 import io
@@ -23,7 +24,7 @@ from ..talks import (fetch_talks_json,
 from .data import clean_name
 
 # these files can be generated/downloaded from the server
-talks_json     = 'talks_with_votes.json'
+talks_json     = 'accepted_talks.json'
 profiles_json  = 'profiles.json'
 
 # these files were created manually (you need these)
@@ -85,18 +86,19 @@ def fetch_files(conf='ep2016', host='europython.io', talk_status='accepted'):
 
     host: str
         The IP address to where the web server is.
-        These parameters might not be enough to set up the connection to the server to
-        download the data.
+        These parameters might not be enough to set up the connection to the
+        server to download the data.
 
         Note:
         You may want to check the server_utils.epcon_fetch_file function:
-        change the default arguments or make them available through this function.
+        change the default arguments or make them available through this
+        function.
 
     talk_status: str
         choices: 'proposed', 'accepted'
         In the end this should be 'accepted'
-        Be careful, if the talks.json file is already downloaded with not accepted talks
-        and `fetch_data` is False the result won't be correct.
+        Be careful, if the talks.json file is already downloaded with not
+        accepted talks and `fetch_data` is False the result won't be correct.
         You need to either set `fetch_data` to True or download a new talks.json
         file with the accepted talks.
 
@@ -111,8 +113,10 @@ def fetch_files(conf='ep2016', host='europython.io', talk_status='accepted'):
     return profiles_file, talks_json
 
 
-def get_profiles_registry():
-    """ Return a ParticipantsRegistry with the ticket profiles data and the people's roles.
+def get_profiles_registry(profiles_json=profiles_json,
+                          talks_json=talks_json,):
+    """ Return a ParticipantsRegistry with the ticket profiles data and the
+    people's roles.
 
     Returns
     -------
@@ -131,9 +135,11 @@ def get_profiles_registry():
         pr.set_emails_role(emails, stype)
 
     # keynotes, organizers, volunteers....
-    peopleslists = {ptype: read_contacts(txtfile) for ptype, txtfile in peoplelist_files.items()}
+    peopleslists = {ptype: read_contacts(txtfile)
+                    for ptype, txtfile in peoplelist_files.items()}
     for ptype, people in peopleslists.items():
         pr.set_emails_role([p[2] for p in people], ptype)
-        pr.set_names_role ([(clean_name(p[0]), clean_name(p[1])) for p in people], ptype)
+        pr.set_names_role ([(clean_name(p[0]), clean_name(p[1]))
+                            for p in people], ptype)
 
     return pr

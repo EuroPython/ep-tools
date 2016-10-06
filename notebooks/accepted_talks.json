@@ -754,7 +754,10 @@
         "APIs"
       ],
       "abstract_long": [
-        "Overview \r\n------------------ \r\nIn this tutorial, we'll be taking an exploratory look at how to perform data wrangling using Python. It's assumed the audience has a working understanding of Python and some basic data analysis exposure. Participants will leave the class with a better understanding of useful Python libraries for data analysis, as well as some hands-on scripts built throughout the tutorial. With these initial first steps, they should feel comfortable integrating data analysis into their current Python projects. \r\n\r\nOutline \r\n------------------ \r\n* Introduction to Data Wrangling with Python \r\n** How to ask questions \r\n** Where to find data \r\n** Why Python? \r\n\r\n* Initial setup\r\n** IPython Notebook \r\n** Getting the data \r\n\r\n* Importing data\r\n** Working with easy formats \r\n** Working with hard formats \r\n** APIs \r\n\r\n* Exploring data \r\n** Using pandas \r\n** Asking simple questions \r\n** Joining datasets \r\n\r\n* Analysing data \r\n** What is the data saying \r\n** Standardization and normalization \r\n** Making conlusion \r\n\r\n* Reporting your findings \r\n** Who is your audience \r\n** Charting data \r\n** Interactive charts and graphs \r\n\r\n* Next steps \r\n** Where to go from here \r\n** Q&A \r\n** \"Homework\" "
+        "Overview \r\n------------------ \r\nIn this tutorial, we'll be taking an exploratory look at how to perform data wrangling using Python. It's assumed the audience has a working understanding of Python and some basic data analysis exposure. Participants will leave the class with a better understanding of useful Python libraries for data analysis, as well as some hands-on scripts built throughout the tutorial. With these initial first steps, they should feel comfortable integrating data analysis into their current Python projects. \r\n\r\nOutline \r\n------------------ \r\n* Introduction to Data Wrangling with Python \r\n** How to ask questions \r\n** Where to find data \r\n** Why Python? \r\n\r\n* Initial setup\r\n** IPython Notebook \r\n** Getting the data \r\n\r\n* Importing data\r\n** Working with easy formats \r\n** Working with hard formats \r\n** APIs \r\n\r\n* Exploring data \r\n** Using pandas \r\n** Asking simple questions \r\n** Joining datasets \r\n\r\n* Analysing data \r\n** What is the data saying \r\n** Standardization and normalization \r\n** Making conlusion \r\n\r\n* Reporting your findings \r\n** Who is your audience \r\n** Charting data \r\n** Interactive charts and graphs \r\n\r\n* Next steps \r\n** Where to go from here \r\n** Q&A \r\n** \"Homework\" \r\n\r\nPlease download:\r\n[https://github.com/kjam/data-wrangling-pycon][1]\r\n\r\n[1]: https://github.com/kjam/data-wrangling-pycon",
+        "",
+        "",
+        ""
       ],
       "abstract_extra": "This tutorial will be based on work for my recently completed O'Reilly book, (Data Wrangling with Python)[http://shop.oreilly.com/product/0636920032861.do]. I've spoken at several US PyCon and other Python conferences and led classes for PyLadies in Los Angeles and Berlin. \r\n\r\nI've presented a version of this tutorial at EuroPycon last year, and, despite WiFi issues, received some great feedback and reviews. I've modified it and updated it to be more on-point with the audience in mind. ",
       "tag_categories": [
@@ -1081,43 +1084,6 @@
       "language": "English",
       "level": "Intermediate",
       "url": "https://ep2016.europython.eu//conference/talks/property-based-testing-with-hypothesis",
-      "admin_type": "",
-      "companies": ""
-    },
-    "622": {
-      "abstract_short": "The py.test tool presents a rapid and simple way to write tests for your Python code. This training gives a quick introduction with exercises into some distinguishing features. We\u2019ll do exercises where we get existing non-pytest test suites to run with pytest and discuss migration strategies. We\u2019ll finish with discussing topics and questions of participants related to their own test suites and usages.",
-      "sub_title": "",
-      "timerange": "2016-07-22 10:15:00, 2016-07-22 13:15:00",
-      "sub_community": "",
-      "duration": 180,
-      "twitters": "@the_compiler",
-      "id": 622,
-      "speakers": "Florian Bruhin",
-      "title": "pytest - simple, rapid and fun testing with Python",
-      "have_tickets": [
-        true
-      ],
-      "type": "Training (180 mins)",
-      "status": "accepted",
-      "track_title": "E",
-      "tags": [
-        "Test Driven Development (TDD)",
-        "Test Libraries (pyTest/node/...)",
-        "Testing"
-      ],
-      "abstract_long": [
-        "The py.test tool presents a rapid and simple way to write tests for your Python code. This training gives a quick introduction with exercises into some distinguishing features. We\u2019ll do exercises where we get existing non-pytest test suites to run with pytest and discuss migration strategies. We\u2019ll finish with discussing topics and questions of participants related to their own test suites and usages.\r\n\r\nThis is the planned outline:\r\n\r\n- (30 minutes) pytest feature walkthrough: automatic test discovery, assert statement, modular parametrizable fixtures, 150 plugins\r\n\r\n- (60 minutes) pytest fixture mechanism: dependency injection, declaring and using function/module/session scoped fixtures, using fixtures from fixture functions, parametrizing fixtures. Exercises.\r\n\r\n- (30 minutes): running nose/unittest/trial/Django suites with pytest. Discussing advantages and limitations. Exercise with a select existing real-life open source project.\r\n\r\n- (30 minutes): Strategies for a) migrating to pytest b) using \u201cautouse\u201d fixtures in conjunction with XUnit-based setup/tearodwn methods. Exercise.\r\n\r\n- (30 minutes): open space for questions and interactively solving pytest/unittest integration problems on real-life problems as time permits."
-      ],
-      "abstract_extra": "I did the pytest training at EuroPython last year and it was quite popular with good feedback, so I thought I'd submit it again.",
-      "tag_categories": [
-        "Testing",
-        "Testing",
-        "Testing"
-      ],
-      "emails": "europython.eu@the-compiler.org",
-      "language": "English",
-      "level": "Intermediate",
-      "url": "https://ep2016.europython.eu//conference/talks/pytest-simple-rapid-and-fun-testing-with-python-1",
       "admin_type": "",
       "companies": ""
     },
@@ -1922,6 +1888,46 @@
       "admin_type": "",
       "companies": "Indizen"
     },
+    "622": {
+      "abstract_short": "The py.test tool presents a rapid and simple way to write tests for your Python code. This training gives a quick introduction with exercises into some distinguishing features. We\u2019ll do exercises where we get existing non-pytest test suites to run with pytest and discuss migration strategies. We\u2019ll finish with discussing topics and questions of participants related to their own test suites and usages.",
+      "sub_title": "",
+      "timerange": "2016-07-22 10:15:00, 2016-07-22 13:15:00",
+      "sub_community": "",
+      "duration": 180,
+      "twitters": "@the_compiler",
+      "id": 622,
+      "speakers": "Florian Bruhin",
+      "title": "pytest - simple, rapid and fun testing with Python",
+      "have_tickets": [
+        true
+      ],
+      "type": "Help desk (180 mins)",
+      "status": "accepted",
+      "track_title": "E",
+      "tags": [
+        "Test Driven Development (TDD)",
+        "Test Libraries (pyTest/node/...)",
+        "Testing"
+      ],
+      "abstract_long": [
+        "The py.test tool presents a rapid and simple way to write tests for your Python code. This training gives a quick introduction with exercises into some distinguishing features. We\u2019ll do exercises where we get existing non-pytest test suites to run with pytest and discuss migration strategies. We\u2019ll finish with discussing topics and questions of participants related to their own test suites and usages.\r\n\r\n**If you want to participate, please install pytest (e.g. in a virtualenv) before the training and download the [code examples][1].**\r\n\r\nThis is the planned outline:\r\n\r\n- (30 minutes) pytest feature walkthrough: automatic test discovery, assert statement, modular parametrizable fixtures, 150 plugins\r\n\r\n- (60 minutes) pytest fixture mechanism: dependency injection, declaring and using function/module/session scoped fixtures, using fixtures from fixture functions, parametrizing fixtures. Exercises.\r\n\r\n- (30 minutes): running nose/unittest/trial/Django suites with pytest. Discussing advantages and limitations. Exercise with a select existing real-life open source project.\r\n\r\n- (30 minutes): Strategies for a) migrating to pytest b) using \u201cautouse\u201d fixtures in conjunction with XUnit-based setup/tearodwn methods. Exercise.\r\n\r\n- (30 minutes): open space for questions and interactively solving pytest/unittest integration problems on real-life problems as time permits.\r\n\r\n  [1]: http://t.cmpl.cc/ep2016.zip\r\n",
+        "",
+        "",
+        ""
+      ],
+      "abstract_extra": "I did the pytest training at EuroPython last year and it was quite popular with good feedback, so I thought I'd submit it again.",
+      "tag_categories": [
+        "Testing",
+        "Testing",
+        "Testing"
+      ],
+      "emails": "europython.eu@the-compiler.org",
+      "language": "English",
+      "level": "Intermediate",
+      "url": "https://ep2016.europython.eu//conference/talks/pytest-simple-rapid-and-fun-testing-with-python-1",
+      "admin_type": "",
+      "companies": ""
+    },
     "514": {
       "abstract_short": "Design or usage questions of mongoDB from python ? Come over and ask !",
       "sub_title": "Use cases and pymongo helpdesk",
@@ -1998,6 +2004,50 @@
     }
   },
   "interactive": {
+    "712": {
+      "abstract_short": "I am a programmer and I am on a mission to make IT-recruiting suck less.\r\n\r\n This talk should be useful for both hiring managers and job-seekers. We will assess the status-quo of hiring engineers and talk about resumes, coding questions and tasks that firms make up to assess engineers. Also, we'll discuss salary negotiation best-practises from a candidate perspective.\r\n\r\nWe end with a discussion on different \"types\" of programmers (http://blog.triplebyte.com/who-y-combinator-companies-want).\r\n\r\n",
+      "sub_title": "",
+      "timerange": "2016-07-19 14:00:00, 2016-07-19 15:00:00",
+      "sub_community": "",
+      "duration": 60,
+      "twitters": "@",
+      "id": 712,
+      "speakers": "Iwan Gulenko",
+      "title": "How to make IT-recruiting suck less.",
+      "have_tickets": [
+        true
+      ],
+      "type": "Interactive (60 mins)",
+      "status": "accepted",
+      "track_title": "Barria 2",
+      "tags": [
+        "General",
+        "Use Case",
+        "Business",
+        "Best Practice",
+        "failures/mistakes"
+      ],
+      "abstract_long": [
+        "I am a programmer and I am on a mission to make IT-recruiting suck less.\r\n\r\n This talk should be useful for both hiring managers and job-seekers. We will assess the status-quo of hiring engineers and talk about resumes, coding questions and tasks that firms make up to assess engineers. Also, we'll discuss salary negotiation best-practises from a candidate perspective.\r\n\r\nWe end with a discussion on different \"types\" of programmers (http://blog.triplebyte.com/who-y-combinator-companies-want).\r\n\r\n",
+        "",
+        "",
+        ""
+      ],
+      "abstract_extra": "None",
+      "tag_categories": [
+        "",
+        "Best Practice and Use Cases",
+        "",
+        "Best Practice and Use Cases",
+        "Best Practice and Use Cases"
+      ],
+      "emails": "iwan@gulenko.ch",
+      "language": "English",
+      "level": "Beginner",
+      "url": "https://ep2016.europython.eu//conference/talks/coding-interviews-what-to-expect-and-how-to-prepare",
+      "admin_type": "",
+      "companies": ""
+    },
     "572": {
       "abstract_short": "Technical debt lives among us regardless if we are in the services business or building products. \r\nWe discuss about it, we try to fix it or live with it, but can we actually prevent it? \r\nMy reason for discussing this openly is because once it is there you do not only deal with the technical debt itself but also with the interest you must pay.\r\nWhat qualifies as debt? What qualifies as interest? How do we manage it? Is it really unavoidable?",
       "sub_title": "",
@@ -2355,11 +2405,11 @@
       "companies": ""
     },
     "584": {
-      "abstract_short": "Deep learning: how it works, how to train a deep neural network, the theory behind deep learning, recent developments and applications.",
+      "abstract_short": "Deep learning: how it works, how to train a deep neural network, the theory behind deep learning, recent developments and applications.\r\n(length: 60 mins)",
       "sub_title": "",
-      "timerange": "2016-07-22 11:15:00, 2016-07-22 12:15:00",
+      "timerange": "2016-07-22 11:15:00, 2016-07-22 12:00:00",
       "sub_community": "pydata",
-      "duration": 60,
+      "duration": 45,
       "twitters": "@Brittix1023",
       "id": 584,
       "speakers": "Geoff French",
@@ -2367,7 +2417,7 @@
       "have_tickets": [
         true
       ],
-      "type": "Talk (60 mins)",
+      "type": "Talk (45 mins)",
       "status": "accepted",
       "track_title": "A1 [PyData Track]",
       "tags": [
@@ -2377,7 +2427,7 @@
         "Machine-Learning"
       ],
       "abstract_long": [
-        "In the last few years, deep neural networks have been used to generate state of the art results in image classification, segmentation and object detection. They have also successfully been used for speech recognition and textual analysis. In this talk, I will give an introduction to deep neural networks. I will cover how they work, how they are trained, and a little bit on how to get going. I will briefly discuss some of the recent exciting and amusing applications of deep learning. The talk will primarily focus on image processing."
+        "(length: 60 mins)    In the last few years, deep neural networks have been used to generate state of the art results in image classification, segmentation and object detection. They have also successfully been used for speech recognition and textual analysis. In this talk, I will give an introduction to deep neural networks. I will cover how they work, how they are trained, and a little bit on how to get going. I will briefly discuss some of the recent exciting and amusing applications of deep learning. The talk will primarily focus on image processing.\r\n\r\nIf you completely new to deep learning, please attend T. Rashid's talk 'A Gentle Introduction to Neural Networks (with Python)'. His talk is in the same room immediately before mine and his material is really good and will give you a good grounding in what I will present to you. :)\r\nYou may also want to attend I' Lewis' talk 'Deep Learning with Python & TensorFlow' after Lunch in the PyCharm room to round it all off! :)"
       ],
       "abstract_extra": "I have given this talk previously at PyData London and at the Cambridge Python User Group where it was well received:\r\nSlides are here:\r\nhttps://speakerdeck.com/britefury/introduction-to-deep-learning-cambridge-python-user-group\r\n",
       "tag_categories": [
@@ -3286,7 +3336,7 @@
       "timerange": "2016-07-20 14:00:00, 2016-07-20 14:30:00",
       "sub_community": "",
       "duration": 30,
-      "twitters": "@",
+      "twitters": "@ikermdagirre",
       "id": 693,
       "speakers": "Iker Martinez de Agirre Mendia",
       "title": "Datu bistaratze soluzioen garapena Smartcity proiektuetan",
@@ -3316,7 +3366,7 @@
       "level": "Beginner",
       "url": "https://ep2016.europython.eu//conference/talks/datu-bistaratze-soluzioen-garapena-smartcity-proiektuetan-1",
       "admin_type": "",
-      "companies": ""
+      "companies": "Mondragon Goi Eskola Politeknikoa"
     },
     "418": {
       "abstract_short": "Python has lots of scientific, data analysis, and machine learning libraries. But there are many problems when starting out on a machine learning project. Which library do you use? How do they compare to each other? How can you use a model that has been trained in your production app? In this talk I will discuss how you can use TensorFlow to create Deep Learning applications. I will discuss how it compares to other Python machine learning libraries, and how to deploy into production.",
@@ -3357,47 +3407,6 @@
       "url": "https://ep2016.europython.eu//conference/talks/deep-learning-with-python-tensorflow",
       "admin_type": "",
       "companies": "Google"
-    },
-    "388": {
-      "abstract_short": "This talk shares some insights into Aldryn, a platform used daily to execute hundreds of Django based website-deployments, and the various components that intervene to deploy a Django project from its git repository to the cloud.\r\n\r\nWe will discuss some of the problems we faced, and the solutions we adopted, to deploy Django projects at scale to the cloud, including topics like PyPI wheel proxies, dynamic traffic-rerouting, live data-center migrations, etc.",
-      "sub_title": "A journey through various challenges and solutions we adopted to deploy Django at scale on Aldryn",
-      "timerange": "2016-07-21 14:30:00, 2016-07-21 15:15:00",
-      "sub_community": "",
-      "duration": 45,
-      "twitters": "@garet_jax",
-      "id": 388,
-      "speakers": "Jonathan Stoppani",
-      "title": "Deploying Django at scale: what happens inside the cloud",
-      "have_tickets": [
-        true
-      ],
-      "type": "Talk (45 mins)",
-      "status": "accepted",
-      "track_title": "A1",
-      "tags": [
-        "Django Track",
-        "Configuration Management (Ansible/Fabric/Chef/...)",
-        "Django",
-        "Distributed Systems",
-        "Deployment/Continuous Integration and Delivery"
-      ],
-      "abstract_long": [
-        "Aldryn is used daily to execute hundreds of Django based website-deployments. It consists of a control panel to help backend developers, frontend developers, project managers and content-editors collaborate to successfully build and maintain web apps, coupled to a scalable and highly available Docker-based build and deployment infrastructure currently used to host more than 6000 django-cms based websites.\r\n\r\nWhile the control panel is oriented mainly towards the Django/django-CMS match, the structure of the single projects and the deployment infrastructure allow to continuously deploy, upgrade and scale any type of HTTP service.\r\n\r\nThe goal of this talk is to share some insights into the various components that intervene to deploy a Django project from its git repository to the cloud.\r\n\r\nThis talk will discuss some of the problems we faced, and the solutions we adopted, to deploy Django projects at scale to the cloud. I'll share the lessons we learned and present the tools we built to reach our goal. I\u2019ll be covering topics like:\r\n - Using a PyPI proxy to both build platform-specific wheels, on order to both to withstand PyPI downtimes and cut on deployment times;\r\n - Dynamic traffic re-routing for zero-downtime deployments and horizontal scaling;\r\n - Massive TLS termination on a custom built Twisted/PyPy reverse proxy;\r\n - Live server and datacenter migrations for both apps and their data."
-      ],
-      "abstract_extra": "",
-      "tag_categories": [
-        ">>> Suggested Track",
-        "DevOps",
-        "Application Frameworks",
-        "DevOps",
-        "DevOps"
-      ],
-      "emails": "jonathan.stoppani@divio.ch",
-      "language": "English",
-      "level": "Intermediate",
-      "url": "https://ep2016.europython.eu//conference/talks/deploying-django-at-scale-what-happens-inside-the-cloud",
-      "admin_type": "",
-      "companies": "Divio"
     },
     "593": {
       "abstract_short": "When designing an abstraction for a complex system (an ORM-like library in our case) you face a lot of design decisions and challenges. This talk details how we chose to tackle those when designing elasticsearch-dsl.",
@@ -3509,6 +3518,44 @@
       "url": "https://ep2016.europython.eu//conference/talks/do-i-need-to-switch-to-golang",
       "admin_type": "",
       "companies": "Aidata"
+    },
+    "552": {
+      "abstract_short": "One secret of Django's success is the quality of its documentation. As well as being key to the quality of the code itself, it has helped drive the development of Django as a community project, and even the professional development of programmers who adopt Django.\r\n\r\nI'll discuss how Django has achieved it, and how any project can easily win the same benefits.\r\n",
+      "sub_title": "How you can advance your code, your community and your programmers through your documentation",
+      "timerange": "2016-07-21 14:30:00, 2016-07-21 15:15:00",
+      "sub_community": "",
+      "duration": 45,
+      "twitters": "@EvilDMP",
+      "id": 552,
+      "speakers": "Daniele Procida",
+      "title": "Documentation-driven development",
+      "have_tickets": [
+        true
+      ],
+      "type": "Talk (45 mins)",
+      "status": "accepted",
+      "track_title": "A1",
+      "tags": [
+        "Management",
+        "Open-Source"
+      ],
+      "abstract_long": [
+        "Part of my job title is _Documentation Manager_. When I explain this to a programmer outside the Python/Django community, the reaction can be anything from bewilderment to a kind of mild horror. When I mention it to a Python/Django programmer, the response is usually: _Oh, cool_.\r\nIn fact, one secret of Django's success is the quality of its documentation, and everyone who uses Django is quick to note this.\r\n\r\nThe returns on Django's investment have been substantial, but some of them are also surprising.\r\nThe documentation has clearly been key to the _quality of the code itself_, but also (less obviously) to the _development of Django as a community project_, and even the _professional development of programmers_ who adopt Django.\r\n\r\nI'll discuss how Django has achieved it, and how any project can easily win the same benefits.\r\n\r\n",
+        "",
+        "",
+        ""
+      ],
+      "abstract_extra": "I am a member of the Django core team and the board of the Django Software Foundation.\r\n\r\nI was the chair of the organising committee of DjangoCon Europe in Cardiff in 2014, and have been involved in several other international community conferences, including PyCon Namibia.\r\n\r\nI've previously been invited to speak at events including DjangoCon US, DjangoCon Europe, PyCon Ireland, PyCon UK, PyCon Slovakia and PyCon Italia.",
+      "tag_categories": [
+        "Development Methods",
+        "Open Source"
+      ],
+      "emails": "daniele.procida@divio.ch",
+      "language": "English",
+      "level": "Beginner",
+      "url": "https://ep2016.europython.eu//conference/talks/documentation-driven-development",
+      "admin_type": "",
+      "companies": "Divio"
     },
     "563": {
       "abstract_short": "This talk is about dynamic class generation in python: the practice of writing code that generates classes and their functionality at runtime. It will use boto3, the AWS SDK for Python, as a basis to dive into the basics, the benefits, and the drawbacks to dynamically generating classes.",
@@ -3695,7 +3742,7 @@
         "Pyramid"
       ],
       "abstract_long": [
-        "Iaz Raspberry PI bat erosi nuen eta ez nekien zer egin berarekin... Aurten Kodi softwarea erabiliz media-center bihurtu dut Raspberrya.\r\n\r\nKodirako 'tvalacarta' izeneko plugin bat zegoen berarekin EITB Nahieran ikusteko, baina ez zebilen. Saiatu nintzen EITB Nahieranen kodea funtzionarazten, eta asko kostata informazioa hiru era ezberdinetan ateratzea lortu nuen. Azkenean, funtzionamendua errazteko API bat prestatu dut EITB Nahieranen dagoen informazioa atzitzeko eta edozeinek erabili ahal dezan."
+        "Iaz Raspberry PI bat erosi nuen eta ez nekien zer egin berarekin... Aurten Kodi softwarea erabiliz media-center bihurtu dut Raspberrya.\r\n\r\nKodirako 'tvalacarta' izeneko plugin bat zegoen berarekin EITB Nahieran ikusteko, baina ez zebilen. Saiatu nintzen EITB Nahieranen kodea funtzionarazten, eta asko kostata informazioa hiru era ezberdinetan ateratzea lortu nuen. Azkenean, funtzionamendua errazteko API bat prestatu dut EITB Nahieranen dagoen informazioa atzitzeko eta edozeinek erabili ahal dezan.\r\n\r\n[Aurkezpena][1] eta [aurkeztutako kodea][2]\r\n\r\n  [1]: https://erral.github.io/eitbapi\r\n  [2]: https://github.com/erral/eitbapi\r\n"
       ],
       "abstract_extra": "",
       "tag_categories": [
@@ -4025,6 +4072,48 @@
       "admin_type": "",
       "companies": "Facebook Ireland"
     },
+    "749": {
+      "abstract_short": "Research is financed from public money and researchers publish papers.\r\nBut, papers are often unavailable to everyone except if you pay money for it, which seems wrong! What can we do as developers? Well, we can help researchers to open their papers!",
+      "sub_title": "Towards a global Open Access policy",
+      "timerange": "2016-07-22 15:30:00, 2016-07-22 16:00:00",
+      "sub_community": "",
+      "duration": 30,
+      "twitters": "@",
+      "id": 749,
+      "speakers": "Ryan Lahfa",
+      "title": "Free your papers, researchers!",
+      "have_tickets": [
+        true
+      ],
+      "type": "Talk (30 mins)",
+      "status": "accepted",
+      "track_title": "A2",
+      "tags": [
+        "Science",
+        "PostgreSQL",
+        "Open-Source",
+        "Community"
+      ],
+      "abstract_long": [
+        "Research is financed from public money and researchers publish papers.\r\nBut, papers are often unavailable to everyone except if you pay money for it, which seems wrong! What can we do as developers? Well, we can help researchers to open their papers! And of course, how do we do it?\r\n\r\nPython, of course! Dissemin is a website using the Django framework which aims to promote a global Open Access policy, it offers to researchers a way to deposit legally their papers inside of a repository (Zenodo for example).\r\n\r\nWe will see how the researcher world works quickly, and what are the challenges of assisting researcher to make papers available to everyone!",
+        "",
+        "",
+        ""
+      ],
+      "abstract_extra": "",
+      "tag_categories": [
+        "Sciences",
+        "Databases",
+        "Open Source",
+        "Community"
+      ],
+      "emails": "masterancpp@gmail.com",
+      "language": "English",
+      "level": "Beginner",
+      "url": "https://ep2016.europython.eu//conference/talks/free-your-papers-researchers",
+      "admin_type": "",
+      "companies": ""
+    },
     "569": {
       "abstract_short": "Sometimes it's hard to decide when a something is really done or cannot be improved further. \r\n**Game theory** can help you to make complicated decisions whenever you encounter flow problems.",
       "sub_title": "Solving Flow Problems with Game Theory",
@@ -4142,8 +4231,8 @@
       "companies": "Variomedia AG"
     },
     "672": {
-      "abstract_short": "A side-by-side walkthrough of basic Go syntax and semantics compared to Python.",
-      "sub_title": "A side-by-side walkthrough of basic Go syntax and semantics compared to Python",
+      "abstract_short": "A side-by-side walkthrough of basic Go history, syntax, semantics and tools compared to Python.",
+      "sub_title": "A side-by-side walkthrough of basic Go history, syntax, semantics and tools compared to Python.",
       "timerange": "2016-07-19 14:30:00, 2016-07-19 15:00:00",
       "sub_community": "",
       "duration": 30,
@@ -4164,7 +4253,7 @@
         "Go-Lang"
       ],
       "abstract_long": [
-        "A side-by-side walkthrough of basic Go syntax and semantics compared to Python."
+        "There's been quite a bit of hype around Go for some time. In particular within the Python community, we've seen some engineers moving their stack from Python to Go or starting their new project in Go. This talk is **not** about whether you should move from Python to Go. Instead, this talk is for those who've been hearing all about all the hype but haven't yet had a chance to take a proper look at Go.\r\n\r\nWe'll first _very_ briefly look at Go and Python's history. Then we'll go through a high-level side-by-side walkthrough of basic Go syntax and semantics compared to Python. Finally, we'll have a brief look at a subset of the ecosystem and tools available to Go and Python programmers for certain tasks such as testing, code formatting, documentation generation etc.\r\n\r\nBy the end, you will not be a Go programmer but you'll have a high-level feel for how the Go language operates.\r\n\r\n"
       ],
       "abstract_extra": "",
       "tag_categories": [
@@ -4598,47 +4687,6 @@
       "url": "https://ep2016.europython.eu//conference/talks/how-to-improve-your-diet-and-save-money-with-python",
       "admin_type": "",
       "companies": ", CAChemE"
-    },
-    "712": {
-      "abstract_short": "I am a programmer and I am on a mission to make IT-recruiting suck less.\r\n\r\n This talk should be useful for both hiring managers and job-seekers. We will assess the status-quo of hiring engineers and talk about resumes, coding questions and tasks that firms make up to assess engineers. Also, we'll discuss salary negotiation best-practises from a candidate perspective.\r\n\r\nWe end with a discussion on different \"types\" of programmers (http://blog.triplebyte.com/who-y-combinator-companies-want).\r\n\r\n",
-      "sub_title": "",
-      "timerange": "2016-07-19 14:00:00, 2016-07-19 14:30:00",
-      "sub_community": "",
-      "duration": 30,
-      "twitters": "@",
-      "id": 712,
-      "speakers": "Iwan Gulenko",
-      "title": "How to make IT-recruiting suck less.",
-      "have_tickets": [
-        true
-      ],
-      "type": "Talk (30 mins)",
-      "status": "accepted",
-      "track_title": "Barria 2",
-      "tags": [
-        "General",
-        "Use Case",
-        "Business",
-        "Best Practice",
-        "failures/mistakes"
-      ],
-      "abstract_long": [
-        "I am a programmer and I am on a mission to make IT-recruiting suck less.\r\n\r\n This talk should be useful for both hiring managers and job-seekers. We will assess the status-quo of hiring engineers and talk about resumes, coding questions and tasks that firms make up to assess engineers. Also, we'll discuss salary negotiation best-practises from a candidate perspective.\r\n\r\nWe end with a discussion on different \"types\" of programmers (http://blog.triplebyte.com/who-y-combinator-companies-want).\r\n\r\n"
-      ],
-      "abstract_extra": "",
-      "tag_categories": [
-        "",
-        "Best Practice and Use Cases",
-        "",
-        "Best Practice and Use Cases",
-        "Best Practice and Use Cases"
-      ],
-      "emails": "iwan@gulenko.ch",
-      "language": "English",
-      "level": "Beginner",
-      "url": "https://ep2016.europython.eu//conference/talks/coding-interviews-what-to-expect-and-how-to-prepare",
-      "admin_type": "",
-      "companies": ""
     },
     "401": {
       "abstract_short": "This talk is for people who have a lot of floating numbers inside\r\nPostgreSQL tables. I will bring as an example my personal experience\r\nwith a scientific project that used PostgreSQL as storage for a rather\r\ncomplex set of composite multidimensional arrays and ran into all\r\nsorts of performances issues, both in reading and writing the data. I\r\nwill explain how I solved all that by dropping the database in favor\r\nof an HDF5 file, while keeping the application running and the users\r\nhappy.\r\n",
@@ -5170,7 +5218,7 @@
     "545": {
       "abstract_short": "There should be something for everyone in this whistle\u2013stop tour of iteration in Python setting off from `for`\u2013loops, and riding cross\u2013country to multiplexing coroutines!\r\n\r\nSee and hear the amazing sights and sounds of list comprehensions, and generators. Take in the amazing vistas from `itertools`, and be amazed at the magnificent `yield`!",
       "sub_title": "A whistle\u2013stop tour of iteration in Python",
-      "timerange": "2016-07-22 15:45:00, 2016-07-22 16:15:00",
+      "timerange": "2016-07-22 15:30:00, 2016-07-22 16:00:00",
       "sub_community": "",
       "duration": 30,
       "twitters": "@sneeu",
@@ -5741,7 +5789,7 @@
         "Use Case"
       ],
       "abstract_long": [
-        "When overhauling the user interface of Autolabel's labeling printers, \r\nwe wanted a clean way to describe the layout of the settings widgets.\r\nThe structure we came up with was a declarative class layout that\r\nleverages Python's metaclass concept to build the underlying GTK\r\nwidget structure.\r\n\r\nI will present the implementation to hopefully inspire you to apply\r\nmetaclass techniques to problems that standard Python syntax can't\r\nquite solve. If that fails, you will at least have a way to\r\ndeclaratively construct GTK GUIs.\r\n\r\nA short, non-exaustive, summary of concepts I will mention includes\r\nmetaclasses (obviously), class hierarchies, method resolution\r\norder, super(), and anecdotes of dealing with GTK.\r\n\r\nYou may find some similarities with my talk on Python as a domain\r\nspecific language at Europython 2006\r\nhttp://indico.cern.ch/event/44/session/41/contribution/35"
+        "When overhauling the user interface of Autolabel's labeling printers, \r\nwe wanted a clean way to describe the layout of the settings widgets.\r\nThe structure we came up with was a declarative class layout that\r\nleverages Python's metaclass concept to build the underlying GTK\r\nwidget structure.\r\n\r\nI will present the implementation to hopefully inspire you to apply\r\nmetaclass techniques to problems that standard Python syntax can't\r\nquite solve. If that fails, you will at least have a way to\r\ndeclaratively construct GTK GUIs.\r\n\r\nA short, non-exaustive, summary of concepts I will mention includes\r\nmetaclasses (obviously), class hierarchies, method resolution\r\norder, super(), and anecdotes of dealing with GTK.\r\n\r\nYou may find some similarities with my talk on Python as a domain\r\nspecific language at Europython 2006\r\nhttp://indico.cern.ch/event/44/session/41/contribution/35\r\n\r\nSlides are available at https://www2.openend.se/~iko/ep2016\r\n\r\nExample code on Bitbucket https://bitbucket.org/iko/ep2016-declarative-gui/"
       ],
       "abstract_extra": "Previous talks:\r\n\r\nPython as a domain specific language, Europython 2006\r\nhttp://indico.cern.ch/event/44/session/41/contribution/35\r\n\r\nMulti-document concistency with MondoDB, Europython 2012\r\nhttps://ep2013.europython.eu/conference/talks/multi-document-consistency-with-mongodb",
       "tag_categories": [
@@ -6038,7 +6086,7 @@
     "502": {
       "abstract_short": "Visual data exploration, e.g. of social networks, can be ugly manual work. The talk will be an introduction for the combined usage of NetworkX and Bokeh in a Jupyter Notebook to show how easy interactive network visualization can be.",
       "sub_title": "Network Manipulation Meets Interactive Visualization",
-      "timerange": "2016-07-22 15:45:00, 2016-07-22 16:15:00",
+      "timerange": "2016-07-22 15:30:00, 2016-07-22 16:00:00",
       "sub_community": "",
       "duration": 30,
       "twitters": "@",
@@ -6156,7 +6204,7 @@
     "551": {
       "abstract_short": "There's a ton of digital ink spent on the subject of productivity. Choosing the right tools, the right editor, plugins, the right OS, keyboard shortcuts, mouse gestures, etc.\r\n\r\nWell, this is not what this talk is about! It's about everything else around your computer that can boost your productivity. It's about communication, getting things done, working less while doing more, sleeping good, and ultimately, staying healthy. ",
       "sub_title": "Staying productive beyond your keyboard",
-      "timerange": "2016-07-22 15:45:00, 2016-07-22 16:15:00",
+      "timerange": "",
       "sub_community": "",
       "duration": 30,
       "twitters": "@nzupan",
@@ -6168,7 +6216,7 @@
       ],
       "type": "Talk (30 mins)",
       "status": "accepted",
-      "track_title": "A2",
+      "track_title": "",
       "tags": [
         "Tooling",
         "Python general",
@@ -7365,7 +7413,7 @@
     "486": {
       "abstract_short": "In this session you will learn your way around Python 3\u2019s unittest.mock package through examples. You\u2019ll learn about the Mock class, sentinels and patching. You will see the benefits that mocks can bring and learn to avoid the pitfalls. Along the way I\u2019ll fill you in on some of the bewildering terminology surrounding mocks such as \u201cSUT\u201d, \u201cStub\u201d, \u201cDouble\u201d, \u201cDummy\u201d , \u201cmockist\u201d and more and I\u2019ll give a brief plug for my own mockextras package that can enhance your mock experience.",
       "sub_title": "",
-      "timerange": "2016-07-22 15:45:00, 2016-07-22 16:15:00",
+      "timerange": "2016-07-22 15:30:00, 2016-07-22 16:00:00",
       "sub_community": "",
       "duration": 30,
       "twitters": "@andrewburrows",
@@ -7554,7 +7602,7 @@
     "651": {
       "abstract_short": "Mindfulness has proven to be a foundational skill that started as a pure buddhist practice. Nowadays mindfulness serves as the core technique of several western programs ranging from  curing stress-induced medical problems to curricula for teaching successful business leadership, such as the Search Inside Yourself program developed at Google. \r\n\r\nThe aim of this seminar is to provide a practical experience of mindfulness with a short introduction to how it can be applied by digital workers.",
       "sub_title": "",
-      "timerange": "2016-07-22 15:45:00, 2016-07-22 16:15:00",
+      "timerange": "2016-07-22 15:30:00, 2016-07-22 16:00:00",
       "sub_community": "",
       "duration": 30,
       "twitters": "@https://twitter.com/ralhei",
@@ -7726,7 +7774,7 @@
         "Programming"
       ],
       "abstract_long": [
-        "The curious Python methods and attributes surrounded by double underscores ('`__`') go by many names, including \u201cspecial\u201d, \u201cdunder\u201d, and \u201cmagic\u201d. You probably use some of them, like `__init__`, every day. But that\u2019s just the tip of the iceberg! \r\n\r\nIn this talk, we\u2019ll explore the weird and wonderful world of the double-underscore, and find out how dunders can be useful, silly, dangerous, and just fun! We\u2019ll play pranks on Python\u2019s builtin operators for arithmetic and comparison. We\u2019ll make arbitrary objects behave like dictionaries and containers. We\u2019ll reduce an object\u2019s memory usage, and speed up tests for membership. We\u2019ll even try some naughty function hacks that we should never use in real life!\r\n\r\nYou'll get the most out of this talk if you're already comfortable writing object-oriented Python code. If you already use special dunder magic in your own code, that's excellent! You\u2019ll have a chance to share your tips & tricks with the rest of the audience at the end of the talk.\r\n"
+        "The curious Python methods and attributes surrounded by double underscores ('`__`') go by many names, including \u201cspecial\u201d, \u201cdunder\u201d, and \u201cmagic\u201d. You probably use some of them, like `__init__`, every day. But that\u2019s just the tip of the iceberg! \r\n\r\nIn this talk, we\u2019ll explore the weird and wonderful world of the double-underscore, and find out how dunders can be useful, silly, dangerous, and just fun! We\u2019ll play pranks on Python\u2019s builtin operators for arithmetic and comparison. We\u2019ll make arbitrary objects behave like dictionaries and containers. We\u2019ll reduce an object\u2019s memory usage, and speed up tests for membership. We\u2019ll even try some naughty function hacks that we should never use in real life!\r\n\r\nYou'll get the most out of this talk if you're already comfortable writing object-oriented Python code. If you already use special dunder magic in your own code, that's excellent! You\u2019ll have a chance to share your tips & tricks with the rest of the audience at the end of the talk.\r\n\r\n_Talk repo_: [https://github.com/vakila/dunders][1]\r\n\r\n  [1]: https://github.com/vakila/dunders\r\n"
       ],
       "abstract_extra": "Approximate timeline (30 minute talk):\r\n\r\n  - :00 - Hello, who I am, gauge audience experience with dunders (1 min.)\r\n  - :01 - Intro, familiar dunders (e.g. `__init__`, `__str__`) (2 min.)\r\n  - :03 - Arithmetic and comparisons: (e.g. `__mod__`, `__eq__`) (4 min.)\r\n  - :07 - Emulating dictionaries (`__getitem__`, etc.) and collections (`__len__`, `__contains__`) (5 min.)\r\n  - :12 - Optimizations: `__contains__`, `__slots__` (4 min.)\r\n  - :16 - Function hacks: implementing `__call__` on non-functions, replacing a function\u2019s `__defaults__` and `__code__` (4 min.)\r\n  - :20 - Links to further reading; Audience members share their dunder tricks (5 min.)\r\n  - :25 - Q&A (5 min.)\r\n\r\nI\u2019m submitting this as a standard 30-minute talk, but I think it\u2019s possible the topic could also work for an interactive session, with the audience participating in coding through the examples and coming up with ideas for fun and interesting hacks using these methods/variables. If you think it would work better in that format, please let me know.\r\n\r\nEven in the 30-minute talk format, I\u2019d really like to have an interactive tip-sharing session at the end of the talk, as mentioned in the long abstract and timeline. I imagine that this will probably merge with the Q&A and become a 10-minute discussion at the end of the talk. I hope this fits in nicely with the enhanced focus on interactivity for this year\u2019s conference, but if it\u2019s not desirable for whatever reason, I can easily replace the tip-sharing session with additional content (e.g. context managers with `__enter__` and `__exit__`) or examples. \r\n\r\nI haven't given a talk at EuroPython or another Python conference before, but I have public speaking experience in the form of several talks at academic conferences, on software and research for computational linguistics. A list of my previous talks is available at [https://vakila.github.io/talks/ ][1](links to slides are provided).\r\n\r\nIf you have any questions, need clarification, or have any other feedback on this proposal, please do get in touch! I\u2019m best reached by email, but I will be on holiday with limited internet access from February 29 to March 7.\r\n\r\n  [1]: https://vakila.github.io/talks/ \r\n",
       "tag_categories": [

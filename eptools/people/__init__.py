@@ -1,8 +1,7 @@
 
 from .data import ParticipantsRegistry
 
-from .contact import (
-                      create_contact,
+from .contact import (contact_from_dict,
                       read_contacts_file,
                       parse_contact,
                       contact_regex1,

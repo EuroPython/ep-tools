@@ -8,7 +8,7 @@ from   docstamp.pdf_utils import merge_pdfs
 from   docstamp.qrcode    import save_into_qrcode
 import docstamp.vcard     as dvcard
 
-from   .utils import split_in_two
+from   .utils import split_in_two, is_subsequence
 from   .data  import coordinates, scales, medal_files, maxlengths
 
 
@@ -143,11 +143,17 @@ def fill_text_contact_badge(contact, badge_filepath):
     """
     with open(badge_filepath) as f: svg = f.read()
 
+    # remove company if it is in tagline (#TODO improve this detection)
+    company = contact.company
+    if is_subsequence(company.replace(" @ ", ""),
+                      contact.tagline.replace(" @ ", "")):
+        company = ''
+
     cid, _             = split_in_two(contact.id)
     name1, name2       = split_in_two(contact.name,    max_length=maxlengths['name'])
     surname1, surname2 = split_in_two(contact.surname, max_length=maxlengths['surname'])
     tagline1, tagline2 = split_in_two(contact.tagline, max_length=maxlengths['tagline'])
-    company1, company2 = split_in_two(contact.company, max_length=maxlengths['company'])
+    company1, company2 = split_in_two(company,         max_length=maxlengths['company'])
 
     # give some slack to the names
     name = name1

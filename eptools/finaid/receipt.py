@@ -3,7 +3,7 @@
 Functions to produce the financial aid receipt document
 """
 from . import receipt_template_spa
-from ..docstamp_utils import create_document
+from ..docstamp_utils import xelatex_document
 
 
 def create_receipt(submission_data, template_file=None, output_dir='.'):
@@ -39,7 +39,7 @@ def create_receipt(submission_data, template_file=None, output_dir='.'):
     if template_file is None:
         template_file = receipt_template_spa
 
-    return create_document(submission_data,
-                           template_file=template_file,
-                           field_name='full_name',
-                           output_dir=output_dir)
+    return xelatex_document(submission_data,
+                            template_file=template_file,
+                            field_name='full_name',
+                            output_dir=output_dir)

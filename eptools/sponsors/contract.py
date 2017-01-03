@@ -3,7 +3,7 @@ Functions to generate sponsor agreement documents.
 """
 
 from .data import contract_template
-from ..docstamp_utils import create_document
+from ..docstamp_utils import xelatex_document
 
 
 def create_sponsor_agreement(sponsor_data, field_name='company',
@@ -14,7 +14,7 @@ def create_sponsor_agreement(sponsor_data, field_name='company',
 
     Parameters
     ----------
-    sponsor_data: pandas.DataFrame
+    sponsor_data: pandas.DataFrame or dict
         A DataFrame with one row with the data of the sponsor.
         Its columns must match the ones in the template_file content.
 
@@ -32,7 +32,10 @@ def create_sponsor_agreement(sponsor_data, field_name='company',
     if template_file is None:
         template_file = contract_template
 
-    return create_document(df=sponsor_data,
-                           field_name=field_name,
-                           template_file=template_file,
-                           output_dir=output_dir)
+    if not isinstance(sponsor_data, dict):
+        sponsor_data = sponsor_data.reset_index(drop=True).ix[0].to_dict()
+
+    return xelatex_document(doc_args=sponsor_data,
+                            field_name=field_name,
+                            template_file=template_file,
+                            output_dir=output_dir)

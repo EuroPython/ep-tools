@@ -4,36 +4,28 @@ Functions to help using docstamp.
 """
 
 import os
-import os.path as op
-import tempfile
-import subprocess
-import logging as log
-
-from docstamp.file_utils import cleanup_docstamp_output
+import os.path as path
 
 
-def create_document(df, template_file, field_name, index=None, output_dir='.'):
-    """ Call docstamp to use xelatex to produce a XeLateX document
+from docstamp.file_utils import get_extension, cleanup_docstamp_output
+from docstamp.template import XeLateXDocument
+
+
+def xelatex_document(doc_args, template_file, field_name, output_dir='.'):
+    """ Use docstamp to use xelatex to produce a XeLateX document
     using `template_file`.
-    The output file will be saved in output_dir.
-
-    #TODO: instead of using docstamp from a syscall, why not import docstamp itself?
+    The output file will be saved in output_dir and its path returned.
 
     Parameters
     ----------
-    df: pandas.DataFrame
-        A DataFrame with one row with the data to fill the template_file.
-        Its columns must match the ones in the template_file content.
-        If df has more than one row, make sure you set a value for `index`.
+    df: dict
+        A dictionary with the argument values to fill the `template_file`.
 
     template_file: str
         Path to the .tex template file.
 
-    index: int
-        The row index in `df` if it has more than one row.
-
     field_name: str
-        Name of the field in `row_data` that will be used for the
+        Name of the field in `doc_args` that will be used for the
         output file name and some checks.
 
     output_dir: str
@@ -44,41 +36,32 @@ def create_document(df, template_file, field_name, index=None, output_dir='.'):
     output_path
 
     """
-    if index is None:
-        if len(df) != 1:
-            raise ValueError('Expected either `df` with one row or a value for `index`, '
-                             ' none of those.')
-        else:
-            index = 0
+    # input data
+    input_data = doc_args
 
-    fd, path = tempfile.mkstemp()
-    df.to_csv(path)
+    # template doc
+    template_doc = XeLateXDocument(template_file)
 
-    cmd  = 'docstamp'
-    cmd += ' -i "{data_file}"'
-    cmd += ' -t "{template}"'
-    cmd += ' -o "{output_dir}"'
-    cmd += ' -f "{field_name}"'
-    cmd += ' -c xelatex'
-    cmd += ' --idx "{index}"'
-    cmd += ' -v'
-    cmd = cmd.format(data_file=path,
-                     template=template_file,
-                     output_dir=output_dir,
-                     field_name=field_name,
-                     index=index)
+    # output file name
+    field_val = input_data[field_name].replace(' ', '')
 
-    log.info('Calling {}'.format(cmd))
+    file_extension = get_extension(template_file)
+    basename = path.basename(template_file).replace(file_extension, '')
 
-    oldcwd = op.abspath(op.curdir)
-    os.chdir(op.dirname(template_file))
+    file_name = basename + '_' + field_val
+    file_path = path.join(output_dir, file_name + '.pdf')
 
-    subprocess.call(cmd, shell=True)
+    # make output folder
+    if not os.path.exists(output_dir):
+        os.mkdir(outdir)
 
-    os.chdir(oldcwd)
+    # fill the template
+    template_doc.fill(doc_args)
 
+    # save into PDF
+    template_doc.render(file_path)
+
+    # clean up LateX mess
     cleanup_docstamp_output(output_dir)
 
-    item_name = df[field_name].values[index].strip().replace(' ', '_')
-    return op.join(output_dir, '{}_{}.pdf'.format(op.basename(template_file),
-                                                  item_name))
+    return file_path

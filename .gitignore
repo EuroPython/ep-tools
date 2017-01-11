@@ -76,3 +76,4 @@ attendees*
 *.pdf
 tmp*
 
+notebooks/*ipynb*

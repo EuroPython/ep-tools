@@ -26,4 +26,5 @@ df.loc[:, 'country'][country_is_none] = 'Others'
 
 counts = df.groupby('country').count().sort_values(by='order_id', ascending=False)
 
-print(counts)
+for i, row in counts.reset_index().iterrows():
+    print("{},{}".format(row['country'], row['order_id']))

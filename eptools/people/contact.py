@@ -12,7 +12,7 @@ TALK_TYPE     = Enum('Talk_Type',     'talk tutorial helpdesk')
 
 # contact class
 CONTACT_FIELDS = ("id", "name", "surname", "tagline", "company", "pypower",
-                  "tshirt", "email", "phone", "compweb", "persweb")
+                  "tshirt", "email", "phone", "title", "compweb", "persweb")
 
 Contact = namedtuple('Contact', CONTACT_FIELDS)
 

@@ -21,7 +21,7 @@ elif hn == "opobook.local":
     api_key_file = op.expanduser('~/Projects/ep16/google_api_key.json')
 
 # the ep2016 responses spreadsheet
-sponsors_billing_worksheet = ('1Dbxy1a0c-IbXdxVXmbTeU6zE6AKV4N0xKK2GANSw9Mw',
+sponsors_billing_worksheet = ('16ohl6y4n9RXfG5jizBYl1ns12UKFS3Crauyc1ZsP1G0',
                               'Form responses 1')
 
 docker_name = 'webarch_ep2016_1'

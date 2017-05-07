@@ -65,6 +65,7 @@ maxlengths = {'name':    13,
               'surname': 18,
               'tagline': 26,
               'company': 26,
+              'title':   26,
               }
 
 # positions in the badges

@@ -13,14 +13,15 @@ from   .data  import coordinates, scales, medal_files, maxlengths
 
 
 def create_qrcode(contact, color, file_path):
-    """return the file path to the svg file with a QRCode containing the contact VCard info."""
+    """Return the file path to the svg file with a QRCode containing the contact VCard info."""
     vcard = dvcard.create_vcard3_str(name=contact.name,
                                      surname=contact.surname,
                                      displayname='',
                                      email=contact.email,
                                      org=contact.company,
+                                     title=contact.title,
                                      url=contact.persweb,
-                                     note=contact.phone)
+                                     note="EuroPython 2017")
     save_into_qrcode(vcard, out_filepath=file_path, color=color)
     return file_path
 
@@ -153,7 +154,8 @@ def fill_text_contact_badge(contact, badge_filepath):
     name1, name2       = split_in_two(contact.name,    max_length=maxlengths['name'])
     surname1, surname2 = split_in_two(contact.surname, max_length=maxlengths['surname'])
     tagline1, tagline2 = split_in_two(contact.tagline, max_length=maxlengths['tagline'])
-    company1, company2 = split_in_two(company,         max_length=maxlengths['company'])
+    company,  _        = split_in_two(company,         max_length=maxlengths['company'])
+    title,  _          = split_in_two(contact.title,   max_length=maxlengths['title'])
 
     # give some slack to the names
     name = name1
@@ -177,8 +179,8 @@ def fill_text_contact_badge(contact, badge_filepath):
     svg = svg.replace('{{ surname }}',  replace_chars_for_svg_code(surname))
     svg = svg.replace('{{ tagline1 }}', replace_chars_for_svg_code(tagline1))
     svg = svg.replace('{{ tagline2 }}', replace_chars_for_svg_code(tagline2))
-    svg = svg.replace('{{ company1 }}', replace_chars_for_svg_code(company1))
-    svg = svg.replace('{{ company2 }}', replace_chars_for_svg_code(company2))
+    svg = svg.replace('{{ company }}',  replace_chars_for_svg_code(company))
+    svg = svg.replace('{{ title }}',    replace_chars_for_svg_code(title))
     svg = svg.replace('{{ id }}',       replace_chars_for_svg_code(cid))
 
     with open(badge_filepath, 'w') as f:

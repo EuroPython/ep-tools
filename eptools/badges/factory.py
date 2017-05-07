@@ -157,7 +157,7 @@ class BadgeFactory(object):
         return badge_svg
 
     def generate_badge_svg(self, contact, roles, badge_filepath=None):
-        """ create a badge file for contact in outputdir. """
+        """ Create a badge file for contact in outputdir. """
         #create badge image and save it
         role = get_badge_role(roles)
         template = get_badge_template_file(role)

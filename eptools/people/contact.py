@@ -17,7 +17,7 @@ CONTACT_FIELDS = ("id", "name", "surname", "tagline", "company", "pypower",
 Contact = namedtuple('Contact', CONTACT_FIELDS)
 
 # regexes
-email_regex = r"[\w0-9\.\+\_\-]+@[\w0-9\.\+\_\-]+\.\w+"
+email_regex = r"[\w0-9\.\+\_\-]+@[\w0-9\.\+\_\-]+[\.\w+]+"
 name_regex  = r"[\w0-9\.\_\-\']+"
 person_name = r"{name}([ ]{name})*".format(name=name_regex)
 

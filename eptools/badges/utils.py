@@ -16,16 +16,9 @@ def split_in_two(string, max_length=30):
     ------
     split: 2-tuple of str
     """
+    string = string.strip()
     if not string:
         return '', ''
-
-    if '@' in string:
-        wrap = textwrap.wrap(string, width=max_length)
-        if len(wrap) >= 2:
-            idx = string.find('@')
-            wrap11, wrap12 = split_in_two(string[0:idx].strip(),  max_length=max_length)
-            wrap21, wrap22 = split_in_two(string[idx+1:].strip(), max_length=max_length)
-            return wrap11 + ' @', wrap21
 
     wrap = textwrap.wrap(string, width=max_length)
     if len(wrap) >= 2:

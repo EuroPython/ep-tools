@@ -43,15 +43,17 @@ def get_badge_role(roles):
     return ATTENDEE_TYPE.attendee
 
 
-def prepare_badge_pdf(svg_filepath):
+def prepare_badge_pdf(svg_filepath, doublepages=True):
     """ from the badge SVG file path prepare a PDF for printing. Returns the pdf file path. """
     pdf_filepath = svg_filepath.replace('.svg', '.pdf')
 
     svg2pdf(svg_filepath, pdf_filepath, dpi=300)
 
-    pdf_pair_file = create_badge_faces(pdf_filepath)
-
-    return pdf_pair_file
+    if doublepages:
+        pdf_pair_file = create_badge_faces(pdf_filepath)
+        return pdf_pair_file
+    else:
+        return pdf_filepath
 
 
 class BadgeFactory(object):

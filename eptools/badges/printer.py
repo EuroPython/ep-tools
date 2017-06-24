@@ -145,16 +145,16 @@ def fill_text_contact_badge(contact, badge_filepath):
     with open(badge_filepath) as f: svg = f.read()
 
     # remove company if it is in tagline (#TODO improve this detection)
-    company = contact.company
-    if is_subsequence(company.replace(" @ ", ""),
-                      contact.tagline.replace(" @ ", "")):
-        company = ''
+    # company = contact.company
+    # if is_subsequence(company.replace(" @ ", ""),
+    #                   contact.tagline.replace(" @ ", "")):
+    #     company = ''
 
     cid, _             = split_in_two(contact.id)
     name1, name2       = split_in_two(contact.name,    max_length=maxlengths['name'])
     surname1, surname2 = split_in_two(contact.surname, max_length=maxlengths['surname'])
     tagline1, tagline2 = split_in_two(contact.tagline, max_length=maxlengths['tagline'])
-    company,  _        = split_in_two(company,         max_length=maxlengths['company'])
+    company,  _        = split_in_two(contact.company, max_length=maxlengths['company'])
     title,  _          = split_in_two(contact.title,   max_length=maxlengths['title'])
 
     # give some slack to the names

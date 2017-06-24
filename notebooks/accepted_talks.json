@@ -450,7 +450,7 @@
       "companies": "Criteo"
     },
     "1166": {
-      "abstract_short": "Winton ingests data continually from the world's financial markets. We track millions of individual tiemseries, with divergent formats, and whose frequencies vary from months to milliseconds. We go beyond simply reading and storing it - we stitch distinct and vast data sets together and subject them to intricate calculations in real-time. This talk will focus on the way we use Python to achieve these ends, and how we are creating tools to further commoditise streaming as a service. ",
+      "abstract_short": "Winton ingests data continually from the world's financial markets. We track millions of individual timeseries, with divergent formats, and whose frequencies vary from months to milliseconds. We go beyond simply reading and storing it - we stitch distinct and vast data sets together and subject them to intricate calculations in real-time. This talk will focus on the way we use Python to achieve these ends, and how we are creating tools to further commoditise streaming as a service. ",
       "sub_title": "",
       "timerange": "2017-07-12 16:20:00, 2017-07-12 16:50:00",
       "sub_community": "pydata",
@@ -471,7 +471,7 @@
         "Data"
       ],
       "abstract_long": [
-        "Winton ingests data continually from the world's financial markets. We track millions of individual tiemseries, with divergent formats, from disparate time zones, and whose frequencies vary from months to milliseconds. We go beyond simply reading and storing it - we stitch distinct and vast data sets together and subject them to intricate calculations in real-time. This talk will focus on the way we use Python to achieve these ends, and how we are creating tools to further commoditise streaming as a service. "
+        "Winton ingests data continually from the world's financial markets. We track millions of individual timeseries, with divergent formats, from disparate time zones, and whose frequencies vary from months to milliseconds. We go beyond simply reading and storing it - we stitch distinct and vast data sets together and subject them to intricate calculations in real-time. This talk will focus on the way we use Python to achieve these ends, and how we are creating tools to further commoditise streaming as a service. "
       ],
       "user_votes": [],
       "abstract_extra": "none",
@@ -1226,7 +1226,7 @@
       ],
       "type": "Training (180 mins)",
       "status": "accepted",
-      "track_title": "Sala del Tempio 2",
+      "track_title": "Sala del Tempio 1",
       "tags": [
         "Configuration Management (Ansible/Fabric/Chef/...)",
         "Best Practice",
@@ -1260,11 +1260,11 @@
       "speakers": "Francesco Pierfederici",
       "title": "Asynchronous Programming With Python",
       "have_tickets": [
-        false
+        true
       ],
       "type": "Training (180 mins)",
       "status": "accepted",
-      "track_title": "Sala del Tempio 1",
+      "track_title": "Sala del Tempio 2",
       "tags": [
         "Python 3",
         "ASYNC / Concurreny"
@@ -2440,7 +2440,7 @@
     "998": {
       "abstract_short": " At The Mobility House we  utilize the  electric cars to store energy from renewable sources and utilize this energy when production can't supply the demand. \r\nTo do that, we build  a software which naturally distributed. Cars and a charger are connected at different times and location to our cloud based software.\r\nWe chose Python for rapidy building the various components of the system running on a variety of systems, from tiny PCs to cloud based systems. ",
       "sub_title": "",
-      "timerange": "",
+      "timerange": "2017-07-12 14:00:00, 2017-07-12 17:00:00",
       "sub_community": "",
       "duration": 180,
       "twitters": "@OzNTiram",
@@ -2452,7 +2452,7 @@
       ],
       "type": "Poster session (180 mins)",
       "status": "accepted",
-      "track_title": "",
+      "track_title": "Poster Session 1",
       "tags": [
         "General",
         "Internet of Things",
@@ -2561,7 +2561,7 @@
     "1043": {
       "abstract_short": "At Modal Nodes we are developing a tool that enables us to focus on coding and planning and not on devops, having most of Operations transformed into an application. We want to share this tool that can be deployed on your own infrastructure or as a paid SaaS environment with the possibility to connect the swarm installations you are working on and set up a set of shared infrastructures and tools to work with and automate deployment of projects on the swarm infrastructure. ",
       "sub_title": "",
-      "timerange": "",
+      "timerange": "2017-07-12 10:30:00, 2017-07-12 13:30:00",
       "sub_community": "",
       "duration": 180,
       "twitters": "@ingmmo",
@@ -2573,7 +2573,7 @@
       ],
       "type": "Poster session (180 mins)",
       "status": "accepted",
-      "track_title": "",
+      "track_title": "Poster Session 2",
       "tags": [
         "Django Track",
         "Git",
@@ -2664,7 +2664,7 @@
     "1157": {
       "abstract_short": "Many problems in statistics, finance, biology, pharmacology, physics, mathematics,\r\neconomics, and chemistry involve the determination of the global minimum of\r\nmultidimensional functions. Python modules from SciPy and PyPI for the\r\nimplementation of different stochastic methods (i.e.: pyEvolve, SciPy optimize) have\r\nbeen developed and successfully used in the Python scientific community.",
       "sub_title": "",
-      "timerange": "",
+      "timerange": "2017-07-11 10:30:00, 2017-07-11 13:30:00",
       "sub_community": "",
       "duration": 180,
       "twitters": "@",
@@ -2676,7 +2676,7 @@
       ],
       "type": "Poster session (180 mins)",
       "status": "accepted",
-      "track_title": "",
+      "track_title": "Poster Session 1",
       "tags": [
         "Science",
         "Track"
@@ -2743,7 +2743,7 @@
     "1104": {
       "abstract_short": "MicroPython is a lean and efficient implementation of the Python 3 programming language that includes a small subset of the Python standard library and is optimised to run on microcontrollers and in constrained environments.\r\nMicroPython is a full Python compiler and runtime that runs on the bare-metal. You get an interactive prompt (the REPL) to execute commands immediately, along with the ability to run and import scripts from the built-in filesystem.",
       "sub_title": "",
-      "timerange": "",
+      "timerange": "2017-07-10 14:00:00, 2017-07-10 17:00:00",
       "sub_community": "",
       "duration": 180,
       "twitters": "@",
@@ -2755,7 +2755,7 @@
       ],
       "type": "Poster session (180 mins)",
       "status": "accepted",
-      "track_title": "",
+      "track_title": "Poster Session 2",
       "tags": [
         "MicroPython",
         "Open-Source",
@@ -2911,7 +2911,7 @@
     "1046": {
       "abstract_short": "Authentication is always a mess. Django offers nice tools, but they don't speak REST. Using a set of standard libraries and a few simple endpoints, comes modal-auth, a stand-alone authentication framework for integration with pure js front-ends that relies on JWT and a simple API to enable easy integration with other parties. The tool is delivered as a django project as well as a Docker Image.",
       "sub_title": "",
-      "timerange": "",
+      "timerange": "2017-07-12 10:30:00, 2017-07-12 13:30:00",
       "sub_community": "",
       "duration": 180,
       "twitters": "@ingmmo",
@@ -2923,7 +2923,7 @@
       ],
       "type": "Poster session (180 mins)",
       "status": "accepted",
-      "track_title": "",
+      "track_title": "Poster Session 1",
       "tags": [
         "Authentication",
         "Mobile",
@@ -2994,7 +2994,7 @@
     "1146": {
       "abstract_short": "PyDMFT is a scientific library written in Python. It has been developed as a simple toolset for research on interacting electronic systems. It keeps data abstractions to the minimum thus making it easily compatible with NumPy arrays, easy to serialize and to store data. Beyond the scope of the library, PyDMFT offers a large collection of python scripts capable of reproducing results presented on peer reviewed journal articles. \r\n",
       "sub_title": "",
-      "timerange": "",
+      "timerange": "2017-07-11 10:30:00, 2017-07-11 13:30:00",
       "sub_community": "",
       "duration": 180,
       "twitters": "@najeraoscar1",
@@ -3006,7 +3006,7 @@
       ],
       "type": "Poster session (180 mins)",
       "status": "accepted",
-      "track_title": "",
+      "track_title": "Poster Session 2",
       "tags": [
         "Use Case",
         "Science Track",
@@ -3083,7 +3083,7 @@
     "847": {
       "abstract_short": "Poster about open source projects Python that are being developed at CERN, for example: [PyROOT ][1], [Invenio][2], [Indico][3] and more.\r\n\r\n  [1]: https://root.cern.ch/pyroot\r\n  [2]: http://invenio-software.org/\r\n  [3]: http://indico-software.org\r\n",
       "sub_title": "",
-      "timerange": "",
+      "timerange": "2017-07-11 14:00:00, 2017-07-11 17:00:00",
       "sub_community": "",
       "duration": 180,
       "twitters": "@SebaWitowski",
@@ -3095,7 +3095,7 @@
       ],
       "type": "Poster session (180 mins)",
       "status": "accepted",
-      "track_title": "",
+      "track_title": "Poster Session 1",
       "tags": [
         "Science",
         "General",
@@ -3255,7 +3255,7 @@
     "1045": {
       "abstract_short": "Semantic relatedness, or similarity between documents plays an important role in many\r\ntextual applications. Text understanding starts with the challenge of finding machine-understandable representation that captures the semantics of texts.\r\nWe explore and benchmark this issue of document similarity by experimenting with various existing language models, examining their performance in the task of computing document similarity by ranking different News Summary Bots.",
       "sub_title": "Using Semantic Models to outrank Frequency and Topic Models in the task of Text Summarization.",
-      "timerange": "",
+      "timerange": "2017-07-13 10:30:00, 2017-07-13 13:30:00",
       "sub_community": "pydata",
       "duration": 180,
       "twitters": "@karan_saxena",
@@ -3267,7 +3267,7 @@
       ],
       "type": "Poster session (180 mins)",
       "status": "accepted",
-      "track_title": "",
+      "track_title": "Poster Session 1",
       "tags": [
         "Natural Language Processing",
         "Big Data",
@@ -3346,7 +3346,7 @@
     "843": {
       "abstract_short": "Solar optimization investment project programmed in Python and solved by the CPLEX and Gurobi solvers. The Spyder in Anaconda was used as the Python IDE to implement the model, which has many tuples and conditionals and a huge amount of data that were manipulated. The output displays were also programmed, which were very convenient for reading the model solutions. We were able to elaborate a deep analysis using optimization in Python without any cost in terms of software licenses.",
       "sub_title": "",
-      "timerange": "",
+      "timerange": "2017-07-12 14:00:00, 2017-07-12 17:00:00",
       "sub_community": "",
       "duration": 180,
       "twitters": "@",
@@ -3358,7 +3358,7 @@
       ],
       "type": "Poster session (180 mins)",
       "status": "accepted",
-      "track_title": "",
+      "track_title": "Poster Session 2",
       "tags": [
         "Algorithms",
         "Educational Track",
@@ -3367,7 +3367,7 @@
         "Analytics"
       ],
       "abstract_long": [
-        "This study presents a solar optimization investment project programmed in Python and solved by the CPLEX and Gurobi. A public university in Brazil would like to analyze the possibility to build a solar farm to generate electricity to its facilities. A team of two students and an assistant professor of operations research, all without any background on Python programming, chose this language to carry out the project due to its simplicity, the fact of being open-source and the possibility to use powerful optimization solvers free of charge for academics. We have used Spyder as the Python IDE in Anaconda to implement the model composed of 11 families of constraints and 7 families of variables. One model feature is the use of many tuples and conditionals and a huge amount of data that were manipulated, since the planning horizon was 25 years, with the options of 10 different solar panels and 6 inverter technologies to choose. The output displays were also programmed, which were very convenient for reading the model solutions. From this project, we were able to deliver to the university a deep analysis using optimization tools without any cost in terms of software licenses, like it could have happened if we had chosen GAMS or AMPL. The goal of the presentation is to discuss the model implemented in Python, with several codes of data manipulation. To understand the study is required a basic background on mathematical modeling in Python and optimization."
+        "This study presents a solar optimization investment project programmed in Python and solved by the CPLEX and Gurobi. A public university in Brazil would like to analyze the possibility to build a solar farm to generate electricity to its facilities. A team of two students and an assistant professor of operations research, all without any background on Python programming, chose this language to carry out the project due to its simplicity, the fact of being open-source and the possibility to use powerful optimization solvers free of charge for academics. We have used Spyder as the Python IDE in Anaconda to implement the model composed an objective function, 10 families of constraints and 6 families of variables. One model feature is the use of many tuples and conditionals and a huge amount of data that were manipulated, since the planning horizon was 25 years, with the options of 10 different solar panels and 6 inverter technologies to choose. The output displays were also programmed, which were very convenient for reading the model solutions. From this project, we were able to deliver to the university a deep analysis using optimization tools without any cost in terms of software licenses, like it could have happened if we had chosen GAMS or AMPL. The goal of the presentation is to discuss the model implemented in Python, with several codes of data manipulation. To understand the study is required a basic background on mathematical modeling in Python and optimization."
       ],
       "user_votes": [
         {
@@ -3437,7 +3437,7 @@
     "891": {
       "abstract_short": "My poster will guide you through the process of building your first simple Twitter bot by helping you understand Twitter's APIs and \"botiquette\", available Python libraries and possible hosting solutions, as well as suggesting ideas for potential own bots and introducing you to existing Twitter bots for inspiration.",
       "sub_title": "",
-      "timerange": "",
+      "timerange": "2017-07-11 14:00:00, 2017-07-11 17:00:00",
       "sub_community": "",
       "duration": 180,
       "twitters": "@kkvie",
@@ -3449,7 +3449,7 @@
       ],
       "type": "Poster session (180 mins)",
       "status": "accepted",
-      "track_title": "",
+      "track_title": "Poster Session 2",
       "tags": [
         "DIY",
         "Beginners",
@@ -4563,9 +4563,9 @@
       "timerange": "2017-07-10 14:00:00, 2017-07-10 15:00:00",
       "sub_community": "",
       "duration": 60,
-      "twitters": "@ioggstream, @suuuper87",
+      "twitters": "@ioggstream, @",
       "id": 1016,
-      "speakers": "Roberto Polli, Giovanni Mancuso",
+      "speakers": "Roberto Polli, Danilo Abbasciano",
       "title": "TCP / IP Animated",
       "have_tickets": [
         true,
@@ -4679,12 +4679,12 @@
       "tag_categories": [
         "DevOps"
       ],
-      "emails": "robipolli@gmail.com, giovanni.mancuso@par-tec.it",
+      "emails": "robipolli@gmail.com, danilo.abbasciano@par-tec.it",
       "language": "English",
       "level": "Beginner",
       "url": "https://ep2017.europython.eu//conference/talks/tcp-ip-animated",
       "admin_type": "",
-      "companies": "Par-Tec Spa"
+      "companies": ", Par-Tec Spa"
     }
   },
   "talk": {
@@ -4699,7 +4699,7 @@
       "speakers": "Frankie Dintino",
       "title": "2 + 2 = 5: Monkey-patching CPython with ctypes to conform to Party doctrine",
       "have_tickets": [
-        false
+        true
       ],
       "type": "Talk (45 mins)",
       "status": "accepted",
@@ -5047,7 +5047,7 @@
       "speakers": "Andrey Syschikov",
       "title": "A journey into Git internals with Python",
       "have_tickets": [
-        false
+        true
       ],
       "type": "Talk (45 mins)",
       "status": "accepted",
@@ -12089,8 +12089,8 @@
       "speakers": "Henrik Hain, Stephan Gramlich",
       "title": "From an old-school data managing company to data analytics with Python",
       "have_tickets": [
-        false,
-        false
+        true,
+        true
       ],
       "type": "Talk (30 mins)",
       "status": "accepted",
@@ -14819,7 +14819,7 @@
       "speakers": "Daniele Rapati",
       "title": "I don't like Mondays-what I learned about data engineering after 2 years on call",
       "have_tickets": [
-        false
+        true
       ],
       "type": "Talk (30 mins)",
       "status": "accepted",
@@ -16591,225 +16591,6 @@
       "url": "https://ep2017.europython.eu//conference/talks/large-scale-data-extraction-structuring-and-matching-using-python-and-spark",
       "admin_type": "",
       "companies": "Elsevier B.V."
-    },
-    "936": {
-      "abstract_short": "Functional Programming (FP) seems all the rage, with many folks claiming it makes their code easier to read, test and debug. But what is FP? What's so great about it? What does functional code look like? Can I even write it in Python? \r\nLet's find out by exploring the basics of FP, which boil down to one simple idea: avoid side effects by using pure functions. Let's gather the motivation, concepts, and Python features we need to start writing functional code, and learning to think functionally.",
-      "sub_title": "",
-      "timerange": "2017-07-14 15:45:00, 2017-07-14 16:15:00",
-      "sub_community": "",
-      "duration": 30,
-      "twitters": "@AnjanaVakil",
-      "id": 936,
-      "speakers": "Anjana Vakil",
-      "title": "Learning Functional Programming in Python",
-      "have_tickets": [
-        true
-      ],
-      "type": "Talk (30 mins)",
-      "status": "accepted",
-      "track_title": "Anfiteatro 2",
-      "tags": [
-        "Software Design",
-        "Programming",
-        "Functional Programming"
-      ],
-      "abstract_long": [
-        "As a Python programmer, I write mostly object-oriented code. But I kept hearing about this trendy topic of \u201cfunctional programming\" from a lot of excited coders raving about how it helps them write elegant, modular code that's easier to test, debug, and reason about. So I started wondering:\r\n\r\n - What is functional programming, and why are people so excited about it?\r\n - What does functional code look like? How is it different from imperative or OO code?\r\n - What tools do I need to write functional programs?\r\n - Can I even do it in Python? (SPOILER ALERT: yes!)\r\n\r\nIf you've been asking yourself questions like these, please join me in this friendly, practical exploration of functional programming fundamentals. \r\n\r\nWe'll see that in essence, FP boils down to one basic idea: avoid side effects by using pure functions. Via simple Python examples, we\u2019ll discover what that means, why it's so helpful, and how this single core concept underlies the basic principles of the paradigm, such as:\r\n\r\n - write simple, pure, \u201cinput in-output out\u201d functions through which data flows\r\n - avoid mutating data (changing things in-place)\r\n - use higher-order functions like map & filter instead of iterative loops\r\n\r\nAnd the end of our journey, you\u2019ll be motivated to open your mind to this elegant and fascinating paradigm, and armed with all the basic concepts and Python features you need to be able to start writing functional code - and more importantly, learning to think in a functional way."
-      ],
-      "user_votes": [
-        {
-          "3531": 7.00
-        },
-        {
-          "2032": 7.00
-        },
-        {
-          "74": 7.00
-        },
-        {
-          "468": 3.00
-        },
-        {
-          "3310": 3.00
-        },
-        {
-          "251": 10.00
-        },
-        {
-          "2209": 3.00
-        },
-        {
-          "3311": 10.00
-        },
-        {
-          "3420": 7.00
-        },
-        {
-          "3308": 10.00
-        },
-        {
-          "2223": 7.00
-        },
-        {
-          "3031": 7.00
-        },
-        {
-          "1481": 3.00
-        },
-        {
-          "685": 7.00
-        },
-        {
-          "3547": 7.00
-        },
-        {
-          "564": 3.00
-        },
-        {
-          "2227": 10.00
-        },
-        {
-          "2794": 3.00
-        },
-        {
-          "3764": 10.00
-        },
-        {
-          "3292": 7.00
-        },
-        {
-          "1476": 7.00
-        },
-        {
-          "3573": 7.00
-        },
-        {
-          "1966": 7.00
-        },
-        {
-          "1884": 3.00
-        },
-        {
-          "2813": 3.00
-        },
-        {
-          "2479": 3.00
-        },
-        {
-          "3350": 7.00
-        },
-        {
-          "1132": 7.00
-        },
-        {
-          "2259": 7.00
-        },
-        {
-          "2057": 7.00
-        },
-        {
-          "3398": 3.00
-        },
-        {
-          "1035": 10.00
-        },
-        {
-          "2365": 7.00
-        },
-        {
-          "3801": 7.00
-        },
-        {
-          "3779": 3.00
-        },
-        {
-          "3486": 3.00
-        },
-        {
-          "2889": 7.00
-        },
-        {
-          "3695": 7.00
-        },
-        {
-          "650": 10.00
-        },
-        {
-          "3535": 7.00
-        },
-        {
-          "300": 3.00
-        },
-        {
-          "3318": 7.00
-        },
-        {
-          "3684": 10.00
-        },
-        {
-          "646": 10.00
-        },
-        {
-          "1877": 10.00
-        },
-        {
-          "3278": 3.00
-        },
-        {
-          "3299": 7.00
-        },
-        {
-          "530": 2.00
-        },
-        {
-          "2660": 6.00
-        },
-        {
-          "380": 2.00
-        },
-        {
-          "1878": 10.00
-        },
-        {
-          "1041": 2.00
-        },
-        {
-          "562": 2.00
-        },
-        {
-          "171": 6.00
-        },
-        {
-          "2237": 9.00
-        },
-        {
-          "1490": 7.00
-        },
-        {
-          "3743": 2.00
-        },
-        {
-          "3264": 6.00
-        },
-        {
-          "3477": 10.00
-        },
-        {
-          "3327": 2.00
-        }
-      ],
-      "abstract_extra": "JavaScript-focused version of this talk: https://www.youtube.com/watch?v=e-5obm1G_FY \r\n(Slides: https://speakerdeck.com/vakila/learning-functional-programming-with-javascript)\r\n\r\nOther speaking experience: http://vakila.github.io/talks/\r\n\r\n",
-      "tag_categories": [
-        "Programming",
-        "Programming",
-        "Programming"
-      ],
-      "emails": "anjanavakil@gmail.com",
-      "language": "English",
-      "level": "Beginner",
-      "url": "https://ep2017.europython.eu//conference/talks/learning-functional-programming-in-python",
-      "admin_type": "",
-      "companies": "\u00dcberResearch"
     },
     "827": {
       "abstract_short": "In this talk I will share some hard-learned knowledge gained in several\r\nyears of parallel programming. Covered topics will include\r\nperformance, ways to measure the performance, memory occupation, data\r\ntransfer and ways to reduce the data transfer, how to debug parallel\r\nprograms and useful libraries. I will give some practical examples,\r\nboth in enterprise programming (importing CSV files in a database) and\r\nin scientific programming (numerical simulations).\r\n",
@@ -19123,7 +18904,7 @@
       "speakers": "Rishabh Daal , IMD, Maths & Computing, IIT (BHU), Varanasi (INDIA)",
       "title": "Optimization using Flow Networks in NetworkX.",
       "have_tickets": [
-        false
+        true
       ],
       "type": "Talk (30 mins)",
       "status": "accepted",
@@ -19384,104 +19165,6 @@
       "admin_type": "",
       "companies": "Hotjar Ltd"
     },
-    "873": {
-      "abstract_short": "In this talk I will focus on why it is important to have conferences for learners (especially in developing countries), compare how different it is to organizing a conference for adults, do\u2019s and don\u2019ts of organizing such a conference, how to organize one and possible outcomes of such conferences.",
-      "sub_title": "",
-      "timerange": "2017-07-11 16:20:00, 2017-07-11 16:50:00",
-      "sub_community": "",
-      "duration": 30,
-      "twitters": "@JessicaUpani",
-      "id": 873,
-      "speakers": "Jessica Upani",
-      "title": "Organizing conferences for learners: How we made it work in Namibia",
-      "have_tickets": [
-        false
-      ],
-      "type": "Talk (30 mins)",
-      "status": "accepted",
-      "track_title": "PythonAnywhere Room",
-      "tags": [
-        "Education",
-        "Conferences and Meet-Ups",
-        "Python general",
-        "Programming"
-      ],
-      "abstract_long": [
-        "Have you ever wondered about the following questions?: Is it important to have conferences for children or school learners too? How do I go about organizing one? What are the do\u2019s and don\u2019ts of organizing a conference for children or school learners? How do I as a software developer engage with school teachers? What could the begin of such conferences result into? If your answer was yes to at least one of these questions, then stay tuned to hear it all from someone who has experienced all that first hand in Namibia, Africa."
-      ],
-      "user_votes": [
-        {
-          "3637": 7.00
-        },
-        {
-          "251": 7.00
-        },
-        {
-          "2169": 7.00
-        },
-        {
-          "2223": 3.00
-        },
-        {
-          "3409": 3.00
-        },
-        {
-          "316": 10.00
-        },
-        {
-          "651": 10.00
-        },
-        {
-          "300": 10.00
-        },
-        {
-          "3566": 10.00
-        },
-        {
-          "3299": 3.00
-        },
-        {
-          "3628": -1.00
-        },
-        {
-          "3703": -1.00
-        },
-        {
-          "1878": 7.00
-        },
-        {
-          "562": -1.00
-        },
-        {
-          "3345": 9.00
-        },
-        {
-          "171": 2.00
-        },
-        {
-          "3264": -1.00
-        },
-        {
-          "3327": -1.00
-        },
-        {
-          "468": -1.00
-        }
-      ],
-      "abstract_extra": "",
-      "tag_categories": [
-        "Educational",
-        "Community",
-        "Python",
-        "Programming"
-      ],
-      "emails": "nabbygirl@gmail.com",
-      "language": "English",
-      "level": "Beginner",
-      "url": "https://ep2017.europython.eu//conference/talks/organizing-conferences-for-learners-how-we-made-it-work-in-namibia",
-      "admin_type": "",
-      "companies": ""
-    },
     "1158": {
       "abstract_short": "Starting with a brief description of how built-in mechanisms in our brains lead to cognitive bias, the talk will address how a variety of cognitive biases manifest in the Python and tech communities, and how to overcome them.",
       "sub_title": "",
@@ -19529,7 +19212,7 @@
       "speakers": "Ben Nuttall",
       "title": "Physical computing with Raspberry Pi and Python",
       "have_tickets": [
-        false
+        true
       ],
       "type": "Talk (45 mins)",
       "status": "accepted",
@@ -20859,7 +20542,7 @@
       "speakers": "Dmitry Trofimov",
       "title": "PyCharm tips and tricks",
       "have_tickets": [
-        true
+        false
       ],
       "type": "Talk (60 mins)",
       "status": "accepted",
@@ -21032,7 +20715,7 @@
         "Educational",
         "Python"
       ],
-      "emails": "trofimov.dmitry@gmail.com",
+      "emails": "dmitry.trofimov@jetbrains.com",
       "language": "English",
       "level": "Beginner",
       "url": "https://ep2017.europython.eu//conference/talks/pycharm-tips-and-tricks",
@@ -23135,7 +22818,7 @@
         "Web"
       ],
       "abstract_long": [
-        "Passwords have formed the cornerstone of I.T. system authentication for decades, but recent high-profile breaches have underscored the risks of password-based authentication systems.\r\n\r\nThe good news is that we can replace passwords with other factors:\r\n\r\n* email-based authentication\r\n* one-time passwords (TOTP/HOTP)\r\n* hardware keys (Yubikeys, U2F, etc.)\r\n\r\nThese factors can be used independently or in conjunction with one another to provide vastly greater security than the traditional username-plus-password combination.\r\n\r\nAttendees of this talk will walk away with a detailed understanding of:\r\n\r\n* why the traditional username-plus-password combination is failing us\r\n* why email-based authentication provides no less security (hint: password resets occur via email)\r\n* overview of one-time passwords and difference between TOTP and HOTP\r\n* how to store/retrieve OTP codes, including password manager support\r\n* state of hardware keys in general, and FIDO U2F standard in particular\r\n\r\nAttendees will learn how to implement these multi-factor authentication methods in their own Python-based web applications, beginning with a look at two email-based authentication systems\u2026\r\n\r\n* http://django-nopassword.readthedocs.io\r\n* https://github.com/aaronn/django-rest-framework-passwordless\r\n\r\n\u2026 a robust solution for one-time passwords in Django projects \u2026 \r\n\r\n* https://bitbucket.org/psagers/django-otp\r\n\r\n\u2026 and an implementation for hardware keys: \r\n\r\n* https://github.com/gavinwahl/django-u2f"
+        "Passwords have formed the cornerstone of I.T. system authentication for decades, but recent high-profile breaches have underscored the risks of password-based authentication systems.\r\n\r\nThe good news is that we can replace passwords with other factors:\r\n\r\n* email-based authentication\r\n* one-time passwords (TOTP/HOTP)\r\n* hardware keys (Yubikeys, U2F, etc.)\r\n\r\nThese factors can be used independently or in conjunction with one another to provide vastly greater security than the traditional username-plus-password combination.\r\n\r\nAttendees of this talk will walk away with a detailed understanding of:\r\n\r\n* why the traditional username-plus-password combination is failing us\r\n* why email-based authentication provides no less security (hint: password resets occur via email)\r\n* overview of one-time passwords and difference between TOTP and HOTP\r\n* how to store/retrieve OTP codes, including password manager support\r\n* state of hardware keys in general, and FIDO U2F standard in particular\r\n\r\nAttendees will learn how to implement these multi-factor authentication methods in their own Python-based web applications, with primary focus on methods for integrating email-based authentication, one-time passwords (TOTP), and U2F hardware keys into Django-based projects."
       ],
       "user_votes": [
         {
@@ -23310,78 +22993,6 @@
       "admin_type": "",
       "companies": "Monitorial.com"
     },
-    "1152": {
-      "abstract_short": "Reserved for sponsored talk",
-      "sub_title": "",
-      "timerange": "",
-      "sub_community": "",
-      "duration": 30,
-      "twitters": "@europython",
-      "id": 1152,
-      "speakers": "Tobey Announced",
-      "title": "Reserved for Sponsored Talk (1)",
-      "have_tickets": [
-        false
-      ],
-      "type": "Talk (30 mins)",
-      "status": "accepted",
-      "track_title": "",
-      "tags": [
-        "General",
-        "python"
-      ],
-      "abstract_long": [
-        "Reserved for sponsored talk"
-      ],
-      "user_votes": [],
-      "abstract_extra": "none",
-      "tag_categories": [
-        "z-deprecateded",
-        "Python"
-      ],
-      "emails": "alex@hendorf.com",
-      "language": "English",
-      "level": "Beginner",
-      "url": "https://ep2017.europython.eu//conference/talks/reserved-for-sponsored-talk",
-      "admin_type": "",
-      "companies": "EuroPython"
-    },
-    "1153": {
-      "abstract_short": "Reserved for sponsored talk",
-      "sub_title": "",
-      "timerange": "",
-      "sub_community": "",
-      "duration": 30,
-      "twitters": "@europython",
-      "id": 1153,
-      "speakers": "Tobey Announced",
-      "title": "Reserved for Sponsored Talk (2)",
-      "have_tickets": [
-        false
-      ],
-      "type": "Talk (30 mins)",
-      "status": "accepted",
-      "track_title": "",
-      "tags": [
-        "General",
-        "python"
-      ],
-      "abstract_long": [
-        "Reserved for sponsored talk"
-      ],
-      "user_votes": [],
-      "abstract_extra": "none",
-      "tag_categories": [
-        "z-deprecateded",
-        "Python"
-      ],
-      "emails": "alex@hendorf.com",
-      "language": "English",
-      "level": "Beginner",
-      "url": "https://ep2017.europython.eu//conference/talks/reserved-for-sponsored-talk-1",
-      "admin_type": "",
-      "companies": "EuroPython"
-    },
     "903": {
       "abstract_short": "The Python universe is overflowing with web frameworks, from full featured batteries included frameworks like Django to micro frameworks like Bottle or Flask. They each have their own specific features but in the end they are all very similar in their core functionality of processing requests and generating responses.\r\n\r\nIn this talk I will discuss why I felt the need to create yet another framework, a pico framework, that specifically focuses on the task of building HTTP based APIs for the web.",
       "sub_title": "",
@@ -23552,7 +23163,7 @@
       "speakers": "Michal Wysokinski",
       "title": "Running Python code in parallel and asynchronously",
       "have_tickets": [
-        false
+        true
       ],
       "type": "Talk (45 mins)",
       "status": "accepted",
@@ -28462,6 +28073,168 @@
       "url": "https://ep2017.europython.eu//conference/talks/writing-code-pfft-evolve-it-instead",
       "admin_type": "",
       "companies": "Cambridge Medical Robotics"
+    },
+    "809": {
+      "abstract_short": "There are as many different ways to package an application as there are programming or scripting languages. No one tool or library is in itself better than another; however when security comes into the picture, there is definitely a pattern between ease of installation and how secure the delivered application is. As more work is put into packaging the application, more measures can be taken in order to ensure its integrity and prevent security issues.",
+      "sub_title": "Different ways to deliver an application, different levels of security",
+      "timerange": "2017-07-14 15:45:00, 2017-07-14 16:15:00",
+      "sub_community": "",
+      "duration": 30,
+      "twitters": "@godlike64",
+      "id": 809,
+      "speakers": "Juan Manuel Santos",
+      "title": "You need more security in your application packaging",
+      "have_tickets": [
+        true
+      ],
+      "type": "Talk (30 mins)",
+      "status": "accepted",
+      "track_title": "Anfiteatro 2",
+      "tags": [
+        "Security",
+        "Developing with Python",
+        "Packaging"
+      ],
+      "abstract_long": [
+        "There are as many different ways to package an application as there are programming or scripting languages. No one tool or library is in itself better than another; however when security comes into the picture, there is definitely a pattern between ease of installation and how secure the delivered application is. As more work is put into packaging the application, more measures can be taken in order to ensure its integrity and prevent security issues.\r\n\r\nThis talk will cover:\r\n- The roles involved in the lifecycle of an application, from the start of the development process until it reaches the end user and it is actually used.\r\n- The inherent problems in this subject, regarding installation and security, as well as how they are related.\r\n- The different ways of packaging an application in order to deliver it to an end user, focused on a Python perspective.\r\n\r\nAfter the talk, attendees will have a better grasp on which is the best way for them to package and deliver their application according to their environment and target audience. They will also learn about the upgrade path to switch from one delivery method to another, should they need or want to.\r\n\r\nFor this talk, it is desired that attendees have some general systems knowledge. Even though the talk will be focused on Python applications, some knowledge of information security is desired."
+      ],
+      "user_votes": [
+        {
+          "1897": 3.00
+        },
+        {
+          "1973": 3.00
+        },
+        {
+          "74": 3.00
+        },
+        {
+          "3543": 7.00
+        },
+        {
+          "251": 3.00
+        },
+        {
+          "394": 3.00
+        },
+        {
+          "2223": 3.00
+        },
+        {
+          "3370": 3.00
+        },
+        {
+          "3637": 3.00
+        },
+        {
+          "3592": 3.00
+        },
+        {
+          "2227": 7.00
+        },
+        {
+          "1476": 7.00
+        },
+        {
+          "2488": 3.00
+        },
+        {
+          "782": 7.00
+        },
+        {
+          "1884": 10.00
+        },
+        {
+          "3554": 7.00
+        },
+        {
+          "2813": 10.00
+        },
+        {
+          "316": 10.00
+        },
+        {
+          "2585": 3.00
+        },
+        {
+          "300": 3.00
+        },
+        {
+          "71": 10.00
+        },
+        {
+          "3084": 3.00
+        },
+        {
+          "1956": 10.00
+        },
+        {
+          "3398": 7.00
+        },
+        {
+          "651": 10.00
+        },
+        {
+          "2889": 10.00
+        },
+        {
+          "2493": 7.00
+        },
+        {
+          "93": 3.00
+        },
+        {
+          "2985": 7.00
+        },
+        {
+          "3603": 2.00
+        },
+        {
+          "3407": 6.00
+        },
+        {
+          "380": 2.00
+        },
+        {
+          "1878": 7.00
+        },
+        {
+          "562": 2.00
+        },
+        {
+          "3418": 9.00
+        },
+        {
+          "3777": 2.00
+        },
+        {
+          "3264": 9.00
+        },
+        {
+          "3327": -1.00
+        },
+        {
+          "3770": 6.00
+        },
+        {
+          "468": 2.00
+        },
+        {
+          "3368": 7.00
+        }
+      ],
+      "abstract_extra": "I gave a talk in EuroPython 2015 (https://archive.org/details/EuroPython_2015_SwVBt1n4) and last minute in EuroPython 2016 (https://archive.org/details/EuroPython_2016_cFaTU15Z) . I'm a regular speaker at my company. Not strictly related, but I'm also one of the organizers of nerdear.la, a geek conference/co-working event in Argentina (https://nerdear.la). My Github is https://github.com/godlike64.\r\n",
+      "tag_categories": [
+        "Security",
+        ">>> Suggested Track",
+        "Python"
+      ],
+      "emails": "godlike64@gmail.com",
+      "language": "English",
+      "level": "Intermediate",
+      "url": "https://ep2017.europython.eu//conference/talks/you-need-more-security-in-your-application-packaging",
+      "admin_type": "",
+      "companies": "Red Hat"
     },
     "1114": {
       "abstract_short": "Local python developers in Zimbabwe have decided to empower women to program in python.To do that they launched Zimbopy which is on the ground initiative by local python programmers to empower women in programming to cover up for the gender gap.Zimbopy works in community centres,Universities and high schools.It provides tools and resources to facilitate the learning of python programming language.Zimbopy also connects women to experienced python developers through mentorship program.",

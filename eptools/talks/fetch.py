@@ -10,7 +10,7 @@ from ..server_utils import epcon_fetch_file
 
 def _call_for_talks(out_filepath,
                     status='accepted',
-                    conf='ep2016',
+                    conf='ep2017',
                     host='europython.io',
                     with_votes=False):
     """ Create json file with talks data. `status` choices: ['accepted', 'proposed']
@@ -35,7 +35,7 @@ def load_events(talks_filepath):
 
 def fetch_talks_json(out_filepath='',
                      status='proposed',
-                     conf='ep2016',
+                     conf='ep2017',
                      host='europython.io',
                      with_votes=False):
     """ Return the talks in a json format. `status` choices: ['accepted', 'proposed']

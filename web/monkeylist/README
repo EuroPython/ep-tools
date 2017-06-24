@@ -12,7 +12,7 @@ Build Ticket Search App
     Usage:
 
     cd ..
-    ./manage.py build_ticket_search_app ep2016
+    ./manage.py build_ticket_search_app ep2017
     cd ep-ticket-search-app
     ./run.sh
 

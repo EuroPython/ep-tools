@@ -59,4 +59,5 @@ def epcon_fetch_p3db(ctx, p3db_dirpath=epcon_db_path, out_dir='.', user='root',
     """ Download the p3.db file from the epcon server."""
     cmd = 'scp {}@{}:{} {}'.format(user, host, op.join(p3db_dirpath, 'p3.db'),
                                    out_dir)
+    print(cmd)
     os.system(cmd)

@@ -75,7 +75,7 @@ class BadgeFactory(object):
         self.out_dir = out_dir
         self.tmp_dir = tmp_dir
 
-    def _badge_filepath(self, contact, role, outdir, with_email=True, prefix='badge_ep2016'):
+    def _badge_filepath(self, contact, role, outdir, with_email=True, prefix='badge_ep2017'):
         """ Return the filepath to the corresponding svg file of the contact in the `outdir`
         folder.
         '{prefix}_{role}_{id}_{name}_{surname}_{emails}.svg'
@@ -112,7 +112,7 @@ class BadgeFactory(object):
                                                emails=contact.email.replace    ('@', '.'),)
         return op.join(outdir, badge_filename)
 
-    def _simple_badge_path(self, contact, role, outdir, prefix='badge_ep2016'):
+    def _simple_badge_path(self, contact, role, outdir, prefix='badge_ep2017'):
         """ Return the filepath to the corresponding svg file of the contact in the `outdir`
         folder.
         '{prefix}_{role}_{id}.svg'

@@ -74,7 +74,7 @@ def read_contacts(txt_file):
     return [parse_contact(line, regex=contact_regex2) for line in read_lines(txt_file)]
 
 
-def fetch_files(conf='ep2016', host='europython.io', talk_status='accepted'):
+def fetch_files(conf='ep2017', host='europython.io', talk_status='accepted'):
     """
     Parameters
     ----------

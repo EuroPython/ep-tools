@@ -121,7 +121,7 @@ def finaid_receipt(cts, applicant_name, output_dir,
 
 
 @task
-def fetch_ticket_profiles(ctx, out_filepath, conf='ep2016', status='all',
+def fetch_ticket_profiles(ctx, out_filepath, conf='ep2017', status='all',
                           nondups=False, raise_=False, ticket_id=''):
     """ Create a json file with the all the tickets of the conference.
         make_option('--status',
@@ -142,7 +142,7 @@ def fetch_ticket_profiles(ctx, out_filepath, conf='ep2016', status='all',
 @task
 def fetch_talks_json(ctx, out_filepath='',
                      status='proposed',
-                     conf='ep2016',
+                     conf='ep2017',
                      host='europython.io',
                      with_votes=False):
     """ Return the talks in a json format. `status` choices: ['accepted', 'proposed']

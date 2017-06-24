@@ -2,7 +2,7 @@ import os.path as op
 
 from ...people.contact import ATTENDEE_TYPE as roles
 
-conference = 'ep2016'
+conference = 'ep2017'
 
 # declaring folder paths
 module_dir          = op.join(op.abspath(op.dirname(__file__)), conference)

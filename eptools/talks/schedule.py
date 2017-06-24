@@ -8,7 +8,7 @@ from ..server_utils import epcon_exe_manage
 
 
 @task
-def check_schedule(ctx, what='all_scheduled', conf='ep2016'):
+def check_schedule(ctx, what='all_scheduled', conf='ep2017'):
     """ Check if all accepted talks are scheduled and if all scheduled talks
     are accepted.
     Choices for 'what': ('all_scheduled', 'all_accepted').

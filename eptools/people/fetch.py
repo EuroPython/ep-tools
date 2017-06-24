@@ -5,7 +5,7 @@ Functions to get the data of conference participants.
 from ..server_utils import epcon_fetch_file
 
 
-def fetch_participant_csv(out_filepath, conf='ep2016'):
+def fetch_participant_csv(out_filepath, conf='ep2017'):
     """ Create csv file with participants with an assigned ticket. """
     return epcon_fetch_file(cmd='get_attendees_csv {} {}'.format(conf, 'complete'),
                             fpath=out_filepath)
@@ -17,13 +17,13 @@ def fetch_users(out_filepath):
                             fpath=out_filepath)
 
 
-def fetch_ticketless_csv(out_filepath, conf='ep2016'):
+def fetch_ticketless_csv(out_filepath, conf='ep2017'):
     """ Create csv file with participants without ticket.  """
     return epcon_fetch_file(cmd='get_attendees_csv {} {}'.format(conf, 'incomplete'),
                             fpath=out_filepath)
 
 
-def fetch_ticket_profiles(out_filepath, conf='ep2016', status='all',
+def fetch_ticket_profiles(out_filepath, conf='ep2017', status='all',
                           nondups=False, raise_=False, ticket_id=''):
     """ Create a json file with the all the tickets of the conference.
         make_option('--status',

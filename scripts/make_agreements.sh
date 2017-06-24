@@ -2,7 +2,7 @@
 
 sponsors=('Hotjar')
 
-dst="$HOME/Google Drive/EP2016/Sponsors WG/Agreements"
+dst="$HOME/Google Drive/ep2017/Sponsors WG/Agreements"
 #dst="$HOME/Desktop"
 
 cd ..

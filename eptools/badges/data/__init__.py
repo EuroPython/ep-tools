@@ -86,10 +86,10 @@ maxlengths = {'name':    13,
               }
 
 # positions in the badges
-coordinates = {'qrcode'   : (320, 85),
-               'pypower'  : (190, 440),
-               'epsmember': (310, 465),
-               'volunteer': (250, 465),
+coordinates = {'qrcode'   : (275, 42),
+               'pypower'  : (160, 390),
+               'epsmember': (265, 420),
+               'volunteer': (205, 420),
                }
 
 

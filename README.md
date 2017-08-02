@@ -33,6 +33,6 @@ Each submodule has a bit of code to help with a topic within the conference
 organization.
 
 In the root folder of the project you can also find a `tasks.py` file. This
-is a series of command-line functions that must be called used `invoke`.
+is a series of command-line functions that must be called using `pyinvoke`.
 To use them you must `cd` into the `ep-tools` root folder and use
 the `inv` command.

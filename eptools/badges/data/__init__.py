@@ -78,16 +78,16 @@ badge_color = {roles.keynote:   '40c1ea',
                roles.attendee:  'f9b00f'}
 
 # max number of chars for each line type
-maxlengths = {'name':    13,
-              'surname': 18,
-              'tagline': 26,
-              'company': 26,
-              'title':   26,
+maxlengths = {'name':    16,
+              'surname': 20,
+              'tagline': 30,
+              'company': 30,
+              'title':   30,
               }
 
 # positions in the badges
 coordinates = {'qrcode'   : (275, 42),
-               'pypower'  : (145, 390),
+               'pypower'  : (160, 390),
                'epsmember': (265, 420),
                'volunteer': (205, 420),
                }

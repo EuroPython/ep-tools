@@ -5,20 +5,20 @@ Helper functions read the participants data and generate all the badges.
 import os
 import os.path as op
 
-from   docstamp.inkscape   import svg2pdf
-from   docstamp.pdf_utils  import merge_pdfs
-from   docstamp.xml_utils  import change_xml_encoding
+from docstamp.inkscape import svg2pdf
+from docstamp.pdf_utils import merge_pdfs
+from docstamp.xml_utils import change_xml_encoding
 
 from .data import (
-                   badge_files,
-                   qrcode_color,
-                   pythonpower_svg,
-                   )
-
-from .printer import (merge_badge_svgfiles,
-                      fill_text_contact_badge,
-                      create_qrcode,
-                      )
+    badge_files,
+    qrcode_color,
+    pythonpower_svg,
+)
+from .printer import (
+    merge_badge_svgfiles,
+    fill_text_contact_badge,
+    create_qrcode,
+)
 from ..people.contact import ATTENDEE_TYPE
 
 
@@ -155,7 +155,6 @@ class BadgeFactory(object):
                                          pypower_file,
                                          qrcode_file,
                                          other_roles)
-
         return badge_svg
 
     def generate_badge_svg(self, contact, roles, badge_filepath=None):

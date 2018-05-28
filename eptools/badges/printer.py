@@ -3,13 +3,13 @@
 Helper functions to add content and setup one badge file.
 """
 import svgutils.transform as sg
-from   docstamp.svg_utils import merge_svg_files, replace_chars_for_svg_code
-from   docstamp.pdf_utils import merge_pdfs
-from   docstamp.qrcode    import save_into_qrcode
-import docstamp.vcard     as dvcard
+from docstamp.svg_utils import merge_svg_files, replace_chars_for_svg_code
+from docstamp.pdf_utils import merge_pdfs
+from docstamp.qrcode  import save_into_qrcode
+import docstamp.vcard  as dvcard
 
-from   .utils import split_in_two, is_subsequence
-from   .data  import coordinates, scales, medal_files, maxlengths
+from .utils import split_in_two, is_subsequence
+from .data  import coordinates, scales, medal_files, maxlengths
 
 
 def create_qrcode(contact, color, file_path):

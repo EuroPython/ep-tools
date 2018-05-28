@@ -77,5 +77,6 @@ attendees*
 tmp*
 
 notebooks/*ipynb*
+notebooks/**/*.txt
 agreements/
 .ropeproject

@@ -15,15 +15,13 @@ Cheers !
 Install
 =======
 
-To install ep-tools:
+To install ep-tools you need `pipenv` installed, then:
 
     git clone https://github.com/EuroPython/ep-tools.git
 
     cd ep-tools
 
-    pip install -r requirements.txt
-
-    python setup.py install
+    make develop
 
 
 Usage

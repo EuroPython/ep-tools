@@ -84,3 +84,4 @@ tmp*
 notebooks/*ipynb*
 agreements/
 .venv/
+notebooks/**/*.txt

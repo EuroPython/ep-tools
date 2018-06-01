@@ -21,6 +21,7 @@ install: deps
 
 develop: dev_deps
 	pipenv run python setup.py develop
+	pipenv run pre-commit install
 
 deps:
 	pipenv install --skip-lock

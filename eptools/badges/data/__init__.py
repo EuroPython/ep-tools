@@ -1,35 +1,37 @@
-import os.path as op
+import os
 
 from ...people.contact import ATTENDEE_TYPE as roles
 
-conference = 'ep2017'
+conference = "ep2017"
 
 # declaring folder paths
-module_dir          = op.join(op.abspath(op.dirname(__file__)))
+module_dir = os.path.join(os.path.abspath(os.path.dirname(__file__)))
 
-templates_dir       = op.join(module_dir, conference, 'templates')
-badge_templates_dir = op.join(templates_dir, 'with_cut_marks')
-pythonpower_dir     = op.join(templates_dir, 'python_power')
-dailypasses_dir     = op.join(templates_dir, 'daily_passes')
+templates_dir = os.path.join(module_dir, conference, "templates")
+badge_templates_dir = os.path.join(templates_dir, "with_cut_marks")
+pythonpower_dir = os.path.join(templates_dir, "python_power")
+dailypasses_dir = os.path.join(templates_dir, "daily_passes")
 
 # badges types
-keynote_badge_file     = op.join(badge_templates_dir, 'keynote.svg'  )
-organizer_badge_file   = op.join(badge_templates_dir, 'organizer.svg')
-trainer_badge_file     = op.join(badge_templates_dir, 'trainer.svg'  )
-speaker_badge_file     = op.join(badge_templates_dir, 'speaker.svg'  )
-participant_badge_file = op.join(badge_templates_dir, 'participant.svg' )
+keynote_badge_file = os.path.join(badge_templates_dir, "keynote.svg")
+organizer_badge_file = os.path.join(badge_templates_dir, "organizer.svg")
+trainer_badge_file = os.path.join(badge_templates_dir, "trainer.svg")
+speaker_badge_file = os.path.join(badge_templates_dir, "speaker.svg")
+participant_badge_file = os.path.join(badge_templates_dir, "participant.svg")
 
 # additional medals to put on the badges
-medal_files = {'epsmember': op.join(templates_dir, 'epsmember.svg'),
-               'volunteer': op.join(templates_dir, 'volunteer.svg'),
-              }
+medal_files = {
+    "epsmember": os.path.join(templates_dir, "epsmember.svg"),
+    "volunteer": os.path.join(templates_dir, "volunteer.svg"),
+}
 
-badge_files = {roles.keynote:     keynote_badge_file,
-               roles.organizer:   organizer_badge_file,
-               roles.trainer:     trainer_badge_file,
-               roles.speaker:     speaker_badge_file,
-               roles.attendee:    participant_badge_file,
-               }
+badge_files = {
+    roles.keynote: keynote_badge_file,
+    roles.organizer: organizer_badge_file,
+    roles.trainer: trainer_badge_file,
+    roles.speaker: speaker_badge_file,
+    roles.attendee: participant_badge_file,
+}
 
 # ep2016
 # qrcode_color = {roles.keynote:   '87173B',
@@ -65,49 +67,49 @@ badge_files = {roles.keynote:     keynote_badge_file,
 #          }
 
 # ep2017
-qrcode_color = {roles.keynote:   '169ec9',
-                roles.organizer: '575756',
-                roles.trainer:   'ef7918',
-                roles.speaker:   '005a9b',
-                roles.attendee:  'cb8d05'}
+qrcode_color = {
+    roles.keynote: "169ec9",
+    roles.organizer: "575756",
+    roles.trainer: "ef7918",
+    roles.speaker: "005a9b",
+    roles.attendee: "cb8d05",
+}
 
-badge_color = {roles.keynote:   '40c1ea',
-               roles.organizer: '575756',
-               roles.trainer:   'ef7918',
-               roles.speaker:   '005a9b',
-               roles.attendee:  'f9b00f'}
+badge_color = {
+    roles.keynote: "40c1ea",
+    roles.organizer: "575756",
+    roles.trainer: "ef7918",
+    roles.speaker: "005a9b",
+    roles.attendee: "f9b00f",
+}
 
 # max number of chars for each line type
-maxlengths = {'name':    16,
-              'surname': 20,
-              'tagline': 30,
-              'company': 30,
-              'title':   30,
-              }
+maxlengths = {"name": 16, "surname": 20, "tagline": 30, "company": 30, "title": 30}
 
 # positions in the badges
-coordinates = {'qrcode'   : (275, 42),
-               'pypower'  : (160, 390),
-               'epsmember': (265, 420),
-               'volunteer': (205, 420),
-               }
+coordinates = {
+    "qrcode": (275, 42),
+    "pypower": (160, 390),
+    "epsmember": (265, 420),
+    "volunteer": (205, 420),
+}
 
 
-scales = {'qrcode': 1.4 * 60,
-          'pypower': 1,
-         }
+scales = {"qrcode": 1.4 * 60, "pypower": 1}
 
 # python power stars
-pythonpower_svg_0 = op.join(pythonpower_dir, '0.svg')
-pythonpower_svg_1 = op.join(pythonpower_dir, '1.svg')
-pythonpower_svg_2 = op.join(pythonpower_dir, '2.svg')
-pythonpower_svg_3 = op.join(pythonpower_dir, '3.svg')
-pythonpower_svg_4 = op.join(pythonpower_dir, '4.svg')
-pythonpower_svg_5 = op.join(pythonpower_dir, '5.svg')
+pythonpower_svg_0 = os.path.join(pythonpower_dir, "0.svg")
+pythonpower_svg_1 = os.path.join(pythonpower_dir, "1.svg")
+pythonpower_svg_2 = os.path.join(pythonpower_dir, "2.svg")
+pythonpower_svg_3 = os.path.join(pythonpower_dir, "3.svg")
+pythonpower_svg_4 = os.path.join(pythonpower_dir, "4.svg")
+pythonpower_svg_5 = os.path.join(pythonpower_dir, "5.svg")
 
-pythonpower_svg = {0: pythonpower_svg_0,
-                   1: pythonpower_svg_1,
-                   2: pythonpower_svg_2,
-                   3: pythonpower_svg_3,
-                   4: pythonpower_svg_4,
-                   5: pythonpower_svg_5,}
+pythonpower_svg = {
+    0: pythonpower_svg_0,
+    1: pythonpower_svg_1,
+    2: pythonpower_svg_2,
+    3: pythonpower_svg_3,
+    4: pythonpower_svg_4,
+    5: pythonpower_svg_5,
+}

@@ -9,7 +9,7 @@ def get_api_key_file():
     """ Return the api_key_file path imported from the config.py file"""
     try:
         from .config import api_key_file
-    except:
+    except ImportError:
         raise ImportError(
             "Could not find a path to the Google credentials file. "
             "You can set it up permanently in the config.py file."

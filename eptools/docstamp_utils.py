@@ -11,14 +11,14 @@ from docstamp.file_utils import get_extension, cleanup_docstamp_output
 from docstamp.template import XeLateXDocument
 
 
-def xelatex_document(doc_args, template_file, field_name, output_dir='.'):
+def xelatex_document(doc_args, template_file, field_name, output_dir="."):
     """ Use docstamp to use xelatex to produce a XeLateX document
     using `template_file`.
     The output file will be saved in output_dir and its path returned.
 
     Parameters
     ----------
-    df: dict
+    doc_args: dict or pandas.DataFrame
         A dictionary with the argument values to fill the `template_file`.
 
     template_file: str
@@ -43,17 +43,17 @@ def xelatex_document(doc_args, template_file, field_name, output_dir='.'):
     template_doc = XeLateXDocument(template_file)
 
     # output file name
-    field_val = input_data[field_name].replace(' ', '')
+    field_val = input_data[field_name].replace(" ", "")
 
     file_extension = get_extension(template_file)
-    basename = path.basename(template_file).replace(file_extension, '')
+    basename = path.basename(template_file).replace(file_extension, "")
 
-    file_name = basename + '_' + field_val
-    file_path = path.join(output_dir, file_name + '.pdf')
+    file_name = basename + "_" + field_val
+    file_path = path.join(output_dir, file_name + ".pdf")
 
     # make output folder
     if not os.path.exists(output_dir):
-        os.mkdir(outdir)
+        os.mkdir(output_dir)
 
     # fill the template
     template_doc.fill(doc_args)

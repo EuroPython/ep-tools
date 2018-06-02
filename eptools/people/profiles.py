@@ -1,4 +1,4 @@
-# coding: utf-8
+
 
 """
 This is a intro on how to fill the PeopleRegistry with contact details of
@@ -11,28 +11,28 @@ import io
 import json
 from itertools import chain
 
-from ..people import (  ParticipantsRegistry,
-                        fetch_ticket_profiles,
-                        contact_regex2,
-                        parse_contact,
-                        )
+from ..people import (
+    ParticipantsRegistry,
+    fetch_ticket_profiles,
+    contact_regex2,
+    parse_contact,
+)
 
-from ..talks import (fetch_talks_json,
-                     get_type_speakers,
-                    )
+from ..talks import fetch_talks_json, get_type_speakers
 
 from .data import clean_name
 
 # these files can be generated/downloaded from the server
-talks_json     = 'accepted_talks.json'
-profiles_json  = 'profiles.json'
+talks_json = "accepted_talks.json"
+profiles_json = "profiles.json"
 
 # these files were created manually (you need these)
-peoplelist_files = {'organizer': 'organizers.txt',
-                    'volunteer': 'volunteers.txt',
-                    'epsmember': 'epsmembers.txt',
-                    'keynote'  : 'keynoters.txt',
-                   }
+peoplelist_files = {
+    "organizer": "organizers.txt",
+    "volunteer": "volunteers.txt",
+    "epsmember": "epsmembers.txt",
+    "keynote": "keynoters.txt",
+}
 
 
 def flatten(listOfLists):
@@ -54,27 +54,27 @@ def load_id_json(json_path, add_id=False):
 
     items = []
     for eid, item in data.items():
-        item['id'] = eid
+        item["id"] = eid
         items.append(item)
     return items
 
 
 def read_lines(txt_file):
-    with io.open(txt_file, 'rt', encoding='utf-8') as f:
+    with io.open(txt_file, "rt", encoding="utf-8") as f:
         lines = f.readlines()
     return [l.strip() for l in lines]
 
 
 def read_names(txt_file):
     lines = read_lines(txt_file)
-    return [(name.split(' ')[0], ' '.join(name.split(' ')[1:])) for name in lines]
+    return [(name.split(" ")[0], " ".join(name.split(" ")[1:])) for name in lines]
 
 
 def read_contacts(txt_file):
     return [parse_contact(line, regex=contact_regex2) for line in read_lines(txt_file)]
 
 
-def fetch_files(conf='ep2017', host='europython.io', talk_status='accepted'):
+def fetch_files(conf="ep2017", host="europython.io", talk_status="accepted"):
     """
     Parameters
     ----------
@@ -108,13 +108,13 @@ def fetch_files(conf='ep2017', host='europython.io', talk_status='accepted'):
         Files paths of the fetched data.
     """
     profiles_file = fetch_ticket_profiles(profiles_json, conf=conf)
-    _             = fetch_talks_json     (talks_json,    conf=conf, status=talk_status,
-                                          host=host,     with_votes=True)
+    fetch_talks_json(
+        talks_json, conf=conf, status=talk_status, host=host, with_votes=True
+    )
     return profiles_file, talks_json
 
 
-def get_profiles_registry(profiles_json=profiles_json,
-                          talks_json=talks_json,):
+def get_profiles_registry(profiles_json=profiles_json, talks_json=talks_json):
     """ Return a ParticipantsRegistry with the ticket profiles data and the
     people's roles.
 
@@ -125,7 +125,9 @@ def get_profiles_registry(profiles_json=profiles_json,
     talks = {}
     people = load_id_json(profiles_json, add_id=True)
     type_talks = dict(json.load(open(talks_json)).items())
-    _ = [talks.update(talkset) for ttype, talkset in type_talks.items()]
+
+    for ttype, talkset in type_talks.items():
+        talks.update(talkset)
 
     # create and fill the registry
     pr = ParticipantsRegistry(people)
@@ -135,11 +137,12 @@ def get_profiles_registry(profiles_json=profiles_json,
         pr.set_emails_role(emails, stype)
 
     # keynotes, organizers, volunteers....
-    peopleslists = {ptype: read_contacts(txtfile)
-                    for ptype, txtfile in peoplelist_files.items()}
+    peopleslists = {
+        ptype: read_contacts(txtfile) for ptype, txtfile in peoplelist_files.items()
+    }
+
     for ptype, people in peopleslists.items():
         pr.set_emails_role([p[2] for p in people], ptype)
-        pr.set_names_role ([(clean_name(p[0]), clean_name(p[1]))
-                            for p in people], ptype)
+        pr.set_names_role([(clean_name(p[0]), clean_name(p[1])) for p in people], ptype)
 
     return pr

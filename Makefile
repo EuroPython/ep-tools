@@ -50,6 +50,9 @@ clean-pyenv:
 lint:
 	pipenv run flake8 $(project-name) test
 
+format:
+	pipenv run black --line-length=120 --safe .
+
 tag: clean
 	@echo "Creating git tag v$(version)"
 	git tag v$(version)

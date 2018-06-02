@@ -1,4 +1,4 @@
-# coding: utf-8
+
 """
 Functions to help using docstamp.
 """
@@ -15,6 +15,8 @@ def xelatex_document(doc_args, template_file, field_name, output_dir="."):
     """ Use docstamp to use xelatex to produce a XeLateX document
     using `template_file`.
     The output file will be saved in output_dir and its path returned.
+
+    The doc_args keys will be lower case and have the white spaces replaced by '_'.
 
     Parameters
     ----------
@@ -37,13 +39,20 @@ def xelatex_document(doc_args, template_file, field_name, output_dir="."):
 
     """
     # input data
-    input_data = doc_args
+    def process_data_key(key):
+        return key \
+            .lower() \
+            .replace(' ', '_') \
+            .replace('(', '') \
+            .replace(')', '')
+
+    input_data = {process_data_key(key): value for key, value in doc_args.items()}
 
     # template doc
     template_doc = XeLateXDocument(template_file)
 
     # output file name
-    field_val = input_data[field_name].replace(" ", "")
+    field_val = input_data[process_data_key(field_name)].replace(" ", "")
 
     file_extension = get_extension(template_file)
     basename = path.basename(template_file).replace(file_extension, "")
@@ -56,7 +65,7 @@ def xelatex_document(doc_args, template_file, field_name, output_dir="."):
         os.mkdir(output_dir)
 
     # fill the template
-    template_doc.fill(doc_args)
+    template_doc.fill(input_data)
 
     # save into PDF
     template_doc.render(file_path)

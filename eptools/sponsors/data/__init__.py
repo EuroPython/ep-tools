@@ -24,6 +24,8 @@ billing_form_hdr = [
     "Sponsorship Package",
     "Custom package",
     "Cost (without VAT)",
+    "Package Description",
+    "Is custom package",
 ]
 
 company_name_column = "Full comercial name"

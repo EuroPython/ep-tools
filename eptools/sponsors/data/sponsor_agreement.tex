@@ -100,8 +100,8 @@ sponsorship package as selected below:
 
 \begin{flushleft}
 \begin{tabular}{r>{\raggedright}p{0.9\textwidth}}
-\textbf{Name}: & {{ representative }}\tabularnewline
-\textbf{ID}: & {{ identification }} ({{ document }})\tabularnewline
+\textbf{Name}: & {{ full_name }}\tabularnewline
+\textbf{ID}: & {{ id_number }} ({{ id_document }})\tabularnewline
 \textbf{Email}: & {{ email }}\tabularnewline
 \end{tabular}
 \par\end{flushleft}
@@ -124,18 +124,18 @@ Sponsor name, as it should appear in all marketing material:
 
 \begin{flushleft}
 \begin{tabular}{r>{\raggedright}p{0.9\textwidth}}
-\textbf{Company}: & {{ company }}\tabularnewline
-\textbf{Address}: & {{ address }}\tabularnewline
-\textbf{Phone}: &  {{ phone }}\tabularnewline
-\textbf{Fax}: & {{ fax }}\tabularnewline
-\textbf{Country}: & {{ country }}\tabularnewline
+\textbf{Company}: & {{ full_comercial_name }}\tabularnewline
+\textbf{Address}: & {{ billing_address }}\tabularnewline
+\textbf{Phone}: &  {{ phone_number }}\tabularnewline
+\textbf{Fax}: & {{ fax_number }}\tabularnewline
+\textbf{Country}: & {{ billing_country }}\tabularnewline
 \end{tabular}
 \par\end{flushleft}
 
 \subsection*{Billing information:}
 
 \textbf{VAT ID}\protect\footnote{For companies registered in the EU.}:
-{{ vatid }}
+{{ vat_id_number }}
 
 \vspace{1cm}
 
@@ -182,11 +182,11 @@ in our EuroPython 2018 Sponsor Packages\protect\footnote{The EuroPython 2018
 sponsor packages are detailed on our website at
 \protect\href{https://ep2018.europython.eu/en/sponsor/packages/}{https://ep2018.europython.eu/en/sponsor/packages/} }, and selects the following:
 
-{{ services }}
+{{ package_description }}
 
 \vspace{2cm}
 
-\large\textbf{Sponsorship amount ("Package Fee"):} {{ price }} EUR plus VAT at
+\large\textbf{Sponsorship amount ("Package Fee"):} {{ cost_without_vat }} EUR plus VAT at
 the applicable rate.
 
 \vfill{}

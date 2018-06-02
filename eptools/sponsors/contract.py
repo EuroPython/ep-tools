@@ -2,12 +2,13 @@
 Functions to generate sponsor agreement documents.
 """
 
-from .data import contract_template
+from .data import contract_template, company_name_column
 from ..docstamp_utils import xelatex_document
 
 
-def create_sponsor_agreement(sponsor_data, field_name='company',
-                             template_file=None, output_dir='.'):
+def create_sponsor_agreement(
+    sponsor_data, key_field_name=company_name_column, template_file=None, output_dir="."
+):
     """ Call docstamp to use xelatex to produce a sponsor agreement
     for the company in `sponsor_data`. The output will be saved
     in output_dir.
@@ -17,6 +18,9 @@ def create_sponsor_agreement(sponsor_data, field_name='company',
     sponsor_data: pandas.DataFrame or dict
         A DataFrame with one row with the data of the sponsor.
         Its columns must match the ones in the template_file content.
+
+    key_field_name: str
+        Name of the field in sponsor_data that identifies the company.
 
     template_file: str
         Path to the .tex template file.
@@ -35,7 +39,9 @@ def create_sponsor_agreement(sponsor_data, field_name='company',
     if not isinstance(sponsor_data, dict):
         sponsor_data = sponsor_data.reset_index(drop=True).ix[0].to_dict()
 
-    return xelatex_document(doc_args=sponsor_data,
-                            field_name=field_name,
-                            template_file=template_file,
-                            output_dir=output_dir)
+    return xelatex_document(
+        doc_args=sponsor_data,
+        field_name=key_field_name,
+        template_file=template_file,
+        output_dir=output_dir,
+    )

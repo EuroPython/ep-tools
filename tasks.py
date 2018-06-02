@@ -4,9 +4,7 @@ Invoke tasks to be run from the command line.
 import os
 from invoke import task
 
-from eptools.server_utils import epcon_fetch_p3db
 from eptools.gspread_utils import get_api_key_file
-from eptools.talks import check_schedule
 from eptools.talks import fetch_talks_json as _fetch_talks
 from eptools.people import fetch_ticket_profiles as _fetch_profiles
 
@@ -56,17 +54,12 @@ def sponsor_agreement(ctx, company_name, output_dir, template_file="", api_key_f
         sponsor_data = get_sponsor(
             sponsor_name=company_name, sponsors=responses, col_name=company_name_column
         )
-    except:
+    except Exception:
         raise KeyError("Could not find data for sponsor {}.".format(company_name))
     else:
-        import pdb
-
-        pdb.set_trace()
-
         fpath = create_sponsor_agreement(
             sponsor_data,
             template_file=template_file,
-            field_name="company",
             output_dir=output_dir,
         )
 
@@ -74,7 +67,7 @@ def sponsor_agreement(ctx, company_name, output_dir, template_file="", api_key_f
 
 
 @task
-def finaid_receipt(cts, applicant_name, output_dir, template_file="", api_key_file=""):
+def finaid_receipt(ctx, applicant_name, output_dir, template_file="", api_key_file=""):
     """ Call docstamp to produce a financial aid receipt
     for `applicant_name` using `template_file`.
     The output will be saved in `output_dir`.

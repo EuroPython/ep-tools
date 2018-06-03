@@ -1,13 +1,15 @@
 #!/usr/bin/env python
 
 import os
-import os.path as op
 from PIL import Image
 
-dirPath = op.abspath("./logos")
-out_dir = op.join(dirPath, "resize")
+# TODO: make a inv task out of this?
 
-if not op.exists(out_dir):
+
+dirPath = os.path.abspath("./logos")
+out_dir = os.path.join(dirPath, "resize")
+
+if not os.path.exists(out_dir):
     os.mkdir(out_dir)
 
 supported_formats = ["png", "gif", "jpg"]

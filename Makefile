@@ -53,6 +53,9 @@ lint:
 format:
 	pipenv run black --line-length=120 --safe .
 
+pre-commit:
+	pipenv run pre-commit run
+
 tag: clean
 	@echo "Creating git tag v$(version)"
 	git tag v$(version)

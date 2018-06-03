@@ -31,9 +31,7 @@ def get_sponsors_ws_data(api_key_file, doc_key, file_header=billing_form_hdr):
     -------
     ws_data: pandas.DataFrame
     """
-    return get_ws_data(
-        api_key_file, doc_key, ws_tab_idx=0, header=file_header, start_row=1
-    )
+    return get_ws_data(api_key_file, doc_key, ws_tab_idx=0, header=file_header, start_row=1)
 
 
 def get_sponsor(sponsor_name, sponsors, col_name="company"):

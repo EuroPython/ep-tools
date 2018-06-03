@@ -27,9 +27,7 @@ def epcon_exe_manage(cmd, user="root", host="europython.io", docker_name=docker_
     -------
     stdout: str
     """
-    rmt_cmd = "ssh {}@{} docker exec {} python manage.py {}".format(
-        user, host, docker_name, cmd
-    )
+    rmt_cmd = "ssh {}@{} docker exec {} python manage.py {}".format(user, host, docker_name, cmd)
     log.info("Running {}.".format(rmt_cmd))
     proc = subprocess.Popen(rmt_cmd.split(" "), stdout=subprocess.PIPE)
     result = [x.decode("utf8") for x in proc.stdout.readlines()]
@@ -52,9 +50,7 @@ def epcon_fetch_file(cmd, fpath, user="root", host="europython.io"):
 
 
 @task
-def epcon_fetch_p3db(
-    ctx, p3db_dirpath=epcon_db_path, out_dir=".", user="root", host="europython.io"
-):
+def epcon_fetch_p3db(ctx, p3db_dirpath=epcon_db_path, out_dir=".", user="root", host="europython.io"):
     """ Download the p3.db file from the epcon server."""
     cmd = "scp {}@{}:{} {}".format(user, host, op.join(p3db_dirpath, "p3.db"), out_dir)
     print(cmd)

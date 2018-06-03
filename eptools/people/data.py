@@ -57,9 +57,7 @@ class ParticipantsRegistry(object):
     def get_roles_of(self, email, name="", surname=""):
         """ Return the roles of the participant given the person's email,
         name_surname is optional."""
-        emails_roles = (
-            role_name for role_name, roles in self.role_emails.items() if email in roles
-        )
+        emails_roles = (role_name for role_name, roles in self.role_emails.items() if email in roles)
         names_roles = (
             role_name
             for role_name, roles in self.role_names.items()

@@ -70,9 +70,7 @@ class BadgeFactory(object):
         self.out_dir = out_dir
         self.tmp_dir = tmp_dir
 
-    def _badge_filepath(
-        self, contact, role, outdir, with_email=True, prefix="badge_ep2017"
-    ):
+    def _badge_filepath(self, contact, role, outdir, with_email=True, prefix="badge_ep2017"):
         """ Return the filepath to the corresponding svg file of the contact in the `outdir`
         folder.
         '{prefix}_{role}_{id}_{name}_{surname}_{emails}.svg'
@@ -144,15 +142,11 @@ class BadgeFactory(object):
         if int(contact.pypower) > 0:
             pypower_file = pythonpower_svg[int(contact.pypower)]
 
-        qrcode_file = op.join(
-            self.tmp_dir, "qrcode_{}.svg".format(contact.email.replace("@", "."))
-        )
+        qrcode_file = op.join(self.tmp_dir, "qrcode_{}.svg".format(contact.email.replace("@", ".")))
 
         create_qrcode(contact, color=qrcode_color[badge_role], file_path=qrcode_file)
 
-        badge_svg = merge_badge_svgfiles(
-            badge_template, pypower_file, qrcode_file, other_roles
-        )
+        badge_svg = merge_badge_svgfiles(badge_template, pypower_file, qrcode_file, other_roles)
         return badge_svg
 
     def generate_badge_svg(self, contact, roles, badge_filepath=None):
@@ -162,9 +156,7 @@ class BadgeFactory(object):
         template = get_badge_template_file(role)
 
         if badge_filepath is None:
-            badge_filepath = self._simple_badge_path(
-                contact, role=role.name, outdir=self.tmp_dir
-            )
+            badge_filepath = self._simple_badge_path(contact, role=role.name, outdir=self.tmp_dir)
 
         badge = self._badge_svg(contact, role, roles, template)
         badge.save(badge_filepath)

@@ -87,12 +87,7 @@ badge_color = {
 maxlengths = {"name": 16, "surname": 20, "tagline": 30, "company": 30, "title": 30}
 
 # positions in the badges
-coordinates = {
-    "qrcode": (275, 42),
-    "pypower": (160, 390),
-    "epsmember": (265, 420),
-    "volunteer": (205, 420),
-}
+coordinates = {"qrcode": (275, 42), "pypower": (160, 390), "epsmember": (265, 420), "volunteer": (205, 420)}
 
 
 scales = {"qrcode": 1.4 * 60, "pypower": 1}

@@ -22,9 +22,7 @@ Soy {sender_name} y lorem ipssum.
     return subject, message
 
 
-def send_mail_msg(
-    email_client, sender, recipients, subject, message, random_sleep=True
-):
+def send_mail_msg(email_client, sender, recipients, subject, message, random_sleep=True):
 
     email_client.set_msg_header(sender, recipients, subject)
     email_client.set_msg_body_text(message)

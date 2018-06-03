@@ -29,23 +29,14 @@ def create_receipt(submission_data, template_file=None, output_dir="."):
     """
 
     def doclist_items(row):
-        return "\n".join(
-            ["\item {}".format(doc) for doc in row["expense_docs"].split("\n")]
-        )
+        return "\n".join(["\item {}".format(doc) for doc in row["expense_docs"].split("\n")])
 
     def itemize_doclist(row):
-        return "{}\n{}\n{}".format(
-            "\\begin{enumerate}", doclist_items(row), "\\end{enumerate}"
-        )
+        return "{}\n{}\n{}".format("\\begin{enumerate}", doclist_items(row), "\\end{enumerate}")
 
     submission_data["expense_docs"] = submission_data.apply(itemize_doclist, axis=1)
 
     if template_file is None:
         template_file = receipt_template_spa
 
-    return xelatex_document(
-        submission_data,
-        template_file=template_file,
-        field_name="full_name",
-        output_dir=output_dir,
-    )
+    return xelatex_document(submission_data, template_file=template_file, field_name="full_name", output_dir=output_dir)

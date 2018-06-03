@@ -47,9 +47,7 @@ def duplicate_badge_file(pdf_filepath, suffix="-joined"):
     return merge_pdfs([pdf_filepath] * 2, pdf_filepath.replace(".pdf", suffix + ".pdf"))
 
 
-def merge_badge_svgfiles(
-    template_svgfile, pypower_svgfile, qrcode_svgfile, other_roles
-):
+def merge_badge_svgfiles(template_svgfile, pypower_svgfile, qrcode_svgfile, other_roles):
     """ Merge pypower_file and qrcode_file contents into the correct position
     in the badge file template_svgfile.
 
@@ -85,9 +83,7 @@ def merge_badge_svgfiles(
     qr_coords = coordinates["qrcode"]
 
     qr_scale = qr_boxsize / qr_height
-    badge_svg = merge_svg_files(
-        badge_svg, qrcode_svgfile, qr_coords[0], qr_coords[1], scale=qr_scale
-    )
+    badge_svg = merge_svg_files(badge_svg, qrcode_svgfile, qr_coords[0], qr_coords[1], scale=qr_scale)
 
     # TODO: clean up this function
     # PYPOWER
@@ -95,9 +91,7 @@ def merge_badge_svgfiles(
         svg_name = "pypower"
         scale = scales[svg_name]
         coords = coordinates[svg_name]
-        badge_svg = merge_svg_files(
-            badge_svg, pypower_svgfile, coords[0], coords[1], scale=scale
-        )
+        badge_svg = merge_svg_files(badge_svg, pypower_svgfile, coords[0], coords[1], scale=scale)
 
     # EPSMEMBER
     if "epsmember" in other_roles:
@@ -105,9 +99,7 @@ def merge_badge_svgfiles(
         svg_file = medal_files[svg_name]
         scale = scales.get(svg_name, 1)
         coords = coordinates[svg_name]
-        badge_svg = merge_svg_files(
-            badge_svg, svg_file, coords[0], coords[1], scale=scale
-        )
+        badge_svg = merge_svg_files(badge_svg, svg_file, coords[0], coords[1], scale=scale)
 
     # VOLUNTEER
     if "volunteer" in other_roles:
@@ -115,9 +107,7 @@ def merge_badge_svgfiles(
         svg_file = medal_files[svg_name]
         scale = scales.get(svg_name, 1)
         coords = coordinates[svg_name]
-        badge_svg = merge_svg_files(
-            badge_svg, svg_file, coords[0], coords[1], scale=scale
-        )
+        badge_svg = merge_svg_files(badge_svg, svg_file, coords[0], coords[1], scale=scale)
 
     return badge_svg
 
@@ -134,15 +124,7 @@ def tshirt_code(tshirt_string):
     else:
         tshirt_code += "1"
 
-    size_code = {
-        "s": "1",
-        "m": "2",
-        "l": "3",
-        "xl": "4",
-        "xxl": "5",
-        "3xl": "6",
-        "4xl": "7",
-    }
+    size_code = {"s": "1", "m": "2", "l": "3", "xl": "4", "xxl": "5", "3xl": "6", "4xl": "7"}
     tshirt_code += size_code.get(tshirt_string, "")
     return tshirt_code
 

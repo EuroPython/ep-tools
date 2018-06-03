@@ -40,11 +40,7 @@ def xelatex_document(doc_args, template_file, field_name, output_dir="."):
     """
     # input data
     def process_data_key(key):
-        return key \
-            .lower() \
-            .replace(' ', '_') \
-            .replace('(', '') \
-            .replace(')', '')
+        return key.lower().replace(" ", "_").replace("(", "").replace(")", "")
 
     input_data = {process_data_key(key): value for key, value in doc_args.items()}
 

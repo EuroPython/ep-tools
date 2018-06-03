@@ -11,12 +11,7 @@ import io
 import json
 from itertools import chain
 
-from ..people import (
-    ParticipantsRegistry,
-    fetch_ticket_profiles,
-    contact_regex2,
-    parse_contact,
-)
+from ..people import ParticipantsRegistry, fetch_ticket_profiles, contact_regex2, parse_contact
 
 from ..talks import fetch_talks_json, get_type_speakers
 
@@ -108,9 +103,7 @@ def fetch_files(conf="ep2017", host="europython.io", talk_status="accepted"):
         Files paths of the fetched data.
     """
     profiles_file = fetch_ticket_profiles(profiles_json, conf=conf)
-    fetch_talks_json(
-        talks_json, conf=conf, status=talk_status, host=host, with_votes=True
-    )
+    fetch_talks_json(talks_json, conf=conf, status=talk_status, host=host, with_votes=True)
     return profiles_file, talks_json
 
 
@@ -137,9 +130,7 @@ def get_profiles_registry(profiles_json=profiles_json, talks_json=talks_json):
         pr.set_emails_role(emails, stype)
 
     # keynotes, organizers, volunteers....
-    peopleslists = {
-        ptype: read_contacts(txtfile) for ptype, txtfile in peoplelist_files.items()
-    }
+    peopleslists = {ptype: read_contacts(txtfile) for ptype, txtfile in peoplelist_files.items()}
 
     for ptype, people in peopleslists.items():
         pr.set_emails_role([p[2] for p in people], ptype)

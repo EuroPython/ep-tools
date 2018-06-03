@@ -6,9 +6,7 @@ from .data import contract_template, company_name_column
 from ..docstamp_utils import xelatex_document
 
 
-def create_sponsor_agreement(
-    sponsor_data, key_field_name=company_name_column, template_file=None, output_dir="."
-):
+def create_sponsor_agreement(sponsor_data, key_field_name=company_name_column, template_file=None, output_dir="."):
     """ Call docstamp to use xelatex to produce a sponsor agreement
     for the company in `sponsor_data`. The output will be saved
     in output_dir.
@@ -40,8 +38,5 @@ def create_sponsor_agreement(
         sponsor_data = sponsor_data.reset_index(drop=True).ix[0].to_dict()
 
     return xelatex_document(
-        doc_args=sponsor_data,
-        field_name=key_field_name,
-        template_file=template_file,
-        output_dir=output_dir,
+        doc_args=sponsor_data, field_name=key_field_name, template_file=template_file, output_dir=output_dir
     )

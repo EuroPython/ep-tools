@@ -29,9 +29,7 @@ def get_finaid_ws_data(api_key_file, doc_key, file_header=finaid_submission_hdr)
     -------
     ws_data: pandas.DataFrame
     """
-    return get_ws_data(
-        api_key_file, doc_key, ws_tab_idx=0, header=file_header, start_row=1
-    )
+    return get_ws_data(api_key_file, doc_key, ws_tab_idx=0, header=file_header, start_row=1)
 
 
 def get_applicant(applicant_name, submissions, col_name="full_name"):

@@ -19,8 +19,8 @@ repos:
      - id: check-yaml
      - id: detect-aws-credentials
      - id: detect-private-key
-     - id: no-commit-to-branch   # No (direct) commits to master
      - id: flake8
+       args: ['--config=setup.cfg']
      - id: end-of-file-fixer
      - id: trailing-whitespace
  - repo: https://github.com/Lucas-C/pre-commit-hooks

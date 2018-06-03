@@ -167,6 +167,4 @@ def run_query(adict, query, get=operator.itemgetter):
         return _exec_comparison(adict, query)
 
     elif op in logic_operators:
-        return logic_operators[op](
-            run_query(adict, query[1], get=get), run_query(adict, query[2], get=get)
-        )
+        return logic_operators[op](run_query(adict, query[1], get=get), run_query(adict, query[2], get=get))

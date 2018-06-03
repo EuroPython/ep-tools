@@ -101,7 +101,7 @@ sponsorship package as selected below:
 \begin{flushleft}
 \begin{tabular}{r>{\raggedright}p{0.9\textwidth}}
 \textbf{Name}: & {{ full_name }}\tabularnewline
-\textbf{ID}: & {{ id_number }} ({{ id_document }})\tabularnewline
+\textbf{ID}: & {% if id_number and id_document %} {{ id_number }} ({{ id_document }}) {% endif %} \tabularnewline
 \textbf{Email}: & {{ email }}\tabularnewline
 \end{tabular}
 \par\end{flushleft}

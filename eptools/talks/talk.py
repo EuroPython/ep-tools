@@ -5,7 +5,7 @@ Functions to process talk data and its speakers.
 from collections import defaultdict
 
 
-TALK_TYPE = (
+TALK_TYPE = dict((
     ("t_30", "Talk (30 mins)"),
     ("t_45", "Talk (45 mins)"),
     ("t_60", "Talk (60 mins)"),
@@ -15,10 +15,9 @@ TALK_TYPE = (
     ("n_60", "Panel (60 mins)"),
     ("n_90", "Panel (90 mins)"),
     ("h_180", "Help desk (180 mins)"),
-)
+))
 
-
-TALK_CODE = {v: k for k, v in dict(TALK_TYPE).items()}
+TALK_CODE = {v: k for k, v in TALK_TYPE.items()}
 
 # Mapping of TALK_TYPE to duration in minutes
 TALK_DURATION = {
@@ -45,15 +44,11 @@ TALK_ADMIN_TYPE = (
 )
 
 
-def get_talk_code(talk_type):
-    return TALK_CODE.get(talk_type, None)
-
-
 def get_speaker_type(talk_code):
     sym = talk_code.split("_")[0]
     if sym in ("t", "i", "p", "h", "n"):
         return "speaker"
-    elif sym in ("r"):
+    elif sym in ("r",):
         return "trainer"
     else:
         return None
@@ -78,6 +73,6 @@ def get_type_speakers(talks):
     """
     type_speakers = defaultdict(list)
     for tid, talk in talks.items():
-        stype = get_speaker_type(get_talk_code(talk["type"]))
-        type_speakers[stype].extend(talk["emails"].split(", "))
+        speaker_type = get_speaker_type(TALK_CODE.get(talk["type"], None))
+        type_speakers[speaker_type].extend(talk["emails"].split(", "))
     return type_speakers

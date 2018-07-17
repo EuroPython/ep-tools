@@ -2,7 +2,9 @@
 """
 Functions to get the data of conference participants.
 """
-from ..server_utils import epcon_fetch_file
+import requests
+
+from eptools.server_utils import epcon_fetch_file
 
 
 def fetch_participant_csv(out_filepath, conf="ep2017"):
@@ -20,7 +22,7 @@ def fetch_ticketless_csv(out_filepath, conf="ep2017"):
     return epcon_fetch_file(cmd="get_attendees_csv {} {}".format(conf, "incomplete"), fpath=out_filepath)
 
 
-def fetch_ticket_profiles(out_filepath, conf="ep2017", status="all", nondups=False, raise_=False, ticket_id=""):
+def fetch_ticket_profiles(out_filepath, conference, status="all", nondups=False, raise_=False, ticket_id=""):
     """ Create a json file with the all the tickets of the conference.
         make_option('--status',
                     choices=['all', 'complete', 'incomplete'],
@@ -33,7 +35,7 @@ def fetch_ticket_profiles(out_filepath, conf="ep2017", status="all", nondups=Fal
         make_option('--ticket-id',
                     help='Will output the profile of the given ticket only.',
     """
-    cmd = "ticket_profiles {} --status {}".format(conf, status)
+    cmd = "ticket_profiles {} --status {}".format(conference, status)
     if nondups:
         cmd += " --nondups"
 
@@ -62,6 +64,4 @@ def genderize(first_name):
     -------
     query_result: dict
     """
-    import requests
-
     return requests.get("https://api.genderize.io/", params={"name": first_name}).json()

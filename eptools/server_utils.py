@@ -1,11 +1,8 @@
-
-
 """
 Helper functions to run commands on the epcon server.
 """
 import os
 import io
-import os.path as op
 import subprocess
 import logging as log
 
@@ -37,7 +34,7 @@ def epcon_exe_manage(cmd, user="root", host="europython.io", docker_name=docker_
 def epcon_fetch_file(cmd, fpath, user="root", host="europython.io"):
     """ Execute python manage.py command in epcon server to fetch a file.
     Will overwrite `fpath`. """
-    if op.exists(fpath):
+    if os.path.exists(fpath):
         os.remove(fpath)
 
     stdout = epcon_exe_manage(cmd=cmd, user=user, host=host)
@@ -52,6 +49,6 @@ def epcon_fetch_file(cmd, fpath, user="root", host="europython.io"):
 @task
 def epcon_fetch_p3db(ctx, p3db_dirpath=epcon_db_path, out_dir=".", user="root", host="europython.io"):
     """ Download the p3.db file from the epcon server."""
-    cmd = "scp {}@{}:{} {}".format(user, host, op.join(p3db_dirpath, "p3.db"), out_dir)
+    cmd = "scp {}@{}:{} {}".format(user, host, os.path.join(p3db_dirpath, "p3.db"), out_dir)
     print(cmd)
     os.system(cmd)

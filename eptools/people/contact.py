@@ -1,14 +1,31 @@
 
-
 import re
-from copy import copy
 from enum import Enum
 from collections import namedtuple
 
 
-# Define attendee types
-ATTENDEE_TYPE = Enum("Attendee_Type", "keynote organizer trainer speaker attendee")
-TALK_TYPE = Enum("Talk_Type", "talk tutorial helpdesk")
+class AttendeeType(Enum):
+    keynote = 'keynote'
+    organizer = 'organizer'
+    trainer = 'trainer'
+    speaker = 'speaker'
+    attendee = 'attendee'
+    participant = 'participant'  # this is a British attendee
+    trainee = 'trainee'
+
+
+class TicketType(Enum):
+    S = 'full'
+    L = 'conference'
+    D = 'daily'
+    T = 'training'
+
+
+class FareType(Enum):
+    S = 'student'
+    P = 'personal'
+    C = 'company'
+
 
 # contact class
 CONTACT_FIELDS = (
@@ -24,9 +41,13 @@ CONTACT_FIELDS = (
     "title",
     "compweb",
     "persweb",
+    "ticket_type",
+    "fare_type",
 )
 
 Contact = namedtuple("Contact", CONTACT_FIELDS)
+
+# TODO: for ep2019 we should use 'surname, name <email>' pattern. To match EPS membership list.
 
 # regexes
 email_regex = r"[\w0-9\.\+\_\-]+@[\w0-9\.\+\_\-]+[\.\w+]+"
@@ -42,30 +63,6 @@ contact_regex1 = r"^<(?P<name>{name})[ ]*,[ ]*((?P<surname>{name}))>" "[ ]*(?P<e
 contact_regex2 = "^(?P<name>{name})[ ]*,[ ]*(?P<surname>{name})" "([ ]*<(?P<email>{email})>)?$".format(
     name=person_name, email=email_regex
 )
-
-
-def stringify(adict):
-    """ Convert all values of `adict` to str."""
-    for key, val in adict.items():
-        if not isinstance(val, str):
-            adict[key] = str(val)
-    return adict
-
-
-def contact_from_dict(person_info):
-    """ Create a Contact object from the `person_info` dictionary."""
-    person = stringify(copy(person_info))
-
-    if "t-shirt" in person:
-        person["tshirt"] = person.get("t-shirt", None)
-        del person["t-shirt"]
-
-    person["persweb"] = person["persweb"].replace("http://", "")
-    person["compweb"] = person["compweb"].replace("http://", "")
-    if not person["company"]:
-        person["company"] = person["compweb"]
-
-    return Contact(**person)
 
 
 def parse_contact(string, regex=contact_regex2):

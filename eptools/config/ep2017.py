@@ -4,8 +4,9 @@ import socket
 
 hn = socket.gethostname()
 
-
 ROOT_DIR = ""
+
+conference = 'ep2017'
 
 # Use the name of my computer to setup local variables and
 # hold different configurations.

@@ -4,11 +4,13 @@ Invoke tasks to be run from the command line.
 import os
 from invoke import task
 
+from eptools import talks, people
 from eptools.gspread_utils import get_api_key_file
-from eptools.talks import fetch_talks_json as _fetch_talks
-from eptools.people import fetch_ticket_profiles as _fetch_profiles
-
-from eptools.config import sponsors_billing_worksheet, finaid_submissions_worksheet
+from eptools.config import (
+    conference,
+    sponsors_billing_worksheet,
+    finaid_submissions_worksheet
+)
 
 
 @task
@@ -100,7 +102,7 @@ def finaid_receipt(ctx, applicant_name, output_dir, template_file="", api_key_fi
 
 
 @task
-def fetch_ticket_profiles(ctx, out_filepath, conf="ep2017", status="all", nondups=False, raise_=False, ticket_id=""):
+def fetch_ticket_profiles(ctx, out_filepath, conf=conference, status="all", nondups=False, raise_=False, ticket_id=""):
     """ Create a json file with the all the tickets of the conference.
         make_option('--status',
                     choices=['all', 'complete', 'incomplete'],
@@ -113,11 +115,11 @@ def fetch_ticket_profiles(ctx, out_filepath, conf="ep2017", status="all", nondup
         make_option('--ticket-id',
                     help='Will output the profile of the given ticket only.',
     """
-    return _fetch_profiles(out_filepath, conf=conf, status=status, nondups=nondups, raise_=raise_, ticket_id=ticket_id)
+    return people.fetch_files(out_filepath, conf=conf, status=status, nondups=nondups, raise_=raise_, ticket_id=ticket_id)
 
 
 @task
-def fetch_talks_json(ctx, out_filepath="", status="proposed", conf="ep2017", host="europython.io", with_votes=False):
+def fetch_talks_json(ctx, out_filepath="", status="proposed", conf=conference, host="europython.io", with_votes=False):
     """ Return the talks in a json format. `status` choices: ['accepted', 'proposed']
     """
-    return _fetch_talks(out_filepath=out_filepath, status=status, conf=conf, host=host, with_votes=with_votes)
+    return talks.fetch_talks_json(out_filepath=out_filepath, status=status, conf=conf, host=host, with_votes=with_votes)

@@ -60,3 +60,8 @@ tag: clean
 	@echo "Creating git tag v$(version)"
 	git tag v$(version)
 	git push --tags
+
+badges:
+	pipenv run inv fetch-talks-json -c ep2018 -o notebooks/talks.json -s accepted
+	pipenv run inv fetch-ticket-profiles -c ep2018 -o notebooks/profiles.json
+  pipenv run python eptools/badge_creator.py

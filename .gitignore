@@ -88,3 +88,4 @@ agreements/
 .venv/
 notebooks/**/*.txt
 docstamp
+font*/

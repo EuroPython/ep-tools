@@ -1,0 +1,429 @@
+%% LyX 2.1.3 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass[english]{paper}
+\usepackage[a4paper]{geometry}
+\geometry{verbose,lmargin=20mm,rmargin=14mm,top={22mm},bottom={30mm}}
+
+\usepackage[center]{titlesec}
+
+% document font
+\usepackage{fontspec}
+\defaultfontfeatures{Ligatures=TeX}
+\newfontfamily\bodyfont[]{Arial}
+\newfontfamily\headingfont[]{Arial Bold}
+\defaultfontfeatures{Mapping=tex-text}
+\setmainfont[Mapping=tex-text, Color=textcolor]{Arial}
+\setsansfont[Mapping=tex-text, Color=textcolor]{Arial}
+
+\usepackage[unicode=true]{hyperref}
+\usepackage{multirow}
+\usepackage{lastpage}
+\usepackage{datetime}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\usepackage{graphicx}
+
+% set 1.5mm space between lines
+\usepackage{setspace}
+\onehalfspacing
+
+% fix the width of the columns in a table
+\usepackage{array}
+
+% to define the color of the subtitles
+\usepackage{xcolor}
+\definecolor{grey}{rgb}{0.43, 0.5, 0.5}
+
+\makeatother
+
+\usepackage{xunicode}
+\usepackage{polyglossia}
+\setdefaultlanguage{english}
+
+\makeatletter
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% LyX specific LaTeX commands.
+%% Special footnote code from the package 'stblftnt.sty'
+%% Author: Robin Fairbairns -- Last revised Dec 13 1996
+\let\SF@@footnote\footnote
+\def\footnote{\ifx\protect\@typeset@protect
+    \expandafter\SF@@footnote
+  \else
+    \expandafter\SF@gobble@opt
+  \fi
+}
+\expandafter\def\csname SF@gobble@opt \endcsname{\@ifnextchar[%]
+  \SF@gobble@twobracket
+  \@gobble
+}
+\edef\SF@gobble@opt{\noexpand\protect
+  \expandafter\noexpand\csname SF@gobble@opt \endcsname}
+\def\SF@gobble@twobracket[#1]#2{}
+%% Because html converters don't know tabularnewline
+\providecommand{\tabularnewline}{\\}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+
+\begin{document}
+
+\thispagestyle{fancy}
+\fancyhf{} % sets both header and footer to nothing
+\renewcommand{\headrulewidth}{0pt}
+\lhead{\longdate{\today}}
+\rhead{}
+\chead{}
+
+\lfoot{}
+\rfoot{}
+\cfoot{\textsf{ \scriptsize \thepage\ of 7}}
+
+\hspace*{\fill}
+\begin{center}
+\huge\textbf{EuroPython 2018} \\
+\textcolor{grey}{\large\textit{Edinburgh, Scotland, July 23-29 2018}}\\
+\vspace{1cm}
+\huge\textbf{Sponsorship Agreement}
+\end{center}
+\hspace*{\fill}
+
+
+The sponsor (“Sponsor”), having the registered address as indicated below,
+undertakes to financially support the event \textbf{EuroPython 2018},
+held by \textbf{EuroPython Society (EPS)}, having the registered address
+EuroPython Society c/o Open End AB, Norra Ågatan 10, 41664 Göteborg, Sweden
+(the “Organizers” of the event),
+from July 23 - 29 2018, in Edinburgh, Scotland, by offering to purchase of a
+sponsorship package as selected below:
+
+
+\subsection*{Sponsor Contact for this Agreement:}
+
+\begin{flushleft}
+\begin{tabular}{r>{\raggedright}p{0.9\textwidth}}
+\textbf{Name}: & {{ full_name }}\tabularnewline
+\textbf{ID}: & {% if id_number and id_document %} {{ id_number }} ({{ id_document }}) {% endif %} \tabularnewline
+\textbf{Email}: & {{ email }}\tabularnewline
+\end{tabular}
+\par\end{flushleft}
+
+\vspace{2cm}
+
+Sponsor name, as it should appear in all marketing material:
+
+\begin{flushleft}
+\begin{tabular}{>{\centering}p{0.75\textwidth}}
+\\[0.3cm]
+\hline
+\end{tabular}
+\par\end{flushleft}
+
+\vfill{}
+\pagebreak{}
+
+\subsection*{Legal Information ("Sponsor"):}
+
+\begin{flushleft}
+\begin{tabular}{r>{\raggedright}p{0.9\textwidth}}
+\textbf{Company}: & {{ full_comercial_name }}\tabularnewline
+\textbf{Address}: & {{ billing_address }}\tabularnewline
+\textbf{Phone}: &  {{ phone_number }}\tabularnewline
+\textbf{Fax}: & {{ fax_number }}\tabularnewline
+\textbf{Country}: & {{ billing_country }}\tabularnewline
+\end{tabular}
+\par\end{flushleft}
+
+\subsection*{Billing information:}
+
+\textbf{VAT ID}\protect\footnote{For companies registered in the EU.}:
+{{ vat_id_number }}
+
+\vspace{1cm}
+
+If a different billing address than the one above should be used,
+please specify here:
+
+\begin{flushleft}
+\begin{tabular}{>{\centering}p{1\textwidth}}
+\\[0.3cm]
+\hline
+\\[0.3cm]
+\hline
+\end{tabular}
+\par\end{flushleft}
+
+\vspace{0.5cm}
+
+Please indicate any special invoicing requirements you may have, e.g.
+additional tax IDs or registration numbers that have to be listed
+on invoices, etc.:
+
+\begin{flushleft}
+\begin{tabular}{>{\centering}p{1\textwidth}}
+\\[0.3cm]
+\hline
+\\[0.3cm]
+\hline
+\end{tabular}
+\par\end{flushleft}
+
+
+\vfill{}
+\pagebreak{}
+
+\hspace*{\fill}
+\begin{center}
+\large\textbf{Terms and Conditions} \\
+\textcolor{grey}{\textit{Choice of Sponsorship Package}}
+\end{center}
+\hspace*{\fill}
+
+The Sponsor has reviewed the different available packages, described in detail
+in our EuroPython 2018 Sponsor Packages\protect\footnote{The EuroPython 2018
+sponsor packages are detailed on our website at
+\protect\href{https://ep2018.europython.eu/en/sponsor/packages/}{https://ep2018.europython.eu/en/sponsor/packages/} }, and selects the following:
+
+\vspace{.5cm}
+
+{{ package_description }}
+
+\vspace{1cm}
+
+\large\textbf{Sponsorship amount ("Package Fee"):} {{ cost_without_vat }} EUR plus VAT at
+the applicable rate.
+
+\vfill{}
+\pagebreak{}
+
+\subsection*{\textcolor{grey}{VAT}}
+
+VAT at the applicable rate will be applied to each of the selected services and
+options.
+
+\subsection*{\textcolor{grey}{Payment}}
+
+Invoices for the Sponsor Package will be issued by the EuroPython Society,
+Göteborg, Sweden, having the EU VAT-ID SE802417770401 and VAT registered
+address EuroPython Society c/o Open End AB, Norra Ågatan 10, 41664 Göteborg,
+Sweden.
+
+The Package Fee becomes due and earned upon receiving the invoice for the
+Sponsor Package. Payment shall be made via OUR SWIFT bank transfer within 30
+days after the invoice date in Euro (EUR) to the following EPS bank account:
+
+
+\begin{center}
+\begin{tabular}{ll}
+\hline
+\textbf{Bank name} & SEB AB (publ), Stockholm, Sweden\tabularnewline
+\hline
+\textbf{Account owner} & EuroPython Society, Sweden\tabularnewline
+\hline
+\textbf{Bank account number (IBAN)} &  SE33 5000 0000 0512 3823 2655\tabularnewline
+\hline
+\textbf{Swift code (SWIFT)} & ESSESESS\tabularnewline
+\hline
+\end{tabular}
+\par\end{center}
+
+The invoice is considered to be received by the recipient on the same day, if
+sent by email, and 5 days after it was submitted to the post office, if sent by
+first class mail. Objections to the invoice have to be made within 8 calendar
+days of the receipt of the invoice.
+
+Overdue payments incur an interest of 18\% per annum, to be invoiced by the
+creditor separately.
+
+\subsection*{\textcolor{grey}{Representation}}
+
+The signing Sponsor representatives warrant and represent that the sponsor
+details given above are true and correct and that they have authority to enter
+into this agreement and to perform all obligations hereunder.
+
+
+\subsection*{\textcolor{grey}{Limited Availability}}
+
+The number of certain packages available is limited to the number
+shown in the brochure. Availability of such packages is strictly on
+a ‘first come, first served’ basis. Where such a limited package is
+unavailable, an alternative package may be mutually agreed.
+
+
+\subsection*{\textcolor{grey}{Sponsorship Offer}}
+
+By submitting this agreement the Sponsor offers to purchase the selected
+Sponsorship Package subject to the terms and conditions of this agreement. The
+Organizers are free to accept or decline this offer. The Organizers accept the
+offer by confirmation email and by issuing an invoice for the selected
+Sponsorship Package to the above billing address, making the agreement binding.
+
+\vfill{}
+\pagebreak{}
+
+\subsection*{\textcolor{grey}{Business Relationship}}
+
+The Sponsor confirms that this agreement is solely business-to-business (B2B).
+The Sponsor is a registered business, not a consumer and ordering the
+sponsorship package solely for its business activities. This Agreement does not
+create a partnership relationship between the parties.
+
+\subsection*{\textcolor{grey}{Conference Passes}}
+
+Participation in the event EuroPython 2018 shall be requested separately by
+application via the conference website. Where a sponsorship package contains
+free admission to the event or admission at reduced rates, the Organizers will
+provide Sponsor with corresponding vouchers which may be used when registering
+for the event.
+
+\subsection*{\textcolor{grey}{Deadlines}}
+
+For services in which the Organizers need materials from the Sponsor, the
+Sponsor will have to meet the delivery deadlines set for said materials. This
+is especially crucial for services such as: printing the advertisement page in
+the conference brochure, delivery of bag inserts to the venue, etc. The
+Organizers will publish the delivery deadlines for each service on the
+following URL: https://ep2018.europython.eu/en/sponsor/information/.
+The Organizers cannot guarantee the fulfillment of the service, if these
+deadlines are not met by the Sponsor.
+
+\subsection*{\textcolor{grey}{Limited Liability}}
+
+To the extent legally permissible, the Organizers’ liability is limited to the
+direct and foreseeable damage typical for this type of contract and the
+Organizers’ liability for damages hereunder shall in no event exceed the amount
+of fees paid by Sponsor under this Agreement. The foregoing shall not be
+interpreted as in any way limiting the Organizers’ liability for damage caused
+intentionally or due to gross negligence, nor for personal injury.
+
+In providing the services hereunder, the Organizers are responsible for the
+services performance only and do not make any representation as to their effect
+or suitability for any particular purpose, which remains solely the economic
+and business risk of the Sponsor.
+
+\subsection*{\textcolor{grey}{Social events and food distribution}}
+
+Any social gathering or event to be organized by the Sponsor inside any of the
+conference venues must be communicated and approved by the Organizers.
+Any kind of food and/or drink distribution by the Sponsor must be communicated
+and approved by the Organizers. The Organizers reserve the right to deny approval
+or cancel any of these events without requirement to refund nor pay any type of
+expenses or damages.
+
+\vfill{}
+\pagebreak{}
+
+\subsection*{\textcolor{grey}{Offer Non-Exclusive}}
+
+The Sponsor acknowledges that the services are non-exclusive and competitors
+of the Sponsor may take part in the event and take out similar sponsorship
+packages.
+
+\subsection*{\textcolor{grey}{Cancellation}}
+
+Provision of the services is dependent on the event itself taking place. Should
+the Organizers need to cancel the whole or parts of the event for a reason in
+its reasonable control, the Organizers’ liability is limited to a corresponding
+reduction or return of the amount of fees paid and the Organizers shall refund
+to the Sponsor the corresponding amount of the fee paid.
+
+The Sponsor’s commitment, by agreement of the sponsorship package, is central
+to the Organizers’ planning of the event. In the case of cancellation by
+Sponsor prior to the event, this shall not relieve the Sponsor from the
+liability for full payment of the fees, despite any loss to the Sponsor of
+benefits from the sponsoring package which thereby occur.
+
+The Organizers are not responsible if the event is canceled in whole or in part
+for reasons not within their reasonable control, including acts of God, labour
+disputes, civil commotion or other event of such effect that carrying out or
+continuation of the event would be unreasonable in the circumstances. The
+Organizers shall not be obliged to re-organize the event.
+
+\subsection*{\textcolor{grey}{Conduct}}
+
+Sponsor and its representatives at the conference shall act in accordance with
+the EuroPython 2018 Code of Conduct \protect\footnote{The EuroPython 2018 Code
+of Conduct is available on the website on the following URL:
+\protect\href{https://ep2018.europython.eu/coc/}{https://ep2018.europython.eu/coc/}}.
+
+The Organizers reserve the right to withdraw from this agreement, at their sole
+discretion and without any further liability, if, in their own opinion, Sponsor
+or its representatives do not comply to the above code of conduct.
+
+The Organizers further reserve the right to ask Sponsor or its representatives
+to leave the conference in such a case, without requirement to refund the
+Package Fee or part thereof.
+
+\vfill{}
+\pagebreak{}
+
+\subsection*{\textcolor{grey}{Data Privacy}}
+
+The Sponsor will:
+
+\begin{itemize}
+\item adhere to the applicable laws regulating data protection, the Processing of Personal Data and privacy of EU citizens, including the EU Directive 95/46/EC and from 25 May 2018 the General Data Protection Regulation (EU) 2016/679, and the Privacy and Electronic Communications (EC Directive) Regulations 2003 (as amended or replaced from time to time), collectively, the “Data Protection Legislation”; the terms Data Subjects, Personal Data, Process, Processed, Processing, Sensitive Personal Data, Special Personal Data, Supervisory Authority, Data Controller or Data Processor, where capitalised, shall have the meanings in, and shall be interpreted in accordance with, the Data Protection Legislation;
+\item procure that collection of Personal Data of any Data Subject(s) at or in context of the event is only done subject to prior explicit consent by the Data Subject(s) and only after making a copy of the Sponsors’ privacy policy available to the Data Subject(s);
+\item procure that Sponsor’s privacy policy follows and implements the rules and regulations set forth in the Data Protection Legislation, in particular, documenting which data is being collected and for which purpose this data will be used;
+\item record whether consent was given in respect of each processing purpose by each Data Subject and provide that information including a copy of the auditable record of consent acquired (and including any Personal Data in respect of which consent to share with the Organizers has been obtained) to the Organizers on demand, within five (5) working days;
+\item provide a procedure and contact by which the Organizers can request removal or correction of Personal Data stored by the Sponsor, should Data Subject(s) request this from the Organizer.
+\end{itemize}
+
+\subsection*{\textcolor{grey}{General Provisions}}
+
+Sponsor and Organizers have agreed on English as the controlling language for
+this agreement.
+
+Any amendment to this agreement shall be valid only if made in writing,
+including any dispensation of the requirement of the written form.
+
+This agreement will be governed by and shall be construed in accordance with
+the laws of Sweden. It shall not be governed by the United Nations Convention
+on Contracts for International Sale of Goods. Any dispute or claim arising out
+of or in connection with this agreement, or breach thereof, shall be submitted
+to the jurisdiction of the courts of Gothenburg, Sweden.
+
+If any provision of this Agreement shall be unlawful, void, or for any reason
+unenforceable, such provision shall be modified to the extent necessary to
+render it enforceable without losing its intent, or, if no such modification is
+possible, be severed from this Agreement and shall not affect the validity and
+enforceability of the remaining provisions of this Agreement.
+
+\subsection*{Sponsor signatures}
+
+\vspace{2cm}
+
+\begin{center}
+\begin{tabular}{r>{\centering}p{0.25\textwidth}cr>{\centering}p{0.25\textwidth}}
+Date: &  &  &  & \tabularnewline
+\cline{2-2}
+ &  &  &  & \tabularnewline
+ &  &  &  & \tabularnewline
+Name: &  &  & Name: & \tabularnewline
+\cline{2-2} \cline{5-5}
+ &  &  &  & \tabularnewline
+Position: &  &  & Position: & \tabularnewline
+\cline{2-2} \cline{5-5}
+ &  &  &  & \tabularnewline
+Signature: &  &  & Signature: & \tabularnewline
+\cline{2-2} \cline{5-5}
+ &  &  &  &  \tabularnewline
+ &  &  &  & \tabularnewline
+Name: &  &  & Name: & \tabularnewline
+\cline{2-2} \cline{5-5}
+ &  &  &  & \tabularnewline
+Position: &  &  & Position: & \tabularnewline
+\cline{2-2} \cline{5-5}
+ &  &  &  & \tabularnewline
+Signature: &  &  & Signature: & \tabularnewline
+\cline{2-2} \cline{5-5}
+ &  &  &  & \tabularnewline
+\end{tabular}
+\par\end{center}
+
+\vspace{5mm}
+
+
+\begin{center}
+(Please strike the signature fields which are not needed.)
+\par\end{center}
+
+\end{document}

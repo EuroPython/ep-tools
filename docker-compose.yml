@@ -1,0 +1,14 @@
+version: '3.6'
+
+services:
+
+  docstamp:
+    container_name: docstamp
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/eptools
+    command: /bin/bash
+    stdin_open: true
+    tty: true

@@ -1,6 +1,8 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
+.ipynb*
+._*
 
 # C extensions
 *.so
@@ -67,6 +69,9 @@ devdoc/
 #Apple stuff
 .DS_Store
 
+# other tools
+.ropeproject
+
 # eptools data
 participants*
 attendees*
@@ -77,4 +82,10 @@ attendees*
 tmp*
 
 notebooks/*ipynb*
+notebooks/**/*.txt
 agreements/
+.ropeproject
+.venv/
+notebooks/**/*.txt
+docstamp
+font*/

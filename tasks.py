@@ -1,24 +1,20 @@
 """
 Invoke tasks to be run from the command line.
 """
-import os.path as op
+import os
 from invoke import task
 
-from eptools.server_utils  import epcon_fetch_p3db
+from eptools import talks, people
 from eptools.gspread_utils import get_api_key_file
-from eptools.talks         import check_schedule
-from eptools.talks         import fetch_talks_json as _fetch_talks
-from eptools.people        import fetch_ticket_profiles as _fetch_profiles
-
-from eptools.config import (sponsors_billing_worksheet,
-                            finaid_submissions_worksheet,
-                            )
+from eptools.config import (
+    conference,
+    sponsors_billing_worksheet,
+    finaid_submissions_worksheet
+)
 
 
 @task
-def sponsor_agreement(ctx, company_name, output_dir,
-                      template_file='',
-                      api_key_file=''):
+def sponsor_agreement(ctx, company_name, output_dir, template_file="", api_key_file=""):
     """ Call docstamp to produce a sponsor agreement for `company_name`
     using `template_file`. The output will be saved in `output_dir`.
 
@@ -36,11 +32,13 @@ def sponsor_agreement(ctx, company_name, output_dir,
         If left empty will try to look for its path in the config.py file.
     """
 
-    from eptools.sponsors import (get_sponsor,
-                                  get_sponsors_ws_data,
-                                  create_sponsor_agreement,
-                                  contract_template,
-                                  )
+    from eptools.sponsors import (
+        get_sponsor,
+        get_sponsors_ws_data,
+        create_sponsor_agreement,
+        contract_template,
+        company_name_column,
+    )
 
     if not template_file:
         template_file = contract_template
@@ -48,30 +46,22 @@ def sponsor_agreement(ctx, company_name, output_dir,
     if not api_key_file:
         api_key_file = get_api_key_file()
 
-    output_dir = op.abspath(output_dir)
+    output_dir = os.path.abspath(output_dir)
 
-    responses = get_sponsors_ws_data(api_key_file=api_key_file,
-                                     doc_key=sponsors_billing_worksheet[0])
+    responses = get_sponsors_ws_data(api_key_file=api_key_file, doc_key=sponsors_billing_worksheet[0])
 
     try:
-        sponsor_data = get_sponsor(sponsor_name=company_name,
-                                   sponsors=responses,
-                                   col_name='company')
-    except:
-        raise KeyError('Could not find data for sponsor {}.'.format(company_name))
+        sponsor_data = get_sponsor(sponsor_name=company_name, sponsors=responses, col_name=company_name_column)
+    except Exception:
+        raise KeyError("Could not find data for sponsor {}.".format(company_name))
     else:
-        fpath = create_sponsor_agreement(sponsor_data,
-                                         template_file=template_file,
-                                         field_name='company',
-                                         output_dir=output_dir)
+        fpath = create_sponsor_agreement(sponsor_data, template_file=template_file, output_dir=output_dir)
 
-        print('Created {}.'.format(fpath))
+        print("Created {}.".format(fpath))
 
 
 @task
-def finaid_receipt(cts, applicant_name, output_dir,
-                   template_file='',
-                   api_key_file=''):
+def finaid_receipt(ctx, applicant_name, output_dir, template_file="", api_key_file=""):
     """ Call docstamp to produce a financial aid receipt
     for `applicant_name` using `template_file`.
     The output will be saved in `output_dir`.
@@ -89,11 +79,7 @@ def finaid_receipt(cts, applicant_name, output_dir,
         If left empty will try to look for its path in the config.py file.
     """
 
-    from eptools.finaid import (get_finaid_ws_data,
-                                get_applicant,
-                                receipt_template_spa,
-                                create_receipt,
-                               )
+    from eptools.finaid import get_finaid_ws_data, get_applicant, receipt_template_spa, create_receipt
 
     if not template_file:
         template_file = receipt_template_spa
@@ -101,28 +87,22 @@ def finaid_receipt(cts, applicant_name, output_dir,
     if not api_key_file:
         api_key_file = get_api_key_file()
 
-    output_dir = op.abspath(output_dir)
+    output_dir = os.path.abspath(output_dir)
 
-    responses = get_finaid_ws_data(api_key_file=api_key_file,
-                                   doc_key=finaid_submissions_worksheet[0])
+    responses = get_finaid_ws_data(api_key_file=api_key_file, doc_key=finaid_submissions_worksheet[0])
 
     try:
-        applicant_data = get_applicant(applicant_name=applicant_name,
-                                       submissions=responses,
-                                       col_name='full_name')
-    except:
-        raise KeyError('Could not find data for applicant {}.'.format(applicant_name))
+        applicant_data = get_applicant(applicant_name=applicant_name, submissions=responses, col_name="full_name")
+    except Exception:
+        raise KeyError("Could not find data for applicant {}.".format(applicant_name))
     else:
-        fpath = create_receipt(applicant_data,
-                               template_file=template_file,
-                               output_dir=output_dir)
+        fpath = create_receipt(applicant_data, template_file=template_file, output_dir=output_dir)
 
-        print('Created {}.'.format(fpath))
+        print("Created {}.".format(fpath))
 
 
 @task
-def fetch_ticket_profiles(ctx, out_filepath, conf='ep2017', status='all',
-                          nondups=False, raise_=False, ticket_id=''):
+def fetch_ticket_profiles(ctx, out_filepath, conf=conference, status="all", nondups=False, raise_=False, ticket_id=""):
     """ Create a json file with the all the tickets of the conference.
         make_option('--status',
                     choices=['all', 'complete', 'incomplete'],
@@ -135,20 +115,11 @@ def fetch_ticket_profiles(ctx, out_filepath, conf='ep2017', status='all',
         make_option('--ticket-id',
                     help='Will output the profile of the given ticket only.',
     """
-    return _fetch_profiles(out_filepath, conf=conf, status=status,
-                           nondups=nondups, raise_=raise_, ticket_id=ticket_id)
+    return people.fetch_files(out_filepath, conf=conf, status=status, nondups=nondups, raise_=raise_, ticket_id=ticket_id)
 
 
 @task
-def fetch_talks_json(ctx, out_filepath='',
-                     status='proposed',
-                     conf='ep2017',
-                     host='europython.io',
-                     with_votes=False):
+def fetch_talks_json(ctx, out_filepath="", status="proposed", conf=conference, host="europython.io", with_votes=False):
     """ Return the talks in a json format. `status` choices: ['accepted', 'proposed']
     """
-    return _fetch_talks(out_filepath=out_filepath,
-                        status=status,
-                        conf=conf,
-                        host=host,
-                        with_votes=with_votes)
+    return talks.fetch_talks_json(out_filepath=out_filepath, status=status, conf=conf, host=host, with_votes=with_votes)

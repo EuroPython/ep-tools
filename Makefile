@@ -12,21 +12,18 @@ help:
 	@echo "clean-pyenv - remove the pipenv Python environment"
 	@echo "lint - check style with flake8"
 	@echo "install - install"
-	@echo "develop - install in development mode"
-	@echo "deps - install dependencies"
+	@echo "install-dev - install in development mode"
 	@echo "tag - create a git tag with current version"
 
-install: deps
-	pipenv run python setup.py install
+install:
+	pip install -U pip setuptools pipenv
+	pipenv install
+	python setup.py install
 
-develop: dev_deps
-	pipenv run python setup.py develop
-
-deps:
-	pipenv install --skip-lock
-
-dev_deps:
-	pipenv install --skip-lock --dev
+install-dev:
+	pip install -U pip setuptools pipenv
+	pipenv install --dev
+	python setup.py develop
 
 clean: clean-build clean-pyc
 
@@ -36,18 +33,14 @@ clean-build:
 	rm -fr *.egg-info
 
 clean-pyc:
-	find . -name '*.pyc' -exec rm -f {} +
-	find . -name '*.pyo' -exec rm -f {} +
+	pyclean .
 	find . -name '*~' -exec rm -f {} +
 	find . -name '__pycache__' -exec rm -rf {} +
 	find . -name '*.log*' -delete
 	find . -name '.DS_Store' -delete
 
-clean-pyenv:
-	pipenv --rm
-
 lint:
-	pipenv run flake8 $(project-name) test
+	flake8 $(project-name)
 
 tag: clean
 	@echo "Creating git tag v$(version)"

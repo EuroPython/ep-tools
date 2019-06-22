@@ -22,18 +22,17 @@ being used by `conds`. For now, we only use ('==', 'and', 'or').
 """
 import operator
 
-comp_operators = {'==': operator.eq,
-                  '!=': operator.ne,
-                  '<': operator.lt,
-                  '>': operator.gt,
-                  '<=': operator.le,
-                  '>=': operator.ge,
-                  'has': operator.contains,
-                 }
+comp_operators = {
+    "==": operator.eq,
+    "!=": operator.ne,
+    "<": operator.lt,
+    ">": operator.gt,
+    "<=": operator.le,
+    ">=": operator.ge,
+    "has": operator.contains,
+}
 
-logic_operators = {'and': operator.and_,
-                   'or': operator.or_,
-                   }
+logic_operators = {"and": operator.and_, "or": operator.or_}
 
 
 def _binary_op(op_func, comps):
@@ -52,7 +51,7 @@ def _binary_op(op_func, comps):
     return nuop
 
 
-def _parse_comparison(comp_val, default_op='=='):
+def _parse_comparison(comp_val, default_op="=="):
     """ Return a comparison symbol and a value parsed from `comp_val`.
     Parameters
     ----------
@@ -75,9 +74,9 @@ def _parse_comparison(comp_val, default_op='=='):
         return default_op, comp_val
 
     for sym in comp_operators:
-        if comp_val.startswith(sym + ' '):
-            val = comp_val.replace(sym + ' ', '')
-            if val.strip().isdecimal() and '.' in val:
+        if comp_val.startswith(sym + " "):
+            val = comp_val.replace(sym + " ", "")
+            if val.strip().isdecimal() and "." in val:
                 val = float(val)
             elif val.strip().isnumeric():
                 val = int(val)
@@ -111,9 +110,9 @@ def _comparison_op(op_func, field_name, value):
         return None
 
     if isinstance(value, (tuple, list)):
-        ops   = [_parse_comparison(val, default_op=op_func) for val in value]
+        ops = [_parse_comparison(val, default_op=op_func) for val in value]
         comps = [(op, field_name, val) for op, val in ops]
-        return _binary_op('or', comps)
+        return _binary_op("or", comps)
     else:
         op, val = _parse_comparison(value, default_op=op_func)
         return (op, field_name, val)
@@ -144,9 +143,9 @@ def _exec_comparison(talk, comp, get=operator.itemgetter):
     return comp_operators[comp[0]](get(comp[1])(talk), comp[2])
 
 
-def build_query(conditions, op_func='and'):
+def build_query(conditions, op_func="and"):
     """ Build a query tree following the list of conditions. """
-    return _binary_op(op_func, tuple(_query('==', conditions)))
+    return _binary_op(op_func, tuple(_query("==", conditions)))
 
 
 def or_condition(field, op, seq):
@@ -158,7 +157,7 @@ def or_condition(field, op, seq):
     >>> or_condition('tag', 'has', ('Web', 'Case Study', 'Testing'))
     >>> ('tag', ('has Web', 'has Case Study', 'has Testing'),
     """
-    return ((field, tuple(['{} {}'.format(op, tag) for tag in seq])), )
+    return ((field, tuple(["{} {}".format(op, tag) for tag in seq])),)
 
 
 def run_query(adict, query, get=operator.itemgetter):
@@ -168,5 +167,4 @@ def run_query(adict, query, get=operator.itemgetter):
         return _exec_comparison(adict, query)
 
     elif op in logic_operators:
-        return logic_operators[op](run_query(adict, query[1], get=get),
-                                   run_query(adict, query[2], get=get))
+        return logic_operators[op](run_query(adict, query[1], get=get), run_query(adict, query[2], get=get))

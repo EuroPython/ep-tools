@@ -1,10 +1,13 @@
-# coding: utf-8
+
 """
 Utilities for internal usage.
 """
+from collections import Mapping, OrderedDict, Callable
+from functools import partial, reduce
+from itertools import product
+import operator
 
-from itertools import chain
-from collections import OrderedDict, Callable
+import numpy as np
 
 
 class Borg:
@@ -12,16 +15,16 @@ class Borg:
 
     def __init__(self):
         self.__dict__ = self.__shared_state
-    # and whatever else you want in your class -- that's all!
 
+    # and whatever else you want in your class -- that's all!
 
 
 class DefaultOrderedDict(OrderedDict):
     """An ordered and default dict."""
+
     def __init__(self, default_factory=None, *a, **kw):
-        if (default_factory is not None and
-                not isinstance(default_factory, Callable)):
-            raise TypeError('first argument must be callable')
+        if default_factory is not None and not isinstance(default_factory, Callable):
+            raise TypeError("first argument must be callable")
         OrderedDict.__init__(self, *a, **kw)
         self.default_factory = default_factory
 
@@ -41,7 +44,7 @@ class DefaultOrderedDict(OrderedDict):
         if self.default_factory is None:
             args = tuple()
         else:
-            args = self.default_factory,
+            args = (self.default_factory,)
         return type(self), args, None, None, iter(self.items())
 
     def copy(self):
@@ -52,9 +55,117 @@ class DefaultOrderedDict(OrderedDict):
 
     def __deepcopy__(self, memo):
         import copy
-        return type(self)(self.default_factory,
-                          copy.deepcopy(self.items()))
+
+        return type(self)(self.default_factory, copy.deepcopy(self.items()))
 
     def __repr__(self):
-        return 'OrderedDefaultDict(%s, %s)' % (self.default_factory,
-                                               OrderedDict.__repr__(self))
+        return "OrderedDefaultDict(%s, %s)" % (self.default_factory, OrderedDict.__repr__(self))
+
+
+class ParameterGrid(object):
+    """Grid of parameters with a discrete number of values for each.
+    Can be used to iterate over parameter value combinations with the
+    Python built-in function iter.
+    Read more in the :ref:`User Guide <search>`.
+    Parameters
+    ----------
+    param_grid : dict of string to sequence, or sequence of such
+        The parameter grid to explore, as a dictionary mapping estimator
+        parameters to sequences of allowed values.
+        An empty dict signifies default parameters.
+        A sequence of dicts signifies a sequence of grids to search, and is
+        useful to avoid exploring parameter combinations that make no sense
+        or have no effect. See the examples below.
+    Examples
+    --------
+    >>> from sklearn.model_selection import ParameterGrid
+    >>> param_grid = {'a': [1, 2], 'b': [True, False]}
+    >>> list(ParameterGrid(param_grid)) == (
+    ...    [{'a': 1, 'b': True}, {'a': 1, 'b': False},
+    ...     {'a': 2, 'b': True}, {'a': 2, 'b': False}])
+    True
+    >>> grid = [{'kernel': ['linear']}, {'kernel': ['rbf'], 'gamma': [1, 10]}]
+    >>> list(ParameterGrid(grid)) == [{'kernel': 'linear'},
+    ...                               {'kernel': 'rbf', 'gamma': 1},
+    ...                               {'kernel': 'rbf', 'gamma': 10}]
+    True
+    >>> ParameterGrid(grid)[1] == {'kernel': 'rbf', 'gamma': 1}
+    True
+    See also
+    --------
+    :class:`GridSearchCV`:
+        Uses :class:`ParameterGrid` to perform a full parallelized parameter
+        search.
+    """
+
+    def __init__(self, param_grid):
+        if isinstance(param_grid, Mapping):
+            # wrap dictionary in a singleton list to support either dict
+            # or list of dicts
+            param_grid = [param_grid]
+        self.param_grid = param_grid
+
+    def __iter__(self):
+        """Iterate over the points in the grid.
+        Returns
+        -------
+        params : iterator over dict of string to any
+            Yields dictionaries mapping each estimator parameter to one of its
+            allowed values.
+        """
+        for p in self.param_grid:
+            # Always sort the keys of a dictionary, for reproducibility
+            items = sorted(p.items())
+            if not items:
+                yield {}
+            else:
+                keys, values = zip(*items)
+                for v in product(*values):
+                    params = dict(zip(keys, v))
+                    yield params
+
+    def __len__(self):
+        """Number of points on the grid."""
+        # Product function that can handle iterables (np.product can't).
+        product = partial(reduce, operator.mul)
+        return sum(product(len(v) for v in p.values()) if p else 1
+                   for p in self.param_grid)
+
+    def __getitem__(self, ind):
+        """Get the parameters that would be ``ind``th in iteration
+        Parameters
+        ----------
+        ind : int
+            The iteration index
+        Returns
+        -------
+        params : dict of string to any
+            Equal to list(self)[ind]
+        """
+        # This is used to make discrete sampling without replacement memory
+        # efficient.
+        for sub_grid in self.param_grid:
+            # XXX: could memoize information used here
+            if not sub_grid:
+                if ind == 0:
+                    return {}
+                else:
+                    ind -= 1
+                    continue
+
+            # Reverse so most frequent cycling parameter comes first
+            keys, values_lists = zip(*sorted(sub_grid.items())[::-1])
+            sizes = [len(v_list) for v_list in values_lists]
+            total = np.product(sizes)
+
+            if ind >= total:
+                # Try the next grid
+                ind -= total
+            else:
+                out = {}
+                for key, v_list, n in zip(keys, values_lists, sizes):
+                    ind, offset = divmod(ind, n)
+                    out[key] = v_list[offset]
+                return out
+
+        raise IndexError('ParameterGrid index out of range')

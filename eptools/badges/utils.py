@@ -1,4 +1,4 @@
-# coding: utf-8
+
 """
 Utility functions for badges.
 """
@@ -18,13 +18,13 @@ def split_in_two(string, max_length=30):
     """
     string = string.strip()
     if not string:
-        return '', ''
+        return "", ""
 
     wrap = textwrap.wrap(string, width=max_length)
     if len(wrap) >= 2:
         return wrap[0], wrap[1]
 
-    return wrap[0], ''
+    return wrap[0], ""
 
 
 def is_subsequence(string1, string2, m=None, n=None, case_sensitive=False):
@@ -42,12 +42,14 @@ def is_subsequence(string1, string2, m=None, n=None, case_sensitive=False):
         string2 = string2.lower()
 
     # Base Cases
-    if m == 0:    return True
-    if n == 0:    return False
+    if m == 0:
+        return True
+    if n == 0:
+        return False
 
     # If last characters of two strings are matching
-    if string1[m-1] == string2[n-1]:
-        return is_subsequence(string1, string2, m-1, n-1, case_sensitive=True)
+    if string1[m - 1] == string2[n - 1]:
+        return is_subsequence(string1, string2, m - 1, n - 1, case_sensitive=True)
 
     # If last characters are not matching
-    return is_subsequence(string1, string2, m, n-1, case_sensitive=True)
+    return is_subsequence(string1, string2, m, n - 1, case_sensitive=True)

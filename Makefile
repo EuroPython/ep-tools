@@ -42,7 +42,18 @@ clean-pyc:
 lint:
 	flake8 $(project-name)
 
+format:
+	black --line-length=120 --safe .
+
+pre-commit:
+	pre-commit run
+
 tag: clean
 	@echo "Creating git tag v$(version)"
 	git tag v$(version)
 	git push --tags
+
+badges:
+	inv fetch-talks-json -c ep2018 -o notebooks/talks.json -s accepted
+	inv fetch-ticket-profiles -c ep2018 -o notebooks/profiles.json
+  	python eptools/badge_creator.py

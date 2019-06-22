@@ -82,6 +82,10 @@ attendees*
 tmp*
 
 notebooks/*ipynb*
+notebooks/**/*.txt
 agreements/
+.ropeproject
 .venv/
 notebooks/**/*.txt
+docstamp
+font*/

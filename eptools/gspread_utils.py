@@ -2,17 +2,16 @@
 Functions to access the data in google drive spreadsheets
 """
 
-from   docstamp.gdrive import (get_spreadsheet,
-                               worksheet_to_dict)
-
 
 def get_api_key_file():
     """ Return the api_key_file path imported from the config.py file"""
     try:
         from .config import api_key_file
-    except:
-        raise ImportError('Could not find a path to the Google credentials file. '
-                          'You can set it up permanently in the config.py file.')
+    except ImportError:
+        raise ImportError(
+            "Could not find a path to the Google credentials file. "
+            "You can set it up permanently in the config.py file."
+        )
     else:
         return api_key_file
 
@@ -43,8 +42,10 @@ def get_ws_data(api_key_file, doc_key, ws_tab_idx, header=None, start_row=1):
     """
     import pandas as pd
 
+    from eptools.gdrive import get_spreadsheet, worksheet_to_dict
+
     spread = get_spreadsheet(api_key_file, doc_key)
-    ws     = spread.get_worksheet(ws_tab_idx)
+    ws = spread.get_worksheet(ws_tab_idx)
 
     ws_dict = worksheet_to_dict(ws, header=header, start_row=start_row)
     return pd.DataFrame(ws_dict)
@@ -60,5 +61,4 @@ def find_one_row(substr, df, col_name):
         if substr.lower() in name.lower():
             return df[df[col_name] == name]
 
-    raise KeyError('Could not find {} in the '
-                   'pandas dataframe.'.format(substr))
+    raise KeyError("Could not find {} in the " "pandas dataframe.".format(substr))

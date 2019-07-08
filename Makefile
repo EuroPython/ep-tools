@@ -54,6 +54,6 @@ tag: clean
 	git push --tags
 
 badges:
-	inv fetch-talks-json -c ep2018 -o notebooks/talks.json -s accepted
-	inv fetch-ticket-profiles -c ep2018 -o notebooks/profiles.json
+	inv fetch-talks-json -c ep2019 -o notebooks/talks.json -s accepted
+	inv fetch-ticket-profiles -c ep2019 -o notebooks/profiles.json
   	python eptools/badge_creator.py

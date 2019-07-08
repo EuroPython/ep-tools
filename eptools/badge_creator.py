@@ -3,8 +3,44 @@
 
 # In[5]:
 
-
+import json
 import logging
+import os
+import shlex
+import subprocess
+import tempfile
+from collections import defaultdict
+from enum import Enum
+from glob import glob
+from typing import Union
+
+import docstamp.vcard as dvcard
+import pandas as pd
+import qrcode
+import qrcode.image.svg
+import svgutils.transform as sg
+from docstamp.file_utils import replace_file_content
+from docstamp.inkscape import svg2pdf
+from docstamp.svg_utils import _check_svg_file, merge_svg_files
+from docstamp.xml_utils import change_xml_encoding
+
+from eptools._utils import ParameterGrid
+from eptools.badges.data import (
+    badge_files,
+    coordinates,
+    maxlengths,
+    medal_files,
+    scales
+)
+from eptools.badges.data.parameters import qrcode_color
+from eptools.badges.printer import tshirt_code
+from eptools.badges.utils import split_in_two
+from eptools.config import conference
+from eptools.people.contact import AttendeeType
+from eptools.people.fetch import fetch_ticket_profiles
+from eptools.people.profiles import load_id_json, read_contacts
+from eptools.talks.fetch import fetch_talks_json
+from eptools.talks.talk import TALK_CODE, get_speaker_type
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -12,38 +48,30 @@ logger = logging.getLogger(__name__)
 
 # In[6]:
 
-
 """ Outer interface to produce conference badge files. """
-
-import json
-import os
-import subprocess
-import logging
-
-from eptools.config import conference
-from eptools.people.fetch import fetch_ticket_profiles
-from eptools.people.profiles import load_id_json
-from eptools.talks.fetch import fetch_talks_json
-from eptools._utils import ParameterGrid
-
-
-OUTPUT_DIR = os.path.expanduser("badges")
-
 LOGGER = logging.getLogger("badge_maker")
-
 
 # In[7]:
 
-
 # Fetch data
 fetch_data = False
-talks_file = "accepted_talks.json"
-profiles_file = "profiles.json"
+root_dir = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+resources_dir = os.path.join(root_dir, "ep_badges")
+talks_file = os.path.join(resources_dir, "accepted_talks.json")
+profiles_file = os.path.join(resources_dir, "ticket_profiles.json")
+keynoters_file = os.path.join(resources_dir, "keynoters.txt")
+organizers_file = os.path.join(resources_dir, "organizers.txt")
+volunteers_file = os.path.join(resources_dir, "volunteers.txt")
+epsmembers_file = os.path.join(resources_dir, "epsmembers.txt")
+
+docstamp_dir = os.path.join(resources_dir, conference, "docstamp")
+docstamp_output_dir = os.path.join(docstamp_dir, "stamped")
+os.makedirs(docstamp_dir, exist_ok=True)
 
 # fetch the data from the DB
 if fetch_data:
     fetch_ticket_profiles(profiles_file, conference=conference)
-    fetch_talks_json(talks_file, conference=conference, status="accepted", with_votes=True)
+    fetch_talks_json(talks_file, conference=conference, status="accepted", with_votes=False)
 
 logger.info(f"Created raw data files in {profiles_file} and {talks_file}.")
 
@@ -55,19 +83,6 @@ people = load_id_json(profiles_file, add_id=True)
 
 
 # In[9]:
-
-
-# add speaker statuses ['speaker_type'] -> (None, 'speaker', 'trainer')
-from enum import Enum
-from collections import defaultdict
-
-from eptools.badges.printer import tshirt_code
-from eptools.people.profiles import read_contacts
-from eptools.people.contact import AttendeeType
-from eptools.talks.talk import TALK_CODE, get_speaker_type
-from eptools.badges.utils import split_in_two
-
-
 class SpeakerType(Enum):
     speaker = "speaker"
     trainer = "trainer"
@@ -77,6 +92,7 @@ class SpeakerType(Enum):
 class TicketType(Enum):
     training = "training"
     conference = "conference"
+    combined = "combined"
 
 
 class FareType(Enum):
@@ -117,7 +133,7 @@ for person in people:
 
 
 # add keynote statuses ['speaker_type'] -> ('keynote')
-keynote_speakers_emails = {person[2] for person in read_contacts("keynoters.txt")}
+keynote_speakers_emails = {person[2] for person in read_contacts(keynoters_file)}
 for person in people:
     if person["email"] in keynote_speakers_emails:
         person["speaker_type"] = SpeakerType.keynote_speaker
@@ -126,11 +142,14 @@ for person in people:
 # In[11]:
 
 
-# add participant type statuses ['ticket_type'] -> ('conference', 'training')
+# add participant type statuses ['ticket_type'] -> ('conference', 'training', 'combined')
 for person in people:
     fare_code = person["fare_code"]
+    print(fare_code)
     if fare_code.startswith("TRT"):
         person["ticket_type"] = TicketType.training
+    elif fare_code.startswith("TRC"):
+        person["ticket_type"] = TicketType.combined
     else:
         person["ticket_type"] = TicketType.conference
 
@@ -139,7 +158,7 @@ for person in people:
 
 
 # add organizer status ['epsmember'] -> (True, False)
-organizers_emails = {person[2] for person in read_contacts("organizers.txt")}
+organizers_emails = {person[2] for person in read_contacts(organizers_file)}
 
 for person in people:
     person["is_organizer"] = person["email"] in organizers_emails
@@ -167,6 +186,9 @@ for person in people:
     elif person["ticket_type"] == TicketType.conference:
         badge_type = AttendeeType.attendee
 
+    elif person["ticket_type"] == TicketType.combined:
+        badge_type = AttendeeType.combined
+
     person["badge_type"] = badge_type
 
 
@@ -190,19 +212,11 @@ for person in people:
     person["fare_type"] = fare_type.value
 
 
-# In[11]:
-
-
-# add python power as star string: ★
-for person in people:
-    person["python_power"] = "Python power: " + "★" * person["pypower"] if person["pypower"] else ""
-
-
 # In[12]:
 
 
 # add epsmembership status ['is_epsmember'] -> (True, False)
-epsmembers_emails = {person[2] for person in read_contacts("epsmembers.txt")}
+epsmembers_emails = {person[2] for person in read_contacts(epsmembers_file)}
 
 for person in people:
     person["is_epsmember"] = person["email"] in epsmembers_emails
@@ -212,7 +226,7 @@ for person in people:
 
 
 # add volunteer status ['is_volunteer'] -> (True, False)
-volunteers_emails = {person[2] for person in read_contacts("volunteers.txt")}
+volunteers_emails = {person[2] for person in read_contacts(volunteers_file)}
 
 for person in people:
     person["is_volunteer"] = person["email"] in volunteers_emails
@@ -227,11 +241,6 @@ for person in people:
 
 
 # In[15]:
-
-
-# add qrcode content: vcard
-import docstamp.vcard as dvcard
-
 
 def person_vcard(person: dict) -> str:
     """Return the file path to the svg file with a QRCode containing the contact VCard info."""
@@ -254,12 +263,10 @@ for person in people:
 
 # In[16]:
 
-
-from eptools.badges.data import module_dir, badge_files, medal_files, coordinates, scales, maxlengths
-
-# fix entries for maximum length, only tagline for now
+# fix entries for maximum length
 for person in people:
     person["tagline1"], person["tagline2"] = split_in_two(person["tagline"], max_length=maxlengths["tagline"])
+    person["company1"], person["company2"] = split_in_two(person["company"], max_length=maxlengths["company"])
 
 
 # In[17]:
@@ -296,18 +303,6 @@ assert sum(len(people_traits) for _, people_traits in peoples_traits.items()) ==
 
 
 # In[19]:
-
-
-# generate template files
-from typing import Union
-
-import svgutils.transform as sg
-from docstamp.svg_utils import merge_svg_files, _check_svg_file
-from docstamp.xml_utils import change_xml_encoding
-
-
-docstamp_dir = os.path.join(module_dir, conference, "docstamp")
-os.makedirs(docstamp_dir, exist_ok=True)
 
 
 def _add_epsmember_medal(badge_svg: Union[str, sg.SVGFigure]) -> sg.SVGFigure:
@@ -350,7 +345,6 @@ for badges_trait in badges_traits_grid:
 # In[20]:
 
 
-import pandas as pd
 
 for idx, people_traits in peoples_traits.items():
     df = pd.DataFrame(people_traits)
@@ -365,11 +359,6 @@ for idx, people_traits in peoples_traits.items():
 
 
 # In[21]:
-
-
-from glob import glob
-
-docstamp_output_dir = os.path.join(docstamp_dir, "stamped")
 
 
 def docstamp(input_file, outdir, template_file, naming_field="id"):
@@ -393,16 +382,6 @@ for csv_file in glob(os.path.join(docstamp_dir, "*.csv")):
 
 
 # qrcode-related helpers
-
-import tempfile
-
-import svgutils.transform as sg
-import qrcode
-import qrcode.image.svg
-from docstamp.file_utils import replace_file_content
-
-from eptools.badges.data.parameters import qrcode_color
-
 
 def _text_to_qrcode_svg(text: str, box_size: int = 1) -> qrcode.image.svg.SvgPathImage:
     """ Return `text` in a qrcode svg object.
@@ -474,10 +453,6 @@ for person in people:
 
 # In[ ]:
 
-from glob import glob
-from docstamp.inkscape import svg2pdf
-
-
 for svg_file in glob(os.path.join(docstamp_output_dir, "*.svg")):
     logger.info(f"Converting {svg_file} to PDF.")
     svg2pdf(svg_file, svg_file.replace(".svg", ".pdf"), dpi=150)
@@ -485,9 +460,6 @@ for svg_file in glob(os.path.join(docstamp_output_dir, "*.svg")):
 
 
 # In[ ]:
-
-import shlex
-
 
 def pdf_to_cmyk(input_file: str, output_file: str):
     cmd = (

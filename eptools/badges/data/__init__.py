@@ -26,6 +26,7 @@ trainer_badge_file = os.path.join(badge_templates_dir, "trainer.svg")
 speaker_badge_file = os.path.join(badge_templates_dir, "speaker.svg")
 participant_badge_file = os.path.join(badge_templates_dir, "conference_participant.svg")
 trainee_badge_file = os.path.join(badge_templates_dir, "trainings_participant.svg")
+combined_badge_file = os.path.join(badge_templates_dir, "combined_participant.svg")
 
 # additional medals to put on the badges
 medal_files = {
@@ -40,5 +41,6 @@ badge_files = {
     AttendeeType.speaker: speaker_badge_file,
     AttendeeType.attendee: participant_badge_file,
     AttendeeType.trainee: trainee_badge_file,
+    AttendeeType.combined: combined_badge_file,
 }
 

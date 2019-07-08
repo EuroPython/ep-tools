@@ -12,6 +12,7 @@ class AttendeeType(Enum):
     attendee = 'attendee'
     participant = 'participant'  # this is a British attendee
     trainee = 'trainee'
+    combined = 'combined'
 
 
 class TicketType(Enum):

@@ -115,11 +115,24 @@ def fetch_ticket_profiles(ctx, out_filepath, conf=conference, status="all", nond
         make_option('--ticket-id',
                     help='Will output the profile of the given ticket only.',
     """
-    return people.fetch_files(out_filepath, conf=conf, status=status, nondups=nondups, raise_=raise_, ticket_id=ticket_id)
+    return people.fetch_ticket_profiles(
+        out_filepath,
+        conference=conf,
+        status=status,
+        nondups=nondups,
+        raise_=raise_,
+        ticket_id=ticket_id
+    )
 
 
 @task
 def fetch_talks_json(ctx, out_filepath="", status="proposed", conf=conference, host="europython.io", with_votes=False):
     """ Return the talks in a json format. `status` choices: ['accepted', 'proposed']
     """
-    return talks.fetch_talks_json(out_filepath=out_filepath, status=status, conf=conf, host=host, with_votes=with_votes)
+    return talks.fetch_talks_json(
+        out_filepath=out_filepath,
+        status=status,
+        conference=conf,
+        host=host,
+        with_votes=with_votes
+    )

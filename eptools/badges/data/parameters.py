@@ -127,3 +127,42 @@ elif conference == 'ep2018':
     }
 
     scales = {"qrcode": 1.62 * 60}
+
+elif conference == 'ep2019':
+
+    badge_color = {
+        AttendeeType.keynote: "007282",
+        AttendeeType.organizer: "1f1f1e",
+        AttendeeType.trainer: "e3f0f1",
+        AttendeeType.speaker: "d57200",
+        AttendeeType.attendee: "fee8d3",
+        AttendeeType.trainee: "d3feea",
+        AttendeeType.combined: "fee8d3",
+    }
+
+    qrcode_color = {
+        AttendeeType.keynote: "007282",
+        AttendeeType.organizer: "1f1f1e",
+        AttendeeType.trainer: "65acb2",
+        AttendeeType.speaker: "d57200",
+        AttendeeType.attendee: "f9800c",
+        AttendeeType.trainee: "04b160",
+        AttendeeType.combined: "f9800c",
+    }
+
+    # max number of chars for each line type
+    maxlengths = {
+        "name": 18,
+        "surname": 25,
+        "tagline": 30,
+        "company": 30,
+    }
+
+    # positions in the badges
+    coordinates = {
+        "qrcode": (348.5, 105),
+        "epsmember": (285, 500),
+        "volunteer": (335, 500),
+    }
+
+    scales = {"qrcode": 1.45 * 60}

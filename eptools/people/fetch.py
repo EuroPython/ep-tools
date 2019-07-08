@@ -7,9 +7,9 @@ import requests
 from eptools.server_utils import epcon_fetch_file
 
 
-def fetch_participant_csv(out_filepath, conf="ep2017"):
+def fetch_participant_csv(out_filepath, conference):
     """ Create csv file with participants with an assigned ticket. """
-    return epcon_fetch_file(cmd="get_attendees_csv {} {}".format(conf, "complete"), fpath=out_filepath)
+    return epcon_fetch_file(cmd="get_attendees_csv {} {}".format(conference, "complete"), fpath=out_filepath)
 
 
 def fetch_users(out_filepath):
@@ -17,7 +17,7 @@ def fetch_users(out_filepath):
     return epcon_fetch_file(cmd="users", fpath=out_filepath)
 
 
-def fetch_ticketless_csv(out_filepath, conf="ep2017"):
+def fetch_ticketless_csv(out_filepath, conference):
     """ Create csv file with participants without ticket.  """
     return epcon_fetch_file(cmd="get_attendees_csv {} {}".format(conf, "incomplete"), fpath=out_filepath)
 
@@ -64,4 +64,7 @@ def genderize(first_name):
     -------
     query_result: dict
     """
-    return requests.get("https://api.genderize.io/", params={"name": first_name}).json()
+    return requests.get(
+        "https://api.genderize.io/",
+        params={"name": first_name}
+    ).json()

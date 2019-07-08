@@ -71,6 +71,7 @@ devdoc/
 
 # other tools
 .ropeproject
+.python-version
 
 # eptools data
 participants*
@@ -81,8 +82,13 @@ attendees*
 *.pdf
 tmp*
 
+**/*.ai
+**/*.pdf
+**/*.ttf
+**/*.otf
+**/*.zip
+**/*.txt
 notebooks/*ipynb*
-notebooks/**/*.txt
 agreements/
 .ropeproject
 .venv/
